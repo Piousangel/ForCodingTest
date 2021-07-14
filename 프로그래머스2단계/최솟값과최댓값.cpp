@@ -17,7 +17,7 @@ string solution(string s) {
             tmp += s[i]; 
         } 
     } 
-    v1.push_back(atoi(tmp.c_str())); 
+    v1.push_back(atoi(tmp.c_str()));   //마지막 문자열넣기
     sort(v1.begin(), v1.end(), greater<int>()); 
     answer += to_string(v1.back()) + " " +to_string(v1.front()); 
 
