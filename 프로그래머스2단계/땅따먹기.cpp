@@ -5,8 +5,7 @@
 
 using namespace std;
 
-//다시 풀기..
-//동적계획법으로 풀어보기
+//ok..
 
 int max_return(vector<int>& vec, int a){
     int temp = 0;
