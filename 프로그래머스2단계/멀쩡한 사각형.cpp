@@ -3,7 +3,7 @@
 #include <string>
 
 //수학문제 푼다고 생각하고 풀기..
-
+//long long 신경쓰기
 using namespace std;
 long long gcd(int w, int h){
     long temp;

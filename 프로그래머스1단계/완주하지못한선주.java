@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 //해시맵의 탐색에서 keySet()과 entrySet()의 차이는 value값의 참조 여부에 따라 성능이 다르다고 한다. keySet()의 경우 모든 원소의 key값만을 가져오는데, 
 //이 key를 이용해 map.get(key)를 수행한다면 value를 찾기 위해 해시 맵을 다시 탐색하기 때문에 비효율적이라고 한다. 
 //그러나 entrySet()의 경우는 원소들의 key, value를 객체 형태로 받아오기 때문에 key가 필요하면 getKey(), value가 필요하면 getValue()를 사용하면 된다고 한다
-//라고 합니다... 바보양현석
+//라고 합니다...
 
 class Solution{
     public String solution(String[] participant, String[] completion){
