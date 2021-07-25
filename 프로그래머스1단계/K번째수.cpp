@@ -18,6 +18,6 @@ vector<int> solution(vector<int> array, vector<vector<int> > commands) {
         answer.push_back(temp.at(commands[i][2] - 1));
          
     }
-    
+    //a
     return answer;
 }
