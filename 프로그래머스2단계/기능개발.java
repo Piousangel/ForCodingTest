@@ -16,9 +16,10 @@ class 기능개발 {
         }
         
         while(!q.isEmpty()){
-            //int count = 0;
-            for(int i=0; i < speeds.length; i++){
-                progresses[i] = speeds[i];
+            //for(int i = q.peek())
+            for(int i=q.peek(); i < speeds.length; i++){
+                //progresses[i] += speeds[i];
+                progresses[i] += speeds[i];
             }
             
             int insert = pollQ(progresses);
@@ -37,7 +38,7 @@ class 기능개발 {
     
     static int pollQ(int[] progresses){
         int count = 0;
-        while(q.isEmpty() && progresses[q.peek()] >= 100){
+        while(!q.isEmpty() && progresses[q.peek()] >= 100){
             q.poll();
             count++;
         }
