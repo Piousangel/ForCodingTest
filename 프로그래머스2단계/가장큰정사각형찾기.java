@@ -1,8 +1,4 @@
 
-// import java.util.LinkedList; 
-// import java.util.Queue;
-// //정사각형 찾기 다시보자 탐색 알고리즘 복습 7월 26일 이후 체크해
-
 
 // public class 가장큰정사각형찾기{
     
