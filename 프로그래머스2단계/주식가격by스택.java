@@ -2,6 +2,8 @@ import java.util.*;
 import java.util.ArrayList;
 import java.util.Stack;
 
+//스택 복습하기
+
 class 주식가격by스택 {
     public int[] solution(int[] prices) {
         Stack<Integer> st = new Stack();
