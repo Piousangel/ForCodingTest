@@ -3,7 +3,7 @@ import java.util.Queue;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-//8월1일 이후 Queue 복습후 
+//8월1일 이후 Queue 복습후 8월2일
 
 class 기능개발 {
     static Queue<Integer> q;

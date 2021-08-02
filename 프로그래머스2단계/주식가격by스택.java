@@ -2,7 +2,7 @@ import java.util.*;
 import java.util.ArrayList;
 import java.util.Stack;
 
-//스택 복습하기
+//스택 복습하기 8월2일
 
 class 주식가격by스택 {
     public int[] solution(int[] prices) {
