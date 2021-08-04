@@ -6,30 +6,31 @@ import java.util.LinkedList;
 //8월1일 이후 Queue 복습후 8월2일
 
 class 기능개발 {
-    static Queue<Integer> q;
+    Queue<Integer> q;
     
     public int[] solution(int[] progresses, int[] speeds) {
         int[] answer = {};
         ArrayList<Integer> Alist = new ArrayList<>();
         q = new LinkedList<>();
         
-        for(int i=0; i< speeds.length; i++){
+        for(int i=0; i < speeds.length; i++){
             q.offer(i);
         }
         
         while(!q.isEmpty()){
-            //for(int i = q.peek())
-            for(int i=q.peek(); i < speeds.length; i++){
-                //progresses[i] += speeds[i];
+            for(int i= q.peek(); i < speeds.length; i++){
                 progresses[i] += speeds[i];
             }
             
-            int insert = pollQ(progresses);
+            int insert = Qpoll(progresses);
+    
+        
             if(insert > 0){
                 Alist.add(insert);
             }
-            
+        
             answer = new int[Alist.size()];
+        
             for(int i=0; i < Alist.size(); i++){
                 answer[i] = Alist.get(i);
             }
@@ -38,13 +39,13 @@ class 기능개발 {
         return answer;
     }
     
-    static int pollQ(int[] progresses){
-        int count = 0;
+    public int Qpoll(int[] progresses){
+        int cnt = 0;
         while(!q.isEmpty() && progresses[q.peek()] >= 100){
             q.poll();
-            count++;
+            cnt++;
         }
-        return count;
+        return cnt;
     }
 }
 
