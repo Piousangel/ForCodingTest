@@ -1,5 +1,7 @@
 import java.util.*;
 
+// 8월8일 복습
+
 class 게임맵최단거리 {
     Queue<Node> q;
     int[] dy = {-1,0,1,0};
