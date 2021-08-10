@@ -1,6 +1,6 @@
 
 
-// public class 가장큰정사각형찾기{
+public class 가장큰정사각형찾기{
     
 // {
 //    static class info {
@@ -134,4 +134,4 @@
 //     }
 // }
 
-// }
+}
