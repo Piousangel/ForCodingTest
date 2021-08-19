@@ -24,17 +24,16 @@ class 기능개발 {
             }
             
             int insert = Qpoll(progresses);
-    
         
             if(insert > 0){
                 Alist.add(insert);
             }
+        }
+
+        answer = new int[Alist.size()];
         
-            answer = new int[Alist.size()];
-        
-            for(int i=0; i < Alist.size(); i++){
-                answer[i] = Alist.get(i);
-            }
+        for(int i=0; i < Alist.size(); i++){
+            answer[i] = Alist.get(i);
         }
         
         return answer;
