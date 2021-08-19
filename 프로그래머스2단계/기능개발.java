@@ -3,7 +3,8 @@ import java.util.Queue;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-//8월1일 이후 Queue 복습후 8월2일
+//8월1일 이후 Queue 복습후 8월2일  8월19일
+//이문제에서 가장중요한 부분은 poll()을 기가막힌 타이밍에 하기위해 큐를 쓰는 것이다... 라고 하겠음
 
 class 기능개발 {
     Queue<Integer> q;
