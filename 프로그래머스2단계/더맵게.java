@@ -28,6 +28,7 @@ class 더맵게 {
                 break;
             }
             if(q.size() == 1 && q.peek() < K){
+                answer = -1;
                 break;
             }
         }
