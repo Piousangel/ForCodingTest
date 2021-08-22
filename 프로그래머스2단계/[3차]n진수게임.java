@@ -18,8 +18,8 @@ class Solution {
         String answer = "";
         
         StringBuilder sb = new StringBulider();
-        for(int i = 0; i <= t*m; ++num){
-            StringBuilder tmp = convertNum(num,n);
+        for(int i = 0; i <= t*m; ++i){
+            StringBuilder tmp = convertNum(i,n);
             sb.append(tmp);
         }
         
