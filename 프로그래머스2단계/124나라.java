@@ -17,7 +17,8 @@ class 124나라 {
             
             if(append == 0) n--;
             
-            answer += gram[append];
+            //answer += gram[append];
+            answer = gram[append] + answer; //두자리수 이상일때 뒤에 붙여야함
         }
         
 //         for(int i=0; i < n; i++){
