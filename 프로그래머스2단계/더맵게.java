@@ -8,29 +8,31 @@ class 더맵게 {
     //카운트 새면 되는거 아님?
     //개판이구나 ... 다시 
     
+    //8/22 4:35 이러면 81점 나옴 -> 실패라는뜻..
+
     public int solution(int[] scoville, int K) {
-        ArrayList<Integer> arr = new ArrayList<>();
+        PriorityQueue<Integer> q = new PriorityQueue<>();
         int answer = 0;
-        int count = 0;
         
-        for(int i = 0; i < scoville.length; i++){
-            arr.add(scoville[i]);
+        for(int i=0; i < scoville.length; i++){
+            q.offer(scoville[i]);
+            
         }
         
-        Arrays.sort(scoville);
-        
-        while(scoville[0] <= K){
-            for(int i=0; i < arr.size(); i++){
-                if(arr.get(i) <= K){
-                    arr.get(i) = scoville[0] + (scoville[1]*2);
-                    count++;
-                }
-                Arrays.sort(scoville);
+        while(!q.isEmpty()){
+            int sco = q.poll() + q.poll()*2;
+            answer++;
+            q.offer(sco);
+            
+            if(q.peek() >= K){
+                break;
+            }
+            if(q.size() == 1 && q.peek() < K){
+                break;
             }
         }
         
         
-        answer = count-2;
         return answer;
     }
 }
