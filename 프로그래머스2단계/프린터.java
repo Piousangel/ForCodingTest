@@ -1,5 +1,6 @@
 import java.util.*;
 
+
 class 프린터 {
     int answer = 0;
     Queue<Printer> q;
