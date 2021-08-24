@@ -4,6 +4,10 @@
 #include <vector>
 #include <queue>
 using namespace std;
+
+//제가 푼건 아니고 코딩테스트 문제로 출제 되었는데 
+//못풀어서 기억하려고 끌어왔습니다 하....
+
 struct Frog {
     int x,y,i;
 } f[100001];
