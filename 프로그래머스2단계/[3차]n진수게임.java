@@ -12,7 +12,7 @@ class Solution {
     //string을 직접 더할경우 string의 주소값이 stack에 쌓임
     // 클래스들은 Garbage Collector가 호출되기 전까지 heap에 지속적으로 쌓이게 된다. 메모리 관리    적인 측면에서는 치명적이므로 string을 직접더하지않고 stringbulider or stringbuffer사용.
     
-    char[] sort = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'}
+    char[] sort = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F'};
     
     public String solution(int n, int t, int m, int p) {
         String answer = "";

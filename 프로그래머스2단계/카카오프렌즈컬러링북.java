@@ -1,4 +1,4 @@
-import java.util*;
+import java.util.*;
 
 // 8/30 복습하고 기록합시당
 public class 카카오프렌즈컬러링북 {
@@ -18,8 +18,6 @@ public class 카카오프렌즈컬러링북 {
 
         }
     }
-    
-    
     
     public int[] solution(int m, int n, int[][] picture) {
         visited = new boolean[m][n];
