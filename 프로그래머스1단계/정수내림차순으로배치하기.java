@@ -1,5 +1,7 @@
 import java.util.*;
 
+// 9/16
+
 class 정수내림차순으로배치하기 {
     public long solution(long n) {
         long answer = 0;

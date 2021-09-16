@@ -1,5 +1,7 @@
 import java.util.*;
 
+// 9/16
+
 class 소수찾기 {
     public int solution(int n) {
         int answer = 0;
