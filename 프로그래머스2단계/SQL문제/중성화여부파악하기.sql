@@ -1,4 +1,4 @@
-select 
+Select 
     animal_id, 
     name,
 case
