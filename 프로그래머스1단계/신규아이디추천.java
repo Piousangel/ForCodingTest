@@ -16,10 +16,11 @@ public class 신규아이디추천 {
             id = id.substring(0, 15);
             id = id.replaceAll("^[.]|[.]$", ""); // 끝 . 제거 
         }
-        if(id.length() <= 2) // 2자 이하라면 3자까지 마지막 문자추가 
-            while(id.length() < 3)
+        if(id.length() <= 2){
+            while(id.length() < 3){
                 id += id.charAt(id.length() - 1);
-
+            }
+        } // 2자 이하라면 3자까지 마지막 문자추가 
         return id;
     }
 
