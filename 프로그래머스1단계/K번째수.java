@@ -1,6 +1,9 @@
 import java.util.Arrays; 
 
 class K번째수 {
+
+    // 9/24
+
     public int[] solution(int[] array, int[][] commands) {
         
         int[] answer = new int[commands.length];

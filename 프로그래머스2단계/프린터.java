@@ -1,6 +1,6 @@
 import java.util.*;
 
-//프린터 8/25 복습
+//프린터 8/25 복습 9/24
 
 class 프린터 {
     int answer = 0;
