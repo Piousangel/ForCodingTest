@@ -8,3 +8,7 @@ case
 end as '중성화'
 from animal_ins
 order by animal_id asc
+
+--9/25
+-- %가 앞뒤로 붙으면 앞이나 뒤에 N(0포함)개의 글자가 올수있음
+-- _는 _개수만큼 온다는 것
