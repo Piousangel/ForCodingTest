@@ -1,7 +1,7 @@
 import java.util.*;
 import java.lang.*;
 
-//점수를 누적해서 더해줘야함
+//점수를 누적해서 더해줘야함 9/26
 
 class 일차다트게임 {
     public int solution(String dartResult) {
