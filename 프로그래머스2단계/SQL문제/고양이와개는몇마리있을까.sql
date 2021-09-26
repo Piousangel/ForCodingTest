@@ -3,3 +3,5 @@ from animal_ins
 group by animal_type
 having count(animal_type) >= 1
 order by animal_type
+
+--9/26
