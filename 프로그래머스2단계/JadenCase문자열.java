@@ -1,32 +1,33 @@
-public class JadenCase문자열 {
+import java.util.*;
+import java.io.*;
 
-    //이것도 안댐
-    // public String solution(String s) {
-    //     String answer = "";
-    //     String[] str = s.split(" ");
-    //     ArrayList<String> list = new ArrayList<>();
-        
-    //     for(int i=0; i < str.length; i++){
-    //         char abc = str[i].charAt(0);
-    //         str[i] = str[i].substring(0,1).toUpperCase() + str[i].substring(1).toLowerCase();
-    //         answer += str[i] + " ";
-    //     }
-        
-    //     answer = answer.trim(); 
-    //     return answer;
-    // }
+//9/29
 
-    //이러면 런타임 오류남
-    // public String solution(String s) {
-    //     String answer = "";
-    //     String[] str = s.split(" ");
-    //     ArrayList<String> list = new ArrayList<>();
+class Solution {
+    public String solution(String s) {
+        String answer = "";
         
-    //     for(int i=0; i < str.length; i++){
-    //         list.add(str[i].substring(0,1).toUpperCase() + str[i].substring(1).toLowerCase());
-    //     }
+        StringBuilder sb = new StringBuilder();
         
-    //     answer = String.join(" ", list);
+        String[] str = s.split(" ");
         
-    //     return answer;
+        for(int i=0; i < str.length; i++){
+            String first = str[i].substring(0,1);
+            String ee = str[i].substring(1,str[i].length()).toLowerCase();
+            if('a' <= str[i].charAt(0) && str[i].charAt(0) <= 'z'){
+               str[i] = first.toUpperCase() + ee;
+            }
+            else
+                str[i] = first + ee;
+        }
+        
+        for(int i = 0; i < str.length; i++){
+            sb.append(str[i] + " ");
+            //answer += str[i] + " ";
+        }
+        
+        answer = sb.toString().trim();
+        //answer = answer.trim();
+        return answer;
+    }
 }
