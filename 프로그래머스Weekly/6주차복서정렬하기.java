@@ -34,7 +34,7 @@ class Solution {
             }
             
             if(ncnt == weights.length){
-                return 
+                //return 
             }
             
             answer[i] = cnt;
