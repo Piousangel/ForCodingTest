@@ -1,6 +1,6 @@
 import java.util.*;
-import java.util.ArrayList;
-import java.util.Stack;
+
+//9/30
 
 class 주식가격 {
     public int[] solution(int[] prices) {

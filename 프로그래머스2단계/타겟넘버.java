@@ -1,7 +1,7 @@
 import java.util.*;
 
 //BFS를 이용한 풀이 
-//DFS로도 풀어바... 재귀사용
+//DFS로도 풀어바... 재귀사용 9/30
 
 class 타겟넘버 {
     public int solution(int[] numbers, int target) {
