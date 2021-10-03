@@ -1,4 +1,7 @@
 public class 나누어떨어지는숫자배열 {
+
+    10/03
+
     public int[] solution(int[] arr, int divisor) {
         int[] answer = {};
         

@@ -4,7 +4,7 @@ import java.util.*;
 //작은 숫자 k 개 제거
 //걍 이어붙이면 끝 아님?
 
-//아니 왜 틀렸지..? 화장실 갔다와서 다시 푼다
+//아니 왜 틀렸지..? 화장실 갔다와서 다시 푼다 10/03
 
 class 큰수만들기 {
     public String solution(String number, int k) {
@@ -47,3 +47,21 @@ class 큰수만들기 {
         return number;
     }
 }
+
+// import java.util.*;
+
+// class Solution {
+//     public String solution(int[] numbers) {
+//         String answer = "";
+//         char[] ch = new char[numbers.length];
+//         for(int i=0; i < numbers.length; i++){
+//             ch[i] = Integer.toString(numbers[i]).charAt(0);
+//         }
+        
+//         for(int i=0; i < ch.length; i++){
+//             System.out.println(ch[i]);
+//         }
+        
+//         return answer;
+//     }
+// }
