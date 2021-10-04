@@ -1,41 +1,68 @@
 import java.util.*;
 
-// 9/30
+//  10/04
 
 class Solution {
     public int[] solution(int n, String[] words) {
         int[] answer = new int[2];
-        int myTurn = 0;
-        int cnt = 0;
+
+        String str = "";
+        int chk_cnt = 0;
+        int number = 0;
+        int turn = 0;
+        int space_cnt = 1;
+        //StringBuilder sb = new StringBuilder();
         ArrayList<String> list = new ArrayList<>();
         
-        for(int i =0; i < words.length; i++){
-            
-            if(list.contains(words[i])){
-                answer[0] = myTurn;
-                answer[1] = cnt;
-                break;
+        for(int i=0; i < words.length; i++){
+            //sb.append(words[i]+ " ");
+            if(!list.contains(words[i])){
+                list.add(words[i]);
             }
-            
-            if(i < words.length-1 && words[i].length() > 1){
-                String last_char = words[i].substring(words[i].length()-1, words[i].length());
-                String first_char = words[i+1].substring(0, 1);
-                //System.out.println(last_char);
-                //System.out.println(first_char);
-                if(first_char.equals(last_char)){
-                    cnt++;
-                    myTurn = (i+1) % n;
+            else{
+                if((i+1)%n == 0){
+                    answer[0] = n;
+                    answer[1] = (i+1) / n;
                 }
                 else{
-                    answer[0] =  myTurn;
-                    answer[1] = cnt;
-                    break;
+                    answer[0] = (i+1) % n; 
+                    answer[1] = (i+1) / n;
                 }
+                
+                return answer;
             }
-            
-            
+            str += words[i] + " ";
         }
-
+        
+        str = str.trim();
+        System.out.println(str);
+         
+        for(int i=0; i < str.length(); i++){
+            if(str.charAt(i) == ' '){
+                space_cnt++;
+                // System.out.println("str.charAt(i-1)"+str.charAt(i-1));
+                // System.out.println("str.charAt(i+1)"+str.charAt(i+1));
+                if(str.charAt(i-1) == str.charAt(i+1)) continue;
+                else{
+                    if((i+1)%n == 0){
+                        answer[0] = n;
+                        answer[1] = (space_cnt+1) / n;
+                    }
+                    else{
+                        answer[0] = (i+1) % n; 
+                        answer[1] = (space_cnt+1) / n;
+                    }
+                
+                    return answer;
+                    }
+            }
+            answer[0] = 0;
+            answer[0] = 0;
+        }
+        
+        //answer[0] = turn;
+        //answer[1] = number;
+        
         return answer;
     }
 }
