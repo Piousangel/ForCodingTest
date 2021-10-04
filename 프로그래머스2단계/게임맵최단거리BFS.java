@@ -1,46 +1,10 @@
 import java.util.*;
 
-// 8월8일 복습
-//8월 17일 복습
+// 10/04
 
-class 게임맵최단거리 {
-    Queue<Node> q;
-    int[] dy = {-1,0,1,0};
-    int[] dx = {0,1,0,-1};
-    int rowLen, colLen;
-    boolean[][] visited;
+class Solution {
     
-    public int solution(int[][] maps) {
-        rowLen = maps.length;
-        colLen = maps[0].length;
-        visited = new boolean[rowLen][colLen];
-        return bfs(0,0,maps);
-    }
-    
-    public int bfs(int x, int y, int[][] maps){
-        q = new LinkedList<>();
-        q.offer(new Node(x,y,1));
-        visited[x][y] = true;
-        
-        while(!q.isEmpty()){
-            Node node = q.poll();
-            if(node.x == rowLen-1 && node.y == colLen-1){
-                return node.cost;
-            }
-            for(int i=0; i< 4; i++){
-                int nx = node.x + dx[i];
-                int ny = node.y + dy[i];
-                if(nx >= 0 && nx < rowLen && ny >= 0 && ny < colLen){
-                    if(maps[nx][ny] == 1 && !visited[nx][ny]){
-                        visited[nx][ny] = true;
-                        q.offer(new Node(nx, ny, node.cost+1));
-                    }
-                }
-            }
-        }
-        return -1;
-    }
-    static class Node{
+    public class Node{
         int x;
         int y;
         int cost;
@@ -50,5 +14,47 @@ class 게임맵최단거리 {
             this.y = y;
             this.cost = cost;
         }
+    }
+    
+    int[] dx = {1,-1,0,0};
+    int[] dy = {0,0,1,-1};
+    boolean[][] visited;
+    int rowLen = 0;
+    int colLen = 0;
+    Queue<Node> q;
+    
+    public int solution(int[][] maps) {
+        rowLen = maps.length;
+        colLen = maps[0].length;
+        visited = new boolean[rowLen][colLen];
+        
+        return bfs(0,0,maps);
+    }
+    
+    public int bfs(int x, int y, int[][] maps){
+        visited[x][y] = true;
+        q = new LinkedList<>();
+        q.offer(new Node(x,y,1));
+        
+        while(!q.isEmpty()){
+            Node node = q.poll();
+            
+            if(node.x == rowLen-1 && node.y == colLen-1){
+                return node.cost;
+            }
+            
+            for(int i=0; i < 4; i++){
+                int nx = node.x + dx[i];
+                int ny = node.y + dy[i];
+                
+                if(0 <= nx && nx < rowLen && 0 <= ny && ny < colLen){
+                    if(!visited[nx][ny] && maps[nx][ny] == 1){
+                        visited[nx][ny] = true;
+                        q.offer(new Node(nx, ny, node.cost+1));
+                    }
+                }
+            }
+        }
+        return -1;
     }
 }

@@ -4,78 +4,103 @@ import java.util.*;
 
 //  8/23 다시보기 효율성 떨어지므로 계선방안 찾기
 // 9/15
-
 class Solution
 {
-    static class info{
-        int r,c;
-        
-        public info(int r, int c){
-            this.r = r;
-            this.c = c;
-        }
-    }
-    private static int[] dr = {0, 1, 1};  //우, 하, 우하
-    private static int[] dc = {1, 0, 1};
-
-    public int solution(int [][]board)
+    public int solution(int[][] board)
     {
         int answer = 0;
+        int[][] answer_board = new int[board.length+1][board[0].length+1];
         
-        int rowLen = board.length;
-        int colLen = board[0].length;
-        
-        for(int i=0; i< rowLen; i++){
-            if(answer >= rowLen) break;
-            
-            for(int j=0; j <colLen; j++){
-                if(answer >= colLen-j) break;
-                if(board[i][j] != 0){
-                    int tmp = search(i,j,rowLen, colLen, board);
-                    if(answer < tmp){
-                        answer = tmp;
-                    }
-                }
+        for(int i=0; i < board.length; i++){
+            for(int j=0; j < board[0].length; j++){
+                answer_board[i+1][j+1] = board[i][j];
             }
         }
         
-        return answer*answer;
+        for(int i=1; i < answer_board.length; i++){
+            for(int j=1; j < answer_board[0].length; j++){
+                if(answer_board[i][j] != 0){
+                    answer_board[i][j] = Math.min(Math.min(answer_board[i - 1][j], answer_board[i][j - 1]), answer_board[i - 1][j - 1]) + 1;
+                    answer = Math.max(answer, answer_board[i][j]);
+                }       
+            }
+        }
+
+        return answer * answer;
     }
+}
+
+// class Solution
+// {
+//     static class info{
+//         int r,c;
+        
+//         public info(int r, int c){
+//             this.r = r;
+//             this.c = c;
+//         }
+//     }
+//     private static int[] dr = {0, 1, 1};  //우, 하, 우하
+//     private static int[] dc = {1, 0, 1};
+
+//     public int solution(int [][]board)
+//     {
+//         int answer = 0;
+        
+//         int rowLen = board.length;
+//         int colLen = board[0].length;
+        
+//         for(int i=0; i< rowLen; i++){
+//             if(answer >= rowLen) break;
+            
+//             for(int j=0; j <colLen; j++){
+//                 if(answer >= colLen-j) break;
+//                 if(board[i][j] != 0){
+//                     int tmp = search(i,j,rowLen, colLen, board);
+//                     if(answer < tmp){
+//                         answer = tmp;
+//                     }
+//                 }
+//             }
+//         }
+        
+//         return answer*answer;
+//     }
     
-    private static int search(int i, int j, int rowLen, int colLen, int[][] board){
-        Queue<info> q = new LinkedList<>();
-        q.offer(new info(i,j));
+//     private static int search(int i, int j, int rowLen, int colLen, int[][] board){
+//         Queue<info> q = new LinkedList<>();
+//         q.offer(new info(i,j));
         
-        boolean[][] visited = new boolean[rowLen][colLen];
-        visited[i][j] = true;
-        int size = 1;
+//         boolean[][] visited = new boolean[rowLen][colLen];
+//         visited[i][j] = true;
+//         int size = 1;
         
-        exit: while(true){    //!q.isEmpty() x?
-            int  qSize = q.size();
+//         exit: while(true){    //!q.isEmpty() x?
+//             int  qSize = q.size();
             
-            for(int k = 0; k < qSize; k++){
-                info dot = q.poll();
-                int r = dot.r;
-                int c = dot.c;
+//             for(int k = 0; k < qSize; k++){
+//                 info dot = q.poll();
+//                 int r = dot.r;
+//                 int c = dot.c;
                 
-                for(int m=0; m < 3; m++){
-                    int nr = r+ dr[m];
-                    int nc = c+ dc[m];
-                    if (nr >= 0 && nc >= 0 && nr < rowLen && nc < colLen) {
-                        if (board[nr][nc] != 1)
-                            break exit;
-                        if (!visited[nr][nc]) {
-                            visited[nr][nc] = true;
-                            q.add(new info(nr, nc));
-                        }
-                    } else
-                        break exit;
-                }
-            }
-            size++;
-        }
-        return size;
-    }
+//                 for(int m=0; m < 3; m++){
+//                     int nr = r+ dr[m];
+//                     int nc = c+ dc[m];
+//                     if (nr >= 0 && nc >= 0 && nr < rowLen && nc < colLen) {
+//                         if (board[nr][nc] != 1)
+//                             break exit;
+//                         if (!visited[nr][nc]) {
+//                             visited[nr][nc] = true;
+//                             q.add(new info(nr, nc));
+//                         }
+//                     } else
+//                         break exit;
+//                 }
+//             }
+//             size++;
+//         }
+//         return size;
+//     }
     
 }
 

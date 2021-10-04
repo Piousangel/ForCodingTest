@@ -1,34 +1,37 @@
 import java.util.*;
 
-// 8/30 복습하고 기록합시당
-public class 카카오프렌즈컬러링북 {
-    int[] dy = {-1,0,1,0};
-    int[] dx = {0,1,0,-1};
-    int size;
-    boolean[][] visited;
-    Queue<Node> q;
+// 10/04
+
+class Solution {
     
-    static public class Node{
+    static int[] dx = {1,-1,0,0};
+    static int[] dy = {0,0,1,-1};
+    
+    static class Node{
         int x;
         int y;
-    
+        
         public Node(int x, int y){
             this.x = x;
             this.y = y;
-
         }
     }
     
+    static Queue<Node> queue = new LinkedList<>();
+    static boolean[][] visited;
+    static int size = 0;
+    
     public int[] solution(int m, int n, int[][] picture) {
-        visited = new boolean[m][n];
         int numberOfArea = 0;
         int maxSizeOfOneArea = 0;
+
+        visited = new boolean[m][n];
         
-        for(int i=0; i < m ; i++){
-            for(int j=0; j < n ; j++){
-                if(!visited[i][j] && picture[i][j] > 0){
+        for(int i = 0; i < m; i++){
+            for(int j=0; j<n; j++){
+                if(picture[i][j] > 0 && visited[i][j] != true){
                     size = 1;
-                    bfs(i,j,picture, m ,n);
+                    bfs(picture, i, j, m, n);
                     numberOfArea++;
                     if(maxSizeOfOneArea < size){
                         maxSizeOfOneArea = size;
@@ -43,21 +46,22 @@ public class 카카오프렌즈컬러링북 {
         return answer;
     }
     
-    public void bfs(int x, int y, int[][] pic, int m, int n){
-        q = new LinkedList<>();
-        q.offer(new Node(x,y));
+    static void bfs(int[][] pic, int x, int y, int m, int n){
+        queue.add(new Node(x,y));
         visited[x][y] = true;
         
-        while(!q.isEmpty()){
-            Node node = q.poll();
+        while(!queue.isEmpty()){
+            Node now = queue.poll();
+            
             for(int i=0; i < 4; i++){
-                int nx = node.x + dx[i];
-                int ny = node.y + dy[i];
-                if(nx >=0 && ny >= 0 && nx < n && ny < m){
-                    if(!visited[nx][ny] && pic[x][y] == pic[nx][ny]){
+                int nx = now.x + dx[i];
+                int ny = now.y + dy[i];
+                
+                if(0 <= nx && nx < m && 0 <= ny && ny < n){
+                    if(pic[nx][ny] == pic[x][y] && visited[nx][ny] != true){
+                        queue.add(new Node(nx,ny));
                         visited[nx][ny] = true;
                         size++;
-                        q.offer(new Node(nx,ny));
                     }
                 }
             }
