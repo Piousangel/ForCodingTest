@@ -3,11 +3,8 @@ import java.io.*;
 
 //9/29
 
-import java.util.*;
-
-class Solution {
+class JadenCase{
     public StringBuilder solution(String s) {
-        String answer = "";
         
         StringBuilder sb = new StringBuilder();
         int cnt = 1;
