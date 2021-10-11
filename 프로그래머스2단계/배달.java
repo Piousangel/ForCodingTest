@@ -1,7 +1,7 @@
 import java.util.*;
 
 //배열의 3번째 값이 걸리는 시간
-// K = 최대 걸리는 배달 시간
+// K = 최대 걸리는 배달 시간 1 이상 500,000 이하임.
 // 10/10
 class Solution {
     public int solution(int N, int[][] road, int K) {
