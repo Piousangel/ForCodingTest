@@ -1,33 +1,36 @@
 import java.util.*;
 
-class Solution {
+//10/11      와... 풀었따!
+
+class 스킬트리 {
     public int solution(String skill, String[] skill_trees) {
         int answer = 0;
         
-        char[] ch = skill.toCharArray();
-        int[] rank = new int[skill.length()];
         for(int i=0; i < skill_trees.length; i++){
-            boolean chk = true;
-            for(int j = 0; j < skill_trees[i].length(); j++){
-                for(int k=0; k < ch.length; k++){
-                    if(skill_trees[i].charAt(j) == ch[k]){
-                        rank[k] = j;
-                    }
+            //String str = skill_trees[i];
+            char[] ch = skill_trees[i].toCharArray();
+            ArrayList<Character> list = new ArrayList<>();
+            
+            for(char tmp : ch){
+                if(skill.contains(""+tmp)){
+                    list.add(tmp);
                 }
-                for(int n = 1; n < rank.length; n++){
-                    if(rank[n] < rank[n-1]){
-                        chk = false;
-                        break;
-                    }
-                    else chk = true;
+            }
+            String str = "";
+            for(int j=0; j < list.size(); j++){
+                str += list.get(j);
+            }
+            
+            //System.out.println(str);
+            //if(skill.contains(str)) answer++;
+            if(str.length() == 0) answer++;
+            else{
+                if(str.startsWith(""+skill.charAt(0)) && skill.contains(str)){
+                    answer++;
                 }
             }
             
-            if(chk){
-                    answer++;
-            }
         }
-        
         return answer;
     }
 }
@@ -69,4 +72,48 @@ class Solution {
     
     
 //     return answer;
+// }
+
+
+
+
+// class Solution {
+//     public int solution(String skill, String[] skill_trees) {
+//         int answer = 0;
+        
+//         for(int i=0; i < skill_trees.length; i++){
+//             char[] ch = skill.toCharArray();
+//             Queue<Character> q = new LinkedList<>();
+//             String str = skill_trees[i];
+//             int kk = 0;
+            
+//             for(int j=0; j < str.length(); j++){
+//                 q.offer(str.charAt(j));
+//             }
+            
+//             while(!q.isEmpty()){
+//                 char now = q.peek();
+//                 kk = 0;
+//                 for(char tmp : q){
+//                     if(!skill.contains(""+tmp)){
+//                         kk++;
+//                         q.poll();
+//                     }
+//                     else{
+//                         if(skill.indexOf(tmp) > skill.indexOf(now)){
+//                             kk++;
+//                             q.poll();
+//                         }
+//                         else{
+//                             q.poll();
+//                         }
+//                     }
+//                 }
+//             }
+//             if(kk == str.length()) answer++;
+        
+//         }
+        
+//         return answer;
+//     }
 // }

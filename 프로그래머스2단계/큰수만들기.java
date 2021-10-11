@@ -4,7 +4,7 @@ import java.util.*;
 //작은 숫자 k 개 제거
 //걍 이어붙이면 끝 아님?
 
-//아니 왜 틀렸지..? 화장실 갔다와서 다시 푼다 10/03
+//아니 왜 틀렸지..? 화장실 갔다와서 다시 푼다 10/03  10/11 다시
 
 class 큰수만들기 {
     public String solution(String number, int k) {

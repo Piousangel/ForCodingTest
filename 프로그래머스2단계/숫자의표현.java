@@ -1,6 +1,6 @@
 import java.util.*;
 
-class Solution {
+class 숫자의표현 {
     public int solution(int n) {
         int answer = 0;
         int sum = 0;

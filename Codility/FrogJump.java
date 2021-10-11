@@ -1,6 +1,6 @@
 import java.util.*;
 
-//영어 해석을 못해서 문제해석에 시간을 씀...
+//영어 해석을 못해서 문제해석에 시간을 씀... 찾아보기
 
 public class FrogJump {
     public int solution(int X, int Y, int D) {
