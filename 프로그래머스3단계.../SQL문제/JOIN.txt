@@ -1,0 +1,31 @@
+JOIN
+
+디폴트 값이 inner join임 
+INNER JOIN : 교집합의 의미(내부조인)
+LEFT, RIGHT JOIN : 부분집합의 의미 ex A집합 - B집합 느낌
+OUTER JOIN : 합집합(외부조인)
+
+inner join 기본틀
+
+select a.user_id, b.money
+from usertable as a
+join banktable as b
+on a.user_id = b.user_id
+
+etc.. 
+update 테이블 set 열 = '변경할 값' where 조건
+drop database
+drop table
+delete from 테이블 where 조건
+alter 테이블 add 열?
+
+select 열 into 새테이블
+from 기존의 테이블
+where 조건
+
+group by 
+
+select * from 테이블
+where 조건
+group by 그룹열, 그룹열
+having 그룹 조건(그룹열이 2개면 group by에도 2개적음)
