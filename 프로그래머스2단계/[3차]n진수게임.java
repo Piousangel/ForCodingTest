@@ -16,13 +16,13 @@ class Solution {
     
     public String solution(int n, int t, int m, int p) {
         String answer = "";
-        
-        StringBuilder sb = new StringBulider();
+        StringBuilder sb = new StringBuilder();
+
         for(int i = 0; i <= t*m; ++i){
             StringBuilder tmp = convertNum(i,n);
             sb.append(tmp);
         }
-        
+
         StringBuilder result = new StringBuilder();
         
         for(int i=0; i < sb.length(); ++i){
@@ -40,17 +40,52 @@ class Solution {
     private static StringBuilder convertNum(int num, int n){
         StringBuilder sb = new StringBuilder();
         if(num == 0) return sb.append(0);
-    
-    
-        while(num != 0){
-            int mod = num%n;
-            if(mod >= 10){
-                int idx = 'A' + (mod-10);
-                sb.append((char)idx);
+
+            while(num != 0){
+                int mod = num%n;
+                if(mod >= 10){
+                    int idx = 'A' + (mod-10);   // 10 넘어가면 10 대신 'A'추가하는 느낌
+                    sb.append((char)idx);
+                }
+                else sb.append(mod);
+
+                num/= n;
             }
-            else sb.append(mod);
-            num/= n;
-        }
-        return sb.severse();
+        return sb.reverse();
     } 
 }
+
+
+
+// // 2~16진수
+// // ex 5 -> 1 2 3 4 10 11 12 13 14 20 <- 10
+// // t * m - (m-p) 총 구해야하는 숫자
+// class Solution {
+    
+//     char[] ch = {'0','1','2','3','4','5','6','7','8',
+//                      '9','A','B','C','D','E','F'};
+    
+//     public String solution(int n, int t, int m, int p) {
+//         String answer = "";
+        
+//         int number = 0;   // 넘버가 t까지 도달 했을 때 while문 종료
+//         //int cnt = 0;   // 숫자를 늘려갈 것 -> n진수로 변활할 거야
+//         int totalCnt = t*m - (m-p);
+//         if(p== 1){
+//             answer += "0";
+//         }
+//         while(number == totalCnt){
+            
+//             conversionNum(number);
+//             number++;
+//         }
+        
+        
+//         return answer;
+//     }
+    
+//     public int conversionNum(int num){
+//         int cnt = 0;
+        
+        
+//     }

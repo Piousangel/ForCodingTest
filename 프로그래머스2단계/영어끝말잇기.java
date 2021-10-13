@@ -2,7 +2,7 @@
 import java.util.*;
 
 //돌면서 마지막,앞글자 비교, 같은 글자 중복시 그 거 빼오기
-// 10/05 85점...
+// 10/05 85점    10/13 풀었다..
 
 class Solution {
     public int[] solution(int n, String[] words) {
@@ -11,38 +11,29 @@ class Solution {
         ArrayList<String> list = new ArrayList<>();
         for(int i=1; i < words.length; i++){
             list.add(words[0]);
-            if(words[i-1].charAt(words[i-1].length()-1) == words[i].charAt(0)){
+            
+            if(words[i-1].charAt(words[i-1].length()-1) == words[i].charAt(0)){ //막글자 첫글자 비교
                 if(!list.contains(words[i])){
                     list.add(words[i]);
                 }
                 else{
-                    if((i+1)%n == 0){
-                        answer[0] = n;
-                        answer[1] = (i+1) / n;
-                    }
-                    else{
-                        answer[0] = (i+1) % n; 
-                        answer[1] = (i+1) / n;
-                    }
+                    answer[0] = (i%n) + 1;
+                    answer[1] = (i/n) + 1;
                     return answer;
-                }
+                }                           
             }
-            
             else{
-                if((i+1)%n == 0){
-                    answer[0] = n;
-                    answer[1] = (i+1) / n;
-                }
-                else{
-                    answer[0] = (i+1) % n; 
-                    answer[1] = (i+1) / n + 1;
-                }
-               
+                answer[0] = (i%n)+1;
+                answer[1] = (i/n) + 1;
                 return answer;
             }
         }
         
-        System.out.println("cnt :" + cnt);
+        if(list.size() == words.length){   //탈락자가 생기지 않으면
+            return new int[] {0,0};
+        } 
+           
+        //System.out.println("cnt :" + cnt);
         return answer;     
     }
 }
