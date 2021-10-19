@@ -1,6 +1,6 @@
 import java.util.*;
 
-// 10/04  10/05 수정 후 성공
+// 10/04  10/05 수정 후 성공 17
 
 class Solution {
     public int solution(int[] citations) {
