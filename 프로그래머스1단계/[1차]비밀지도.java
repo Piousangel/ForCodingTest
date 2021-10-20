@@ -1,6 +1,6 @@
 import java.util.*;
 
-// OR연산하면 될것같은데
+// OR연산하면 될것같은데  10/19
 
 class Solution {
     public String[] solution(int n, int[] arr1, int[] arr2) {
