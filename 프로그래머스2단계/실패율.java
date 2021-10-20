@@ -1,59 +1,76 @@
 import java.util.*;
 
+// N = 스테이지 수
+// 10/20 와씨;; 다시 offer할때 prior우선순위 생각을 안했었다 이것때문에 시간 엄청썼네요
 
-// 실패율 = 스테이지 도달했으나 클리어 X / 스테이지 도달한 플레이어 수
-// N = 스테이지 수 , N+1 마지막 스테이지 까지 클리어한 사용자
-// 배열의 매개변수 = 멈춰있는 스테이지 번호
-// 실패율이 높은 스테이지 부터 내림차순으로 정렬
-// 스테이지 번호가 같으면 작은 번호 스테이지가 먼저 오도록
-
-
-
-
-
-
-
-// import java.util.*;
-
-// class Solution {
-//     public int[] solution(int N, int[] stages) {
-//         int[] answer = new int[N];
+class Solution {
+    
+     public class Rank{
+            int prior;
+            double name;
+            public Rank(int prior, double name){
+                this.prior = prior;
+                this.name = name;
+            }
+    }
+    
+    public int[] solution(int N, int[] stages) {
+        int[] answer = new int[N];
         
-//         float[] cnt = new float[N];
-//         //Map<Integer, Integer> map = new HashMap<>();
-//         float num = stages.length;
-//         Arrays.sort(stages);
+        double[] ratio = new double[N];
+        ArrayList<Integer> list = new ArrayList<>();
+
+        for(int i=0; i < stages.length; i++){
+            if(stages[i] == N+1){     //올클했으니 그냥 신경안씀
+                continue;
+            }
+            else ratio[stages[i]-1]++;
+        }
         
-//         for(int i=0; i < stages.length; i++){
-//             for(int j=1; j <=N ; j++){
-//                 if(stages[i] == j){
-//                     cnt[j-1]++;
-//                     //map.put(j, map.get(j)+1);
-//                 }
-//             }
-//         }
+        double k = (double)stages.length;    //총인원
+        for(int i=0; i < ratio.length; i++){
+
+            if(ratio[i] != 0){
+                double tmp = ratio[i];  //1
+                ratio[i] = tmp / k;
+                k = k - tmp;
+            }
+            System.out.println(ratio[i]);
+           
+        }
         
-//         for(int i=0; i < cnt.length; i++){
-//             float tmp = cnt[i];
-//             cnt[i] = cnt[i]/num;
-//             num = num - tmp;
-//             System.out.println(cnt[i]);
-//         }
+        Queue<Rank> q = new LinkedList<>();
         
-//         for(int i=0; i < cnt.length; i++){
-//             int rank = 1;
-//             for(int j=0; j < cnt.length; j++){
-//                 if(cnt[i] < cnt[j]){
-//                     rank++;
-//                 }
-//                 if(cnt[i] == cnt[j]){
-//                     if(i > j) rank++;
-//                 }
-//             }
-//             answer[i] = rank;
-//         }
+        for(int i=0; i < ratio.length; i++){
+            q.offer(new Rank(i+1,ratio[i]));
+        }
         
+        while(!q.isEmpty()){
+            Rank tmp = q.peek();
+            boolean chk = false;
+            for(Rank r : q){
+                if(tmp.name < r.name){     //tmp보다 큰 float이 있으면
+                    chk = true;
+                }
+                else{
+                    if(tmp.name == r.name){
+                        if(tmp.prior > r.prior) chk = true;
+                    }
+                }
+            }
+            if(chk == true){
+                q.offer(q.poll());
+            }
+            else{
+                list.add(q.poll().prior); //없으면 꺼내서 순서 넣기
+            }
+        }
         
-//         return answer;
-//     }
-// }
+        for(int i=0; i < list.size(); i++){
+            answer[i] = list.get(i);
+            //System.out.println(list.get(i));
+        }
+        
+        return answer;
+    }
+}
