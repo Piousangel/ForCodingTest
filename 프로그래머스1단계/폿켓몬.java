@@ -57,30 +57,3 @@ class Solution {
 // }
 
 
-// class Solution {
-//     public int solution(int[] nums) {
-//         int answer = 0;
-//         int cnt = 0;
-//         int count = 1;
-//         int chk = nums.length/2; //고르는 숫자
-//         //ArrayList<Integer> list = new ArrayList<>();
-//         HashMap<String, Integer> map = new HashMap<>();
-//         for(int i = 0; i < nums.length; i++){
-//             if(!map.containsKey(Integer.toString(nums[i]))){
-//                 map.put(Integer.toString(nums[i]), count);
-//             }
-//             else
-//                 map.put(Integer.toString(nums[i]), count+1);
-//         }
-        
-//         Iterator<String> keys = map.keySet().iterator();
-        
-//         while( keys.hasNext() ){
-//             String key = keys.next();
-//             System.out.println( String.format("키 : %s, 값 : %s", key, map.get(key)) );
-//         }
-        
-//         return answer;
-       
-//     }
-// }

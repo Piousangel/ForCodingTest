@@ -1,7 +1,7 @@
 import java.util.*;
 
 // N = 스테이지 수
-// 10/20 와씨;; 다시 offer할때 prior우선순위 생각을 안했었다 이것때문에 시간 엄청썼네요
+// 10/20 와씨;; poll값 offer할때 같은값 prior우선순위 생각을 안했었다 이것때문에 시간 엄청썼네요 ㅡㅡ
 
 class Solution {
     
