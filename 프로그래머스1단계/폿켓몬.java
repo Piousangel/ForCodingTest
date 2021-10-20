@@ -1,32 +1,61 @@
 import java.util.*;
 
-// 9/25 이게 어떻게 1단계야.....
+// 10/20 마지막 중복제거 다시해야함
 
 class Solution {
+    
+//     public class Info{
+//         int number;
+//         int cnt;
+        
+//         public Info(int number, int cnt){
+//             this.number = number;
+//             this.cnt = cnt;
+//         }
+//     }
+    
     public int solution(int[] nums) {
         int answer = 0;
-        int count = 0;
-        int len = nums.length/2;
-        HashMap<String, Integer> map = new HashMap<>();
+        int cnt = nums.length /2;
+        //ArrayList<Integer> list = new ArrayList<>();
+        // Arrays.sort(nums);
+        // int max = nums[nums.length-1];
         
+        Queue<Integer> q = new LinkedList<>();
         for(int i=0; i < nums.length; i++){
-            map.put(Integer.toString(nums[i]), map.getOrDefault(Integer.toString(nums[i]),0)+1);   
+            q.offer(nums[i]);
         }
         
-        Integer maxValue = Collections.max(map.values());
-        System.out.println("maxkey = " + maxValue);
-        
-       
-        Iterator<String> keys = map.keySet().iterator();
-        int cnt = 0;
-        while( keys.hasNext() ){
-            String key = keys.next();
-            System.out.println( String.format("키 : %s, 값 : %s", key, map.get(key)) );
-            cnt++;
+        while(!q.isEmpty()){
+            int poket = q.peek();
+            boolean chk = false;
+            for(int tmp : q){
+                if(poket != tmp) continue;
+                else if(poket == tmp){
+                    chk = true;
+                    break;
+                }
+            }
+            if(chk == true){
+                q.poll();  //꺼내면서 cnt줄여
+                cnt--;
+            }
+            else{
+                if(cnt >1){
+                    q.poll();
+                    cnt--;
+                }
+            }
+            //System.out.println("cnt :" + cnt);
+            
+            if(cnt == 0){
+               
+            }
+            
         }
         
-     
-        return answer;
+        
+        return list.size();
     }
 }
 
