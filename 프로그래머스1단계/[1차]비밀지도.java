@@ -1,80 +1,31 @@
 import java.util.*;
 
-// OR연산하면 될것같은데  10/19
-
 class Solution {
+    // 10/20 풀었따..
     public String[] solution(int n, int[] arr1, int[] arr2) {
-        String[] answer = {};
-        String[] cnt = {};
-        int[] abc = new int[n];
-        ArrayList<Integer> list = new ArrayList<>();
-        
-        for(int i=0; i < arr1.length; i++){
-            list.add(Integer.toBinaryString(arr1[i] | arr2[i]));
-        }
-        
-        cnt = new String[list.size()];
-        
-        for(int i=0; i < list.size(); i++){
-            cnt[i] = Integer.toString(list.get(i));
-        }
-        char[] ch = new char[n];
-        for(int i =0; i < cnt.length; i++){
-            ch[i] = cnt[i].toCharArray();
-            int count = 0;
-            for(char k : ch){
-                if(k = '1'){
-                    count++;
+        String[] answer = new String[n];
+        //ArrayList<Character> list = new ArrayList<>();
+        for(int i=0; i < n; i++){
+            StringBuilder sb = new StringBuilder();
+            //String str1 = Integer.toBinaryString(arr1[i]);
+            String str = Integer.toBinaryString(arr1[i] | arr2[i]);
+            if(str.length() < n){
+                int plus = n - str.length();     //앞자리 공백 맞춰줌
+                for(int k=0; k <plus; k++){
+                    str = "0" + str;
                 }
             }
-            abc[i] = count;
-            count=0;
-        }
-        answer = new String[n];
-        for(int i=0; i < n; i++){
-            for(int j =0; j < abc[i]; j++){
-                answer[i] += "#";
+            System.out.println("str :" +str);       //String 해서 붙일라니까 null값 떠서 stringbuilder로 바까줌!
+            for(int j=0; j < str.length(); j++){
+                if(str.charAt(j) == '1'){
+                    sb.append("#");
+                }
+                else if(str.charAt(j) == '0'){
+                    sb.append(" ");
+                }
             }
+            answer[i] = sb.toString();
         }
-        
-        
         return answer;
     }
 }
-
-// class Solution {
-//     public String[] solution(int n, int[] arr1, int[] arr2) {
-//         String[] answer = {};
-//         int[][] board = new int[5][5];
-        
-//         for(int i=0; i < arr1.length; i++){    // 0~4
-//             String str1 = Integer.toBinaryString(arr1[i]);
-//             String str2 = Integer.toBinaryString(arr2[i]);
-//             System.out.println(str1);
-//             System.out.println(str2);
-//             System.out.println("");
-//             //1001
-//             for(int j=0; j < str1.length(); j++){   //0~4
-//                 if(str1.charAt(j) == '1'){      //01234
-//                     board[i][j] = 1;
-//                 }
-//             }
-//             //10100
-//             for(int j=0; j < str2.length(); j++){
-//                 if(str2.charAt(j) == '1'){
-//                     board[i][j] = 1;
-//                 }
-//             }
-//         }
-        
-//         for(int i=0; i < board.length; i++){
-//             for(int j=0; j < board[0].length; j++){
-//                 System.out.print(board[i][j]);
-//             }
-//             System.out.println("");
-//         }
-            
-            
-//         return answer;
-//     }
-// }
