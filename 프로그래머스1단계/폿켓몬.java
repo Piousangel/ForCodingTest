@@ -1,8 +1,5 @@
 import java.util.*;
 
-// 10/20 마지막 중복제거 다시해야함   -> 10/21 70점
-import java.util.*;
-
 class Solution {
     
     public class Info{
@@ -21,9 +18,12 @@ class Solution {
         int answer = 0;
         q = new LinkedList<>();
         
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> map = new HashMap<>();   //맵에 잘 담는다
+        
+        int sum = 0;
         
         for(int i=0; i < nums.length; i++){
+            sum += nums[i] -1;
             String str = Integer.toString(nums[i]);
             if(!map.containsKey(str)){
                 map.put(str,1);
@@ -43,6 +43,7 @@ class Solution {
         
         //q돌리면서 value 1이상이면 1될때까지 깎고 N이 0되었을 때 key값 출력
         int pick = nums.length / 2;
+        int oneCnt = 0;
         int qsize = q.size();
         
         while(!q.isEmpty()){
@@ -53,101 +54,25 @@ class Solution {
             String str = info.number;
             int cc = info.cnt;
             
-            if(pick == 0){
-                return q.size();
-            }
+            if(pick == 0) return q.size();     //pick 0 됬으면 q.size 리턴
             
-            if(info.cnt > pick ){      //info 가 더크면 그냥 큐사이즈 출력
-                return q.size();
-            }
-            else if(pick - info.cnt > 1){       // 절반크기 - 픽 cnt > 1 이면 
+            if(info.cnt > 1){                   //꺼낸 cnt 가 1이상이면 1빼서 리턴 하면서 pick줄여
                 q.poll();
-                q.offer(new Info(str, 1));
-                pick = pick - info.cnt+1;
-            }
-            else{
-                q.poll();
-                q.offer(new Info(str,cc--));
+                q.offer(new Info(str, cc-1));
                 pick--;
             }
+            else oneCnt++;   //아니면 하나만 가지고있는 카운트 늘려
+            
+            if(oneCnt == sum && pick > 0){
+                System.out.println("print되나연");
+                q.poll();
+                pick--;
                 
+            }
+            
+                 
         }
               
         return q.size();
     }
 }
-
-
-
-//     public int solution(int[] nums) {
-//         int answer = 0;
-//         int cnt = nums.length /2;
-//         //ArrayList<Integer> list = new ArrayList<>();
-//         // Arrays.sort(nums);
-//         // int max = nums[nums.length-1];
-        
-//         Queue<Integer> q = new LinkedList<>();
-//         for(int i=0; i < nums.length; i++){
-//             q.offer(nums[i]);
-//         }
-        
-//         while(!q.isEmpty()){
-//             int poket = q.peek();
-//             boolean chk = false;
-//             for(int tmp : q){
-//                 if(poket != tmp) continue;
-//                 else if(poket == tmp){
-//                     chk = true;
-//                     break;
-//                 }
-//             }
-//             if(chk == true){
-//                 q.poll();  //꺼내면서 cnt줄여
-//                 cnt--;
-//             }
-//             else{
-//                 if(cnt >1){
-//                     q.poll();
-//                     cnt--;
-//                 }
-//             }
-//             //System.out.println("cnt :" + cnt);
-            
-//             if(cnt == 0){
-               
-//             }
-            
-//         }
-        
-        
-//         return list.size();
-//     }
-// }
-
-
-// class Solution {
-//     public int solution(int[] nums) {
-//         int answer = 0;
-//         int cnt = 0;
-//         int chk = nums.length/2; //고르는 숫자
-//         ArrayList<Integer> list = new ArrayList<>();
-//         for(int i = 0; i < nums.length; i++){
-//             if(!list.contains(nums[i])){
-//                 list.add(nums[i]);
-//             }
-//             else
-//                 cnt++;
-//         }
-        
-//         answer = nums.length - cnt;
-        
-//         // for(int i=0; i < list.size(); i++){
-//         //     System.out.println(list.get(i));
-//         // }
-        
-//         return answer;
-       
-//     }
-// }
-
-
