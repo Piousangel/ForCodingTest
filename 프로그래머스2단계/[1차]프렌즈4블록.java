@@ -11,7 +11,7 @@ class Solution {
         int x;
         int y;
         
-        public Node(int x, int y){
+        public Node(int x, int y){       //내가 여기서 x를 행, y를 열로 설정해놨음
             this.x = x;
             this.y = y;
         }
@@ -30,9 +30,9 @@ class Solution {
         for(int i = 0; i < m; i++){
             for(int j=0; j<n; j++){
                 if(picture[i][j] > 0 && visited[i][j] != true){
-                    size = 1;
+                    size = 1;     //if문 통과시 최소넓이는 1임
                     bfs(picture, i, j, m, n);
-                    numberOfArea++;
+                    numberOfArea++;     //영역 증가
                     if(maxSizeOfOneArea < size){
                         maxSizeOfOneArea = size;
                     }
