@@ -2,7 +2,7 @@ import java.util.*;
 
 // 10/04 10/10
 
-class Solution {
+class 게임맵최단거리BFS {
     
     public class Node{
         int x;
