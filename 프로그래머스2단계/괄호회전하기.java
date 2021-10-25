@@ -2,7 +2,7 @@ import java.util.*;
 
 //괄호를 회전 괄호문자열 s를 x칸 만큼 이동시켰을 때 s가 올바른 문자열이 되게하는 x의 개수
 //x의 개수는 최대 s개 -> 한바퀴 돌렸을 때 맞는 괄호 개수 리턴해주면 됨
-// 10/24 ㅋ.ㅋ
+// 10/24 
 
 class 괄호회전하기 {
     public int solution(String s) {
