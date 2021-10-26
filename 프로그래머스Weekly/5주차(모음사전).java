@@ -1,28 +1,41 @@
 import java.util.*;
-
-
-//9/27 다시풀기 와 무슨 점화식이지...
-
+// 총 5개
+//a aa aaa aaaa aaaaa aaaae aaaai     10/26 다시...
+// 
 class Solution {
     
-    char[] alpa = {'A','E','I','O','U'}; // 0 1 2 3 4 5 자리수 곱하기 X
-    
+    char[] ch = {'A','E','I','O','U'};
+    int count = 0;
+    boolean[] visited;
     public int solution(String word) {
         int answer = 0;
-        int cnt = 0;
-        char[] ch = word.toCharArray();
+        char[] str = new char[ch.length];
+        visited = new boolean[ch.length];
+        dfs(ch, visited, ch.length, str, 0);
         
-        for(int i=0; i < ch.length; i++){
-            System.out.println(ch[i]);
-            for(int j=0; j < alpa.length; j++){
-                if(ch[i] == alpa[j]){
-                    cnt += Math.pow(j, i);
-                    //cnt += Math.pow(5, ch.length-i)*i+(j+1);
-                }
-            }
-            
-        }
-        answer += cnt;
         return answer;
+    }
+    
+    void dfs(char[] ch, boolean[] visited, int len, char[] str , int depth){
+        
+        if(depth == len){
+            print(str);
+            return;
+        }
+        
+        for(int i=0; i < len; i++){
+            //if(visited[i] != true){
+            //    visited[i] = true;
+                str[depth] = ch[i];
+                dfs(ch, visited, len, str, depth+1);
+            //    visited[i] = false;
+            //}
+        }
+    }
+    public void print(char[] arr){
+        for(int i=0; i < arr.length; i++){
+            System.out.print(arr[i]);
+        }
+        System.out.println();
     }
 }

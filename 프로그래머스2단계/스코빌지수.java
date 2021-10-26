@@ -1,7 +1,7 @@
 import java.util.*;
 
 //10/03 PriorityQueue 
-
+// 10 26;
 class 스코빌지수 {
     
     Queue<Integer> q;
@@ -28,3 +28,37 @@ class 스코빌지수 {
         return cnt;
     }
 }
+
+// import java.util.*;
+
+// class Solution {
+//     public int solution(int[] scoville, int K) {
+//         int answer = 0;
+//         int tmp = 0;
+//         PriorityQueue<Integer> q = new PriorityQueue<>();
+        
+//         Arrays.sort(scoville);
+        
+//         for(int i = 0; i < scoville.length; i++){
+//             if(scoville[i] < K){
+//                 q.offer(scoville[i]);
+//             }
+//         }
+        
+//         while(!q.isEmpty()){
+            
+//             if(q.size() == 1 && q.peek() < K) return -1;
+            
+//             tmp = q.poll() + q.poll()*2;
+            
+//             if(tmp < K){
+//                 q.offer(tmp);
+               
+//             }
+//              answer++;
+            
+//         }
+        
+//         return answer;
+//     }
+// }

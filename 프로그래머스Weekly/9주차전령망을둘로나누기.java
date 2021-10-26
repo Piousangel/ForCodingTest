@@ -1,63 +1,59 @@
 import java.util.*;
 
+// 10/26
+
 class Solution {
-    int lenFirst = 0;
-    int lenSecond = 0;
     
+    int leftLen;
+    int rightLen;
     public int solution(int n, int[][] wires) {
-        int answer = 10000;
+        int answer = 10001;
         
         for(int i=0; i < wires.length; i++){
-            lenFirst = calCnt(i,wires);
-            lenSecond = n - lenFirst;
-            int cal = Math.abs(lenFirst - lenSecond);
-            answer = Math.min(answer, cal);
+            leftLen = chkWires(i, wires);
+            rightLen = n - leftLen;
+            int tmp = Math.abs(leftLen - rightLen);
+            answer = Math.min(answer, tmp);
         }
         
         return answer;
     }
     
-    public int calCnt(int idx, int[][] wires){
+    public int chkWires(int idx, int[][] wires){
         Queue<Integer> q = new LinkedList<>();
-        List<int[]> list = new ArrayList<>();
+        ArrayList<int[]> list = new ArrayList<>();
         int cnt = 0;
-        
         for(int[] data : wires){
             list.add(data);
         }
         
-        int parent = list.get(idx)[0];   //부모값을 가져오고
-        q.offer(parent);
+        q.offer(list.get(idx)[0]);
         list.remove(idx);
         
         while(!q.isEmpty()){
             int tmp = q.poll();
-         
+            
             for(int i=0; i < list.size(); i++){
                 int[] arr = list.get(i);
-                boolean flag = true;
+                boolean flag = false;
                 
-                if(tmp == arr[0]){        //tmp가 부모와 같으면
+                if(tmp == arr[0]){
                     q.offer(arr[1]);
                     list.remove(arr);
-                    flag = false;
+                    flag = true;
                 }
-                if(tmp == arr[1]){
+                else if(tmp == arr[1]){
                     q.offer(arr[0]);
                     list.remove(arr);
-                    flag = false;
+                    flag = true;
                 }
-                if(flag == false){
-                    i--;
-                }
+                if(flag) i--;
             }
             cnt++;
         }
-        
-        return cnt;    
+        return cnt;
     }
 }
-
 
 
 
@@ -89,7 +85,7 @@ class Solution {
 //         list.remove(idx);                 //차례대로 첫번째 간선을 지우고 비교 시작
 //         int cnt = 0;                      //연결된 송전탑 수 카운트
         
-//         while(!q.isEmpty()){
+//         while(!q.isEmpty()){         
 //             int tmp = q.poll();
 //             for(int i=0; i < list.size(); i++){
 //                 int[] arr = list.get(i);
