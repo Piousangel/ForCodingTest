@@ -6,8 +6,6 @@ import java.util.*;
 // 최소 필요 피로도 >= 소모 피로도
 // 배열 순서대로 돌 필요 없음 dungeons[i][0] 이 k를 만족하면 돌릴 수 있네
 
-//10/25
-
 class Solution {
     
     public class Info{
@@ -19,47 +17,49 @@ class Solution {
             this.somo = somo;
         }
     }
-    
-    //Queue<Info> q;
-    
+     
     public int solution(int k, int[][] dungeons) {
         int answer = 0;
         Queue<Info> q = new LinkedList<>();
         for(int i=0; i < dungeons.length; i++){
            q.offer(new Info(dungeons[i][0], dungeons[i][1]));
         }
-        int cnt = 0;
+        
         // min, somo
         while(!q.isEmpty()){
             Info info = q.peek();
             // System.out.println(info.min);
             // System.out.println(info.somo);
             boolean flag = false;
-            
-            if(k  < info.min ) return answer;
-            
+
+            int win = 0;
             for(Info i : q){
-                if(info.min - info.somo < i.min - i.somo) flag = true;  //하나라도 큰게있으면 다시 넣어줘
+                if(k < i.min) win++;
             }
-            //System.out.println("flag :" + flag);
-            if(flag == true){
+            
+            if(win == q.size()) return answer;  // 모든 Min이 k보다 다크면 더이상 못돌림
+            
+            if(info.min > k){
                 q.offer(q.poll());
-                cnt++;
             }
-            else{                     //얘가 젤 크면
-                if(k >= info.min){
-                    k = k - info.somo;
-                    answer++;
-                    //cnt++;
-                    q.poll();
+            else{
+                for(Info i : q){
+                    if(info.min - info.somo < i.min - i.somo) flag = true;
+                }
+                
+                if(flag){
+                    q.offer(q.poll());
                 }
                 else{
-                    q.offer(q.poll());
-                    //cnt++;
+                    if(k >= info.somo){
+                        k = k - info.somo;
+                        answer++;
+                        q.poll();
+                    }
+                    else return answer;                  
                 }
+                
             }
-            
-            //System.out.println("Cnt :" + cnt);
         }
         
         return answer;
