@@ -1,49 +1,105 @@
 import java.util.*;
 
-class 압축 {
+class Solution {
     
-    // 맞는거 같은ㄷ ㅔㅔㅔㅔㅔ 10/21 다시..
+    char[] alpha = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O'
+                    ,'P','Q','R','S','T','U','V','W','X','Y','Z'};
     
-    char[] alpa = {'A','B','C','D','E','F','G','H','I','J','K','L','M',
-                  'N','O','P','Q','R','S','T','U','V','X','X','Y','Z'};  //26개
-    Map<String, Integer> map;
-    int index = 0;
-    
+    ArrayList<Integer> list;
+    Map <String, Integer> map;
+    int index;
     public int[] solution(String msg) {
-        ArrayList<Integer> list = new ArrayList<>();
+        list = new ArrayList<>();
         map = new HashMap<>();
+        index = 1;
         
-        for(int i=index; i < alpa.length; index++){
-            map.put(Character.toString(alpa[i]), index+1);
+        for(int i=0; i < alpha.length; i++){
+            map.put(Character.toString(alpha[i]),index++);
         }
-        
-        //거기부터 한단어, 두단어 세단어 이렇게 비교
-        
-        for(int i=0; i < msg.length()-2; i++){         //전체 돌림
-            list.add(reCount(i,msg));
-            //System.out.println(reCount(i,msg));
+            
+        for(int i=0; i < msg.length()-2; i++){        
+            dfs(msg, i, i+2);
         }
         
         int[] answer = new int[list.size()];
+        
         for(int i=0; i < list.size(); i++){
-           answer[i] = list.get(i);
+            answer[i] = list.get(i);
         }
         
         return answer;
     }
     
-    public int reCount(int cnt, String msg){    //0~msg.length , msg
-        int result = 0;
-        for(int i=1; i < msg.length()-1; i++){
-            if(map.containsKey(msg.substring(cnt,cnt+i))){     //만약 존재하면 continue;
-               continue;
-            }
-            else{
-                map.put(msg.substring(cnt,cnt+i), index++);   //없으면 map에 추가하고 value값 늘려
-                result = map.get(msg.substring(cnt,cnt+i-1)); //index값 넘겨줌
-                break;
+    public void dfs(String msg, int start, int end){
+    
+        String str = msg.substring(start, end);
+        
+        if(map.containsKey(str)){
+            list.add(map.get(str));
+            if(end+1 < msg.length()){
+                dfs(msg,start,end+1);
             }
         }
-        return result;
+        else{
+            list.add(map.get(msg.substring(start, end-1)));
+            map.put(str,index++);
+            return;
+              
+        }
     }
+    
+
 }
+
+
+// class Solution {
+    
+//     char[] alpha = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O'
+//                     ,'P','Q','R','S','T','U','V','W','X','Y','Z'};
+    
+//     ArrayList<Integer> list;
+//     Map <String, Integer> map;
+//     int index;
+//     public int[] solution(String msg) {
+//         list = new ArrayList<>();
+//         map = new HashMap<>();
+//         index = 0;
+        
+//         for(int i=0; i < alpha.length; i++){
+//             map.put(Character.toString(alpha[i]),index+1);
+//         }
+            
+//         for(int i=0; i < msg.length()-1; i++){
+            
+//             dfs(msg, i, i+1);
+//         }
+        
+//         int[] answer = new int[list.size()];
+        
+//         for(int i=0; i < list.size(); i++){
+//             answer[i] = list.get(i);
+//         }
+        
+//         return answer;
+//     }
+    
+//     public void dfs(String msg, int start, int end){
+    
+//         String str = msg.substring(start, end);
+        
+//         if(map.containsKey(str)){
+//             list.add(map.get(str));
+//             if(end+1 < msg.length()){
+//                 dfs(msg,start,end+1);
+//             }
+//             else return;
+            
+//         }
+//         else{
+//             map.put(str, index+1);
+//             return;
+//         } 
+//     }
+    
+
+// }
