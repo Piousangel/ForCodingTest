@@ -1,36 +1,30 @@
 import java.util.*;
 
-//최대 던전 개수
-//안풀려 다시.. 10/26  -> ㅂㅈ돌;ㅣㅂㄷㅈ 풀음
-
-
-import java.util.*;
+//10/27
 
 class Solution {
-    
-    boolean[] visited;
-    int answer;
-    
+    int cnt;
     public int solution(int k, int[][] dungeons) {
-        answer = 0;
-        visited = new boolean[dungeons.length];
-        answer = dfs(0, dungeons, k);
         
-        return answer;
+        cnt = 0;
+        boolean[] visited = new boolean[dungeons.length];
+        
+        dfs(dungeons, visited, k , cnt);
+        
+        return m;
     }
     int m;
-    public int dfs(int cnt, int[][] dungeons, int k){
+    public void dfs(int[][] dungeons, boolean[] visited, int k, int cnt){
         
         for(int i=0; i < dungeons.length; i++){
-            if(visited[i] != true && dungeons[i][0] <= k){
+            if(visited[i] != true && k >= dungeons[i][0]){
                 visited[i] = true;
-                dfs(cnt+1, dungeons, k - dungeons[i][1]);
+                dfs(dungeons, visited, k - dungeons[i][1], cnt+1);
                 visited[i] = false;
             }
         }
         
         m = Math.max(m,cnt);
-        return m;
     }
 }
 

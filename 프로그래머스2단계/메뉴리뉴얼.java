@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.Map.Entry;
 
-//최소 2가지이상
+//최소 2가지이상   //다시 다시다시 조합.. 10/27
 
 class Solution {
     public String[] solution(String[] orders, int[] course) {
