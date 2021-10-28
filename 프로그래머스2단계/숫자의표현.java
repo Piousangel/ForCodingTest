@@ -1,23 +1,20 @@
 import java.util.*;
 
-class 숫자의표현 {
+class Solution {
     public int solution(int n) {
         int answer = 0;
         int sum = 0;
-        int cnt = 0;
-        
-        for(int i=1; i <=n ; i++){
-            for(int j = i; j <= n ; j++){
+        for(int i=1; i <= n; i++){
+            sum = 0;
+            for(int j=i ; j <=n; j++){
                 sum += j;
                 if(sum == n){
-                    cnt++;
+                    answer++;
+                    break;
                 }
-                else if(sum > n) break;
-                
+                if(sum > n) break;
             }
-            sum = 0;
         }
-        
-        return cnt;
+        return answer;
     }
 }
