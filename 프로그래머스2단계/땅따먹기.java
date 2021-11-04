@@ -72,3 +72,48 @@ class Solution {
 //         return sum;
 //     }
 // }
+
+// import java.util.*;
+
+// class Solution {
+    
+//     public int cnt;
+//     public int total;
+//     public int answer;
+//     int solution(int[][] land) {
+//         int maxScore = 0;
+//         int row = land.length;
+//         int[] arr = new int[land.length];
+//         boolean[] visited = new boolean[4];
+//         answer = 0;
+        
+//         //for(int i=0; i < 4; i++){
+//             whoIsMax(land, visited, row, arr, 0, 0);
+//             Math.max(maxScore, answer);
+//         //}
+
+//         return answer;
+//     }
+    
+//     public void whoIsMax(int[][] land, boolean[] visited, int row, int[] arr, int cnt, int t){
+        
+//         if(cnt == row-1){
+//             print(arr);
+//         }
+        
+//         for(int i = 0; i < 4; i++){
+//             if(visited[i] != true && cnt < row && t != i){
+//                 visited[i] = true;
+//                 arr[cnt] = land[cnt][i];
+//                 whoIsMax(land, visited, row, arr, cnt+1, i);
+//                 visited[i] = false;
+//             }
+//         }
+//     }
+//     public void print(int[] arr){
+//         for(int i=0; i < arr.length; i++){
+//             System.out.print(arr[i] + " ");
+//         }
+//         System.out.println();
+//     }
+// }
