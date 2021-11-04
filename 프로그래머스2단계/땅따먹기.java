@@ -34,3 +34,41 @@ class Solution {
         return answer;
     }
 }
+
+
+
+// class Solution {
+    
+    
+//     int solution(int[][] land) {
+//         int maxScore = 0;
+//         int row = land.length;
+//         int col = 4;
+//         int answer = 0;
+        
+//         for(int i=0; i < col; i++){
+//             int tmp = whoIsMax(land,i,row,col);
+//             answer = Math.max(maxScore, tmp);
+//         }
+
+//         return answer;
+//     }
+    
+//     public int whoIsMax(int[][] land, int idx, int r, int c){
+//         int sum = land[0][idx];
+//         int tmp = 0;
+        
+//         for(int i=1; i < r ; i++){
+//             int max = 0;
+//             for(int j =0; j < c; j++){
+//                 if(j != idx && max < land[i][j]){
+//                     max = land[i][j];
+//                     tmp = j;
+//                 }            
+//             }
+//             idx = tmp;
+//             sum += max;
+//         }
+//         return sum;
+//     }
+// }

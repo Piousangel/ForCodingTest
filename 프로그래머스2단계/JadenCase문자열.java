@@ -1,31 +1,29 @@
 import java.util.*;
-import java.io.*;
 
-//9/29
+//오랜만에 하니까 밑에 코드처럼 짜네요 -> 시간초과떠서 다시 해결 11/4
 
-class JadenCase{
+class Solution {
     public StringBuilder solution(String s) {
-        
+        String answer = "";
         StringBuilder sb = new StringBuilder();
-        int cnt = 1;
+        int cnt = 0;
         for(int i=0; i < s.length(); i++){
+            
             if(s.charAt(i) == ' '){
                 cnt = 0;
+                sb.append(" ");
+                continue;
             }
             
-            if(cnt == 1){
+            if(cnt == 0){
                 if('a' <= s.charAt(i) && s.charAt(i) <= 'z'){
                     sb.append((s.charAt(i)+"").toUpperCase());
                 }
-                else sb.append(s.charAt(i)+"");
-                
+                else sb.append(s.charAt(i));
             }
             else{
                 sb.append((s.charAt(i)+"").toLowerCase());
-                
             }
-            
-            System.out.println("cnt:"+cnt);
             cnt++;
         }
         
@@ -53,7 +51,7 @@ class JadenCase{
         
 //         for(int i = 0; i < str.length; i++){
 //             sb.append(str[i] + " ");
-//             //answer += str[i] + " ";
+//             //answer += str[i] + " ";    
 //         }
         
 //         answer = sb.toString().trim();
