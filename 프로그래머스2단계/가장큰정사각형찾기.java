@@ -3,7 +3,7 @@
 import java.util.*;
 
 //  8/23 다시보기 효율성 떨어지므로 계선방안 찾기
-// 9/15
+// 9/15 11/4
 class Solution
 {
     public int solution(int[][] board)
@@ -34,62 +34,71 @@ class Solution
 
 // class Solution
 // {
-//     public class Node{
+//     int[] dx = {1,0,1};
+//     int[] dy = {0,1,1};
+    
+//     public class Pos{
 //         int x;
 //         int y;
-//         int len;
+//         int size;
         
-//         public Node(int x, int y, int len){
+//         public Pos(int x, int y, int size){
 //             this.x = x;
 //             this.y = y;
-//             this.len = len;
+//             this.size = size;
 //         }
 //     }
-    
-//     Queue<Node> q;
-//     public int len = 1;
-    
+//     Queue<Pos> q;
+//     int answer = 0;
 //     public int solution(int [][]board)
 //     {
-//         int answer = 1234;
-//         int n = board.length;
-//         int maxSize = 1;
-//         boolean[][] visited = new boolean[n][n];
+//         answer = 0;
+//         int row = board.length;
+//         int col = board[0].length;
+//         boolean[][] visited = new boolean[row][col];
         
-//         for(int i=0; i < n; i++){
-//             for(int j=0; j < n; j++){
+//         for(int i=0; i < row; i++){
+//             for(int j=0; j < col; j++){
 //                 if(board[i][j] == 1 && visited[i][j] != true){
-//                     int tmp = bfs(board, visited, i, j, n);
-//                     maxSize = Math.max(maxSize, tmp);
+//                     answer = Math.max(answer, 1);
+//                     bfs(board,visited,i,j);
 //                 }
 //             }
 //         }
-        
-//         return maxSize*maxSize;
+
+//         return answer*answer;
 //     }
     
-//     public int bfs(int[][] board, boolean[][] visited, int i, int j, int n){
+//     public void bfs(int[][] board, boolean[][] visited, int x, int y){
 //         q = new LinkedList<>();
-//         q.offer(new Node(i,j,1));
-//         visited[i][j] = true;
+//         q.offer(new Pos(x,y,1));
+//         visited[x][y] = true;
         
 //         while(!q.isEmpty()){
-//             Node node = q.poll();
             
-//             if(i == n-1 && j == n-1){
-//                 return node.len;
+//             Pos pos = q.poll();
+            
+//             for(int i=0; i < 3; i++){
+//                 int nx = pos.x + dx[i];
+//                 int ny = pos.y + dy[i];
+                
+//                 if(nx >= 0 && nx < board.length && ny >=0 && ny < board[0].length){
+//                     if(visited[nx][ny] != true){
+//                         if(board[nx][ny] == 0){
+//                             answer = Math.max(answer, pos.size);
+//                             return;
+//                         }
+//                         visited[nx][ny] = true;
+//                         q.offer(new Pos(nx, ny, pos.size+1));
+//                     }
+//                 }else{
+//                     answer = Math.max(answer, pos.size);
+//                     return;
+//                 }
 //             }
-            
-//             if(i+1 < n-1 && j+1 < n-1){
-//                 if(board[i+1][j] == 1 && board[i][j+1] == 1 && board[i+1][j+1] == 1){
-//                     visited[i+1][j] = true;
-//                     visited[i][j+1] = true;
-//                     visited[i+1][j+1] = true;
-//                     q.offer(new Node(i+1,j+1,node.len+1));
-//                 } 
-//             }    
-//         }
-        
-//         return len;
+//             if(q.isEmpty()){
+//                 answer = Math.max(answer, pos.size-1);
+//             }
+//         } 
 //     }
 // }
