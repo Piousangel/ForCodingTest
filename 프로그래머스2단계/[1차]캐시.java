@@ -36,58 +36,49 @@ class Solution {
         return cnt;
     }
 }
+
+//여기서 문제점은 채울 캐시가 남았는데 hit검사를안해준것때문에 19,20번이 오류가 남
+
 // class Solution {
-    
-//     public class Cache{
-//         String name;
-//         int time;
-        
-//         public Cache(String name,int time){
-//             this.name = name;
-//             this.time = time;
-//         }
-//     }
-    
-//     Queue<Cache> q;
-    
 //     public int solution(int cacheSize, String[] cities) {
 //         int answer = 0;
-//         q = new LinkedList<>();
+        
 //         ArrayList<String> list = new ArrayList<>();
-//         //int[] cnt = new int[cacheSize];
-//         int cnt = 0;
+//         int arSize = 0;
         
 //         for(int i=0; i < cities.length; i++){
-//             q.offer(new Cache(cities[i],0));
-//         }
-        
-//         while(!q.isEmpty()){
-//             if(list.size() < cacheSize){
-//                 list.add(q.peek().name);
-//                 q.peek().time++;
-//                 cnt += 5;
+            
+//             String str = cities[i].toLowerCase();
+            
+//             if(cacheSize == 0) return cities.length * 5;
+            
+//             if(arSize < cacheSize){
+//                 list.add(str);
+//                 answer += 5;
+//                 arSize++;
 //             }
-//             else{
-//                 for(int j=0; j < list.size(); j++){
-//                     if(q.peek().name == list.get(i)){
-//                         q.peek().time = 0;
-//                         cnt += 1;
-//                     }
-//                     else{
-//                         for(Cache c : q){
-//                             Math.min(c.time);
-//                             // c.time 이 제일 작은값 가져와서
-//                             list.set(c.name , q.peek().name);
-//                             q.peek().time = 0;
-//                             cnt += 5;
-//                         }
+//             else if(arSize == cacheSize){
+//                 boolean flag = false;
+//                 for(String s : list){
+//                     if(str.equals(s)){
+//                         flag = true;
 //                     }
 //                 }
+
+//                 if(flag){
+//                     list.remove(str);
+//                     list.add(str);
+//                     answer += 1;
+//                 }
+//                 else{
+//                     list.remove(0);
+//                     list.add(str);
+//                     answer += 5;
+//                 }
+                
 //             }
-//             q.poll();
-            
 //         }
         
-//         return cnt;
+//         return answer;
 //     }
 // }
