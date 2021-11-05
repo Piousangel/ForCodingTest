@@ -3,30 +3,30 @@
 import java.util.*;
 
 //  8/23 다시보기 효율성 떨어지므로 계선방안 찾기
-// 9/15 11/4
+// 9/15 11/5   가로,세로배열이 1인경우 예외가 발생하기 때문에 각각 +1을해준다
+
 class Solution
 {
-    public int solution(int[][] board)
+    public int solution(int [][]board)
     {
         int answer = 0;
-        int[][] answer_board = new int[board.length+1][board[0].length+1];
+        int[][] DP = new int[board.length+1][board[0].length+1];
         
         for(int i=0; i < board.length; i++){
             for(int j=0; j < board[0].length; j++){
-                answer_board[i+1][j+1] = board[i][j];
+                DP[i+1][j+1] = board[i][j];
             }
         }
         
-        for(int i=1; i < answer_board.length; i++){
-            for(int j=1; j < answer_board[0].length; j++){
-                if(answer_board[i][j] != 0){
-                    answer_board[i][j] = Math.min(Math.min(answer_board[i - 1][j], answer_board[i][j - 1]), answer_board[i - 1][j - 1]) + 1;
-                    answer = Math.max(answer, answer_board[i][j]);
-                }       
+        for(int i=1; i < DP.length; i++){
+            for(int j=1; j < DP[0].length; j++){
+                if(DP[i][j] != 0){
+                    DP[i][j] = Math.min(Math.min(DP[i-1][j],DP[i][j-1]), DP[i-1][j-1])+1;
+                    answer = Math.max(answer, DP[i][j]);
+                }
             }
         }
-
-        return answer * answer;
+        return answer*answer;
     }
 }
 

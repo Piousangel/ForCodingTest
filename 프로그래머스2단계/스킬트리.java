@@ -1,39 +1,86 @@
 import java.util.*;
 
-//10/11      와... 풀었따!
+// 11/5 다른풀이로도 풀음
 
-class 스킬트리 {
+class Solution {
     public int solution(String skill, String[] skill_trees) {
         int answer = 0;
         
+        
         for(int i=0; i < skill_trees.length; i++){
-            //String str = skill_trees[i];
-            char[] ch = skill_trees[i].toCharArray();
-            ArrayList<Character> list = new ArrayList<>();
+            Stack<Character> st = new Stack<>();
+            int cnt = 0;
+            String str = skill_trees[i];
             
-            for(char tmp : ch){
-                if(skill.contains(""+tmp)){
-                    list.add(tmp);
+            for(int j=0; j < str.length(); j++){
+                boolean chk = false;
+                
+                for(char ch : skill.toCharArray()){
+                    if(str.charAt(j) == ch) chk = true;
+                }
+                
+                if(!chk){
+                    st.push(str.charAt(j));
+                    continue;
+                }
+                else{
+                    if(str.charAt(j) == skill.charAt(cnt)){
+                        st.push(str.charAt(j));
+                        if(cnt < skill.length()-1) cnt++;
+                    }  
                 }
             }
-            String str = "";
-            for(int j=0; j < list.size(); j++){
-                str += list.get(j);
-            }
             
-            //System.out.println(str);
-            //if(skill.contains(str)) answer++;
-            if(str.length() == 0) answer++;
-            else{
-                if(str.startsWith(""+skill.charAt(0)) && skill.contains(str)){
-                    answer++;
-                }
-            }
+            // while(!st.isEmpty()){
+            //     System.out.print(st.pop()+" ");
+            // }
+            // System.out.println();
             
+            if(st.size() == str.length()) answer++;
         }
+        
         return answer;
     }
 }
+
+
+
+
+
+//10/11      와... 풀었따!
+
+// class 스킬트리 {
+//     public int solution(String skill, String[] skill_trees) {
+//         int answer = 0;
+        
+//         for(int i=0; i < skill_trees.length; i++){
+//             //String str = skill_trees[i];
+//             char[] ch = skill_trees[i].toCharArray();
+//             ArrayList<Character> list = new ArrayList<>();
+            
+//             for(char tmp : ch){
+//                 if(skill.contains(""+tmp)){
+//                     list.add(tmp);
+//                 }
+//             }
+//             String str = "";
+//             for(int j=0; j < list.size(); j++){
+//                 str += list.get(j);
+//             }
+            
+//             //System.out.println(str);
+//             //if(skill.contains(str)) answer++;
+//             if(str.length() == 0) answer++;
+//             else{
+//                 if(str.startsWith(""+skill.charAt(0)) && skill.contains(str)){
+//                     answer++;
+//                 }
+//             }
+            
+//         }
+//         return answer;
+//     }
+// }
 
 // public static int solution(String skill, String[] skill_trees) {
                 
