@@ -3,8 +3,6 @@ import java.util.*;
 //10/28 효용성에서 실패했다.. 이유가 멀까
 // 11/5
 
-import java.util.*;
-
 class Solution {
     public int solution(int[] A, int[] B) {
         int answer = 0;
@@ -12,13 +10,14 @@ class Solution {
         boolean[] visited = new boolean[A.length];
         PriorityQueue<Integer> q = new PriorityQueue<>();
         Arrays.sort(A);
+        int minNum = A[0];
+        
         for(int i=0; i < A.length; i++){
-            q.offer(B[i]);
+            if(B[i] > minNum) q.offer(B[i]);
         }
          
         while(!q.isEmpty()){
             int tmp = q.poll();
-            boolean flag = false;
             
             for(int i=0; i < A.length; i++){
                 if(tmp > A[i] && visited[i] == false){                
