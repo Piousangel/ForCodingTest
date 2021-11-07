@@ -1,30 +1,34 @@
 import java.util.*;
 
-//10/27
+//11/7
 
 class Solution {
-    int cnt;
+    
+    int maxValue;
+    
     public int solution(int k, int[][] dungeons) {
+        int answer = 0;
+        //int maxValue = 0;
         
-        cnt = 0;
+        int cnt = 0;
         boolean[] visited = new boolean[dungeons.length];
-        
-        dfs(dungeons, visited, k , cnt);
-        
-        return m;
+        dfs(dungeons, visited, cnt, k);
+
+        return maxValue;
     }
-    int m;
-    public void dfs(int[][] dungeons, boolean[] visited, int k, int cnt){
+    
+    public void dfs(int[][] dungeons, boolean[] visited, int cnt, int k){
         
         for(int i=0; i < dungeons.length; i++){
             if(visited[i] != true && k >= dungeons[i][0]){
                 visited[i] = true;
-                dfs(dungeons, visited, k - dungeons[i][1], cnt+1);
+                dfs(dungeons, visited, cnt+1, k - dungeons[i][1]);
                 visited[i] = false;
             }
         }
         
-        m = Math.max(m,cnt);
+        maxValue = Math.max(maxValue, cnt);
+        
     }
 }
 

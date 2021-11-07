@@ -1,6 +1,6 @@
 import java.util.*;
 
-// 10/26
+// 10/26  11/7
 
 class Solution {
     
@@ -19,10 +19,11 @@ class Solution {
         return answer;
     }
     
-    public int chkWires(int idx, int[][] wires){
+    public int chkWires(int idx, int[][] wires){   //boolean 대신 list에서 삭제시키는 전략으로가
         Queue<Integer> q = new LinkedList<>();
         ArrayList<int[]> list = new ArrayList<>();
         int cnt = 0;
+
         for(int[] data : wires){
             list.add(data);
         }
