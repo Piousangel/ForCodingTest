@@ -29,3 +29,28 @@ class Solution {
         return answer-1;
     }
 }
+
+// //최소 한개는 입음 11/8 복습
+
+// class Solution {
+//     public int solution(String[][] clothes) {
+//         int answer = 1;
+        
+//         Map<String, Integer> map = new HashMap<>();
+        
+//         for(int i=0; i < clothes.length; i++){
+//             if(!map.containsKey(clothes[i][1])){
+//                 map.put(clothes[i][1],1);
+//             }
+//             else map.put(clothes[i][1], map.get(clothes[i][1])+1);
+//         }
+        
+//         Iterator<String> iter = map.keySet().iterator();
+        
+//         while(iter.hasNext()){
+//             answer *= map.get(iter.next())+1;
+//         }
+        
+//         return answer-1;
+//     }
+// }

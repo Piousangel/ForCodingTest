@@ -1,4 +1,10 @@
-import java.util.*;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Map정렬법 {
     
@@ -98,4 +104,41 @@ public class Map정렬법 {
         + "Value: " + entry.getValue());
     }
     
+    // Stream을 이용해서 value값 기준 정렬
+    Map<String, Integer> result = map.entrySet().stream()
+        .sorted(Entry.comparingByValue())
+        .collect(Collectors.toMap(Entry::getKey, Entry::getValue, (e1,e2) -> e1, LinkedHashMap::new));
+    result.forEach((k,v) -> System.out.println(k+ "=" + v));
+
+
+    // Map.Entry 리스트 작성
+    List<Entry<String, Integer>> list_entries = new ArrayList<Entry<String, Integer>>(testMap.entrySet());
+
+    // 비교함수 Comparator를 사용하여 오름차순으로 정렬
+    Collections.sort(list_entries, new Comparator<Entry<String, Integer>>() {
+        // compare로 값을 비교
+        public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2) {
+            // 오름 차순 정렬
+         return obj1.getValue().compareTo(obj2.getValue());
+        }
+    });
+
+    // Map.Entry 리스트 작성
+	List<Entry<String, Integer>> list_entries = new ArrayList<Entry<String, Integer>>(testMap.entrySet());
+
+		// 비교함수 Comparator를 사용하여 내림 차순으로 정렬
+		Collections.sort(list_entries, new Comparator<Entry<String, Integer>>() {
+			// compare로 값을 비교
+			public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2)
+			{
+				// 내림 차순으로 정렬
+				return obj2.getValue().compareTo(obj1.getValue());
+			}
+	});
+
+
+    for(Entry<String, Integer> entry : list_entries) {
+        System.out.println(entry.getKey() + " : " + entry.getValue());
+    }
+
 }
