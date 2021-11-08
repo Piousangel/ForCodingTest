@@ -1,7 +1,7 @@
 import java.util.*;
 
 // 1~9 2개
-//ex 1 -> 0000000001 이런식
+//ex 1 -> 0000000001 이런식 11/8
 class Solution {
     public String[] solution(int startNumber, int endNumber) {
              

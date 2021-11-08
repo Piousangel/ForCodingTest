@@ -2,7 +2,7 @@ import java.util.*;
 
 class 입실퇴실 {
 
-    //다시풀기
+    //다시풀기 내일
 
     public int[] solution(int[] enter, int[] leave) {
         int[] answer = new int[enter.length];
