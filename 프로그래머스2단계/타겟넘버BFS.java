@@ -32,8 +32,8 @@ class 타겟넘버 {
             int c1 = p.cur + numbers[p.index+1];
             int c2 = p.cur - numbers[p.index+1];
             
-            q.add(new Pair(c1, p.index+1));
-            q.add(new Pair(c2, p.index+1));
+            q.offer(new Pair(c1, p.index+1));
+            q.offer(new Pair(c2, p.index+1));
         }
         
         return answer;

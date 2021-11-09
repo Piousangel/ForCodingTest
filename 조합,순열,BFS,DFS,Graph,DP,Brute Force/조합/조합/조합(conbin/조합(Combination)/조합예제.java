@@ -13,7 +13,7 @@ class Solution {
             boolean[] visited = new boolean[ch.length];
             
             for(int j =0; j < course.length; j++){
-                dfs(ch, box, visited, idx, ch.length, course[j]);
+                dfs(ch, box, visited, idx, ch.length, course[j]);    // ch.length 개 중 course[j]개 뽑기
             }
             
         }
