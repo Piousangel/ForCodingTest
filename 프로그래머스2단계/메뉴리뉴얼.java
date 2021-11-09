@@ -1,7 +1,7 @@
 import java.util.*;
 
 //String 쪼개서 char배열에 담아 -> 총~ 2,3,4,5 개 중 가장 많이 나온거 chk?
-
+//거의다 풀었다 여기서 이제 course[] 종류별로 max값뽑아서 저장하면 될듯..? 11/9
 
 class Solution {
     public String[] solution(String[] orders, int[] course) {
@@ -15,47 +15,58 @@ class Solution {
                     Arrays.sort(ch);
                     char[] arr = new char[ch.length];  //배열에 담게
                     boolean[] visited = new boolean[ch.length];
-                    dfs(ch,arr,visited, ch.length, course[j], 0);
+                   
+                    dfs(ch, visited, ch.length, course[j], 0);
                 }
             }
         }
         
+        ArrayList<String> list = new ArrayList<>();
         Iterator<String> iter = map.keySet().iterator();
         
         while(iter.hasNext()){
             String str = iter.next();
             System.out.print("Key : " + str);
             System.out.println(" Values : " + map.get(str) + " ");
+            
+            for(int tmp : course){
+                if(tmp == str.length){
+                    
+                }
+            }
+            
         }
         
         return answer;
     }
     
-    public void dfs(char[] ch, char[] arr, boolean[] visited, int n, int r, int idx){
+    public void dfs(char[] ch, boolean[] visited, int n, int r, int idx){
         
-        if(idx == r){
-            print(arr);
+        if(r == 0){
+            print(ch,visited);
             return;
         }
-        
-        for(int i=0; i < ch.length; i++){
-            if(visited[i] != true){
+        else{
+        for(int i=idx; i < n; i++){
+            //if(visited[i] != true){
                 visited[i] = true;
-                arr[idx] = ch[i];
-                dfs(ch, arr, visited, n, r, idx+1);
+                //arr[idx] = ch[i];
+                dfs(ch, visited, n, r-1, i+1);
                 visited[i] = false;
-            }
+            //}
         }
+    }
     }
     
     Map<String, Integer> map = new HashMap<>();
     
-    public void print(char[] arr){
+    public void print(char[] arr, boolean[] visited){
         String str = "";
         for(int i=0; i < arr.length; i++){
-            str += arr[i]+"";
+            if(visited[i] == true)
+                str += arr[i]+"";
         }
-        
+        //System.out.println(str);
         if(!map.containsKey(str)){
             map.put(str,1);
         }
