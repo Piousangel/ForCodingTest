@@ -3,36 +3,21 @@ import java.util.*;
 // ICN 공항에서 출발
 // [a,b] a->b로감
 // 주어진 모든 항공권 모두 사용 그 경로를 리턴하면 댐
-// 75점... 11/10
+// 2개 방문할 수 있으면 알파벳 순서가 앞서는 경로 리턴해야
+// 11/11 디테일이 부족함..다시...
 
 class Solution {
+
+    ArrayList<String> strList;
     
-//     public class Node{
-//         int parent;
-//         int child;
-        
-//         public Node(int parent, int child){
-//             this.parent = parent;
-//             this.child = child;
-//         }
-//     }
-//    Queue<Node> q;
-    
-    ArrayList<String> str;
     public String[] solution(String[][] tickets) {
         
-             
-        for(int i=0; i < tickets.length; i++){
-            if(tickets[i][0].equals("ICN")){
-                //q.offer(new Node(tickets[i][0], tickets[i][1])); // 0값이 ICN이면
-                chkTrip(tickets, i);
-            }
-        }
+        chkTrip(tickets, 0);
+            
+        String[] answer = new String[strList.size()];
         
-        String[] answer = new String[str.size()];
-        
-        for(int i=0; i < str.size(); i++){
-            answer[i] = str.get(i);
+        for(int i=0; i < strList.size(); i++){
+            answer[i] = strList.get(i);
         }
         
         return answer;
@@ -41,34 +26,33 @@ class Solution {
     public void chkTrip(String[][] tickets, int idx){
         Queue<String> q = new LinkedList<>();
         ArrayList<String[]> list = new ArrayList<>();
-        str = new ArrayList<>();
+        strList = new ArrayList<>();
         
         for(String[] str : tickets){
             list.add(str);
         }
         
-        q.offer(tickets[idx][1]);
-        str.add(tickets[idx][0]);
-        str.add(tickets[idx][1]);
-        list.remove(idx);
+        q.offer(tickets[idx][1]);  //큐에 자식 넣기
+        
+        strList.add(tickets[idx][0]);  //answer에 들어갈것들
+        strList.add(tickets[idx][1]);
+        
+        list.remove(idx); // strList에 넣은 것들은 리스트에서 제거
         
         while(!q.isEmpty()){
-            String child = q.poll();
+            String child = q.poll();    
             
             for(int i=0; i < list.size(); i++){
                 String[] s = list.get(i);
                 boolean flag = false;
-            
+                ArrayList<String> sss = new ArrayList<>();
                 if(child.equals(s[0])){
-                    q.offer(s[1]);
-                    str.add(s[1]);
-                    list.remove(s);
-                    flag = true;
+                    q.offer(s[1]);      //같으면 자식을 큐에넣기
+                    strList.add(s[1]);  //안들어간 자식 넣기
+                    list.remove(s);     //들렀으니 리스트에서 빼기
+                    i--;
+                    break;    //여기서 break안걸어주면 일치했을때도 포문 계속 돌면서 s가 바뀌어 에러나
                 }
-                // else{
-                //     str.add(s[0]);
-                // }
-                if(flag) i--;   
             }
         } 
     }
