@@ -1,73 +1,75 @@
-
 import java.util.*;
 
+// ICN 공항에서 출발
+// [a,b] a->b로감
+// 주어진 모든 항공권 모두 사용 그 경로를 리턴하면 댐
+// 75점... 11/10
+
 class Solution {
-
-    //다시 10/29
-
     
 //     public class Node{
-//         String parent;
-//         String child;
+//         int parent;
+//         int child;
         
-//         public Node(String parent, String chile){
+//         public Node(int parent, int child){
 //             this.parent = parent;
 //             this.child = child;
 //         }
 //     }
+//    Queue<Node> q;
     
-    Queue<String> q;
-    ArrayList<String> sList;
-    
-    public ArrayList<String> solution(String[][] tickets) {
-        String[] answer = {};
+    ArrayList<String> str;
+    public String[] solution(String[][] tickets) {
         
-        int rowLen = tickets.length;
-        int colLen = tickets[0].length;
-        //boolean[][] visited = new boolean[rowLen][colLen];
-        q = new LinkedList<>();
-        
-        for(int i=0; i < rowLen ; i++){
-        
-            findRoad(i, tickets, visited);  
-        }
-        
-        return sList;
-    }
-    
-    public void findRoad(int idx, String[][] tickets){ //boolean[][] visited
-        //q.offer(tickets[i][0], tickets[i][0]);
-        ArrayList<String[]> list = new ArrayList<>();
-        sList = new ArrayList<>();
-        for(String[] data : tickets){
-            list.add(data);
-        }
-        
-        q.offer(list.get(idx)[0]);
-        sList.add(list.get(idx)[0]);
-        
-        while(!q.isEmpty()){
-            String tmp = q.poll();
-            
-            for(int i=0; i < list.size(); i++){
-                String[] arr = list.get(i);
-                boolean flag = false;
-                
-                if(tmp.equals(arr[0])){
-                    q.offer(arr[1]);
-                    sList.add(arr[1]);
-                    list.remove(arr);
-                    flag = true;
-                }
-                else if(tmp.equals(arr[1])){
-                    q.offer(arr[0]);
-                    sList.add(arr[0]);
-                    list.remove(arr);
-                    flag = true;
-                }
-                if(flag) i--;
+             
+        for(int i=0; i < tickets.length; i++){
+            if(tickets[i][0].equals("ICN")){
+                //q.offer(new Node(tickets[i][0], tickets[i][1])); // 0값이 ICN이면
+                chkTrip(tickets, i);
             }
         }
         
+        String[] answer = new String[str.size()];
+        
+        for(int i=0; i < str.size(); i++){
+            answer[i] = str.get(i);
+        }
+        
+        return answer;
+    }
+    
+    public void chkTrip(String[][] tickets, int idx){
+        Queue<String> q = new LinkedList<>();
+        ArrayList<String[]> list = new ArrayList<>();
+        str = new ArrayList<>();
+        
+        for(String[] str : tickets){
+            list.add(str);
+        }
+        
+        q.offer(tickets[idx][1]);
+        str.add(tickets[idx][0]);
+        str.add(tickets[idx][1]);
+        list.remove(idx);
+        
+        while(!q.isEmpty()){
+            String child = q.poll();
+            
+            for(int i=0; i < list.size(); i++){
+                String[] s = list.get(i);
+                boolean flag = false;
+            
+                if(child.equals(s[0])){
+                    q.offer(s[1]);
+                    str.add(s[1]);
+                    list.remove(s);
+                    flag = true;
+                }
+                // else{
+                //     str.add(s[0]);
+                // }
+                if(flag) i--;   
+            }
+        } 
     }
 }

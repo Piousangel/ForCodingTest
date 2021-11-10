@@ -5,50 +5,99 @@ import java.util.*;
 // words에 있는 단어로만 변환가능 모든 단어의 길이는 같음
 // 가장 짧은 변환과정의 수 찾기
 // 변환 할 수 없으면 0 리턴
+// 11/10 풀었다
 
-class 단어변환 {
+class Solution {
     
     int answer;
+    int cnt;
+    boolean[] visited;
+    
     public int solution(String begin, String target, String[] words) {
         answer = 0;
-        boolean noAnswer = false;
-        for(String str : words){
-            if(target.equals(str)) noAnswer = true;
-        }
-        
-        boolean[] missChk = new boolean[begin.length()];
-        
-        // for(int i=0; i < begin.length(); i++){
-        //     if(begin.charAt(i) != target.charAt(i)){
-        //         missChk[i] = true;   // 다 다르면 다 true -> 이걸로 할 수 있는게 없나
-        //     }
+        //boolean noAnswer = false;
+        // for(String str : words){
+        //     if(target.equals(str)) noAnswer = true;
         // }
         
-        dfs(begin, target, 0, words, 0);
-        if(!noAnswer) return 0;
+        visited = new boolean[words.length];
+        
+        dfs(begin, target, words, 0);
+        
+        //if(!noAnswer) return 0;
         return answer;
     }
     
-    public void dfs(String str, String target, int missCnt, String[] words, int cnt){
+    public void dfs(String str, String target, String[] words, int cnt){
         
         if(str.equals(target)){
+            //System.out.println("cnt : " + cnt);
             answer = cnt;
             return;
         }
         
         for(int i=0; i < words.length; i++){
             String s = words[i];
+            int missCnt = 0;
             
             for(int j=0; j < s.length(); j++){
-                if(str.charAt(j) != s.charAt(j)){
-                    missCnt++;
-                }
+                if(str.charAt(j) != s.charAt(j)) missCnt++;
             }
+            
             if(missCnt == 1){
-                str = s;
-                dfs(str, target, 0, words, cnt+1);
-            }
+                if(visited[i] != true){
+                    visited[i] = true;
+                    dfs(s, target, words, cnt+1);
+                    visited[i] = false;
+                }
+            }  
         }
-        
     }
 }
+
+// class 단어변환 {
+    
+//     int answer;
+//     public int solution(String begin, String target, String[] words) {
+//         answer = 0;
+//         boolean noAnswer = false;
+//         for(String str : words){
+//             if(target.equals(str)) noAnswer = true;
+//         }
+        
+//         boolean[] missChk = new boolean[begin.length()];
+        
+//         // for(int i=0; i < begin.length(); i++){
+//         //     if(begin.charAt(i) != target.charAt(i)){
+//         //         missChk[i] = true;   // 다 다르면 다 true -> 이걸로 할 수 있는게 없나
+//         //     }
+//         // }
+        
+//         dfs(begin, target, 0, words, 0);
+//         if(!noAnswer) return 0;
+//         return answer;
+//     }
+    
+//     public void dfs(String str, String target, int missCnt, String[] words, int cnt){
+        
+//         if(str.equals(target)){
+//             answer = cnt;
+//             return;
+//         }
+        
+//         for(int i=0; i < words.length; i++){
+//             String s = words[i];
+            
+//             for(int j=0; j < s.length(); j++){
+//                 if(str.charAt(j) != s.charAt(j)){
+//                     missCnt++;
+//                 }
+//             }
+//             if(missCnt == 1){
+//                 str = s;
+//                 dfs(str, target, 0, words, cnt+1);
+//             }
+//         }
+        
+//     }
+// }
