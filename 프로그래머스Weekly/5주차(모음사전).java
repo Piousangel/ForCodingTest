@@ -1,7 +1,7 @@
 import java.util.*;
 // 총 5개
 //a aa aaa aaaa aaaaa aaaae aaaai     10/26 다시...
-// 
+// 점화식 문제 나올 수도 있는데 펜꺼내서 점화식 세우는 연습도 해야댐
 class Solution {
     
     char[] ch = {'A','E','I','O','U'};

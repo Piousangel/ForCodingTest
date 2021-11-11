@@ -1,30 +1,31 @@
 import java.util.*;
 
 // 1,1,1,1,1   1,1,1,2   1,2,2   5
-// 11/8
+// 11/8 11/11
 // 이게 경우의 수가 늘어나면 dfs로 풀면 안대...
+// dfs로 풀면 안된다고 ㅡㅡ 내일다시 ....
+
 class Solution {
-    
-    int answer;
+    int answer = 0;
     public int solution(int n, int[] money) {
-        answer = 0;
         
-        //Arrays.sort(money);
-        dfs(money, 0, n);
-        return answer%1000000007;
+        dfs(money, n, 0, 0);
+        
+        return answer;
     }
     
-    public void dfs(int[] money, int sum, int n){
+    public void dfs(int[] money, int target, int idx, int sum){
         
-        if(sum == n){
-            //System.out.println(sum);
+        if(sum == target){
             answer++;
+            return;
         }
-        if(sum > n) return;
+        else if(sum > target) return;
         
-        for(int i=0; i < money.length; i++){
+        for(int i=idx; i < money.length; i++){
             sum += money[i];
-            dfs(money, sum, n);
+            dfs(money, target, i, sum);
         }
+        
     }
 }
