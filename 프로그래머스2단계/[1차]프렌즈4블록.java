@@ -1,70 +1,61 @@
 import java.util.*;
 
-// 10/21 ㄷ
+//11/11 다싱....
 
-class Solution {
+public class Solution {
     
-    public int[] dx = {1,-1,0,0};
-    public int[] dy = {0,0,1,-1};
-    
-    public class Node{
-        int x;
-        int y;
-        
-        public Node(int x, int y){       //내가 여기서 x를 행, y를 열로 설정해놨음
-            this.x = x;
-            this.y = y;
-        }
-    }
-    
-    public Queue<Node> q = new LinkedList<>();
-    public boolean[][] visited;
-    public int size = 0;
-    
-    public int[] solution(int m, int n, int[][] picture) {
-        int numberOfArea = 0;
-        int maxSizeOfOneArea = 0;
+    char[][] table;
+    boolean[][] visited;
 
-        visited = new boolean[m][n];
+    public int solution(int n, int m, String[] board){
+        int answer = 0;
+        int flag = 0;
+        table = new char[n][m];
         
-        for(int i = 0; i < m; i++){
-            for(int j=0; j<n; j++){
-                if(picture[i][j] > 0 && visited[i][j] != true){
-                    size = 1;     //if문 통과시 최소넓이는 1임
-                    bfs(picture, i, j, m, n);
-                    numberOfArea++;     //영역 증가
-                    if(maxSizeOfOneArea < size){
-                        maxSizeOfOneArea = size;
-                    }
-                }
-            }
+        for(int i=0; i<n; i++){
+            table[i] = board[i].toCharArray();
         }
-        
-        int[] answer = new int[2];
-        answer[0] = numberOfArea;
-        answer[1] = maxSizeOfOneArea;
+        // while(true){
+        //     flag = 0;
+        //     visited = new boolean[n][m];
+            
+        //     for(int i=0; i < n-1; i++){
+        //         for(int j=0; j < m-1; j++){
+        //             flag += chkMatrix(i,j);
+        //         }
+        //     }
+        //     if(flag == 0) break;
+
+        //     for(int j=0; j < m ; j++){
+        //         ArrayList<Character> list = new ArrayList<>();
+        //         for(int i=n-1; i >=0; i--){
+        //             if(!visited[i][j]){
+        //                 list.add(table[i][j]);
+        //             }else
+        //                 answer++;
+        //         }
+        //         for(int i=n-1, idx=0; i >=0; i--, idx++){
+        //             if(idx <list.size()){
+        //                 table[i][j] = list.get(idx);
+        //             }
+        //             else{
+        //                 table[i][j] = '0';
+        //             }
+        //         }
+        //     }
+        // }
         return answer;
     }
-    
-    public void bfs(int[][] pic, int x, int y, int m, int n){
-        q.add(new Node(x,y));
-        visited[x][y] = true;
-        
-        while(!q.isEmpty()){
-            Node now = q.poll();
-            
-            for(int i=0; i < 4; i++){
-                int nx = now.x + dx[i];
-                int ny = now.y + dy[i];
-                
-                if(0 <= nx && nx < m && 0 <= ny && ny < n){
-                    if(pic[nx][ny] == pic[x][y] && visited[nx][ny] != true){
-                        q.add(new Node(nx,ny));
-                        visited[nx][ny] = true;
-                        size++;
-                    }
-                }
-            }
+
+    public int chkMatrix(int r, int c){
+        char target = table[r][c];
+        if(target != '0' && target == table[r+1][c] && target == table[r][c+1] && target == table[r+1][c+1]){
+            visited[r][c] = true;
+            visited[r+1][c] = true;
+            visited[r][c+1] = true;
+            visited[r+1][c+1] = true;
+            return 1;
         }
+        return 0;
     }
 }
