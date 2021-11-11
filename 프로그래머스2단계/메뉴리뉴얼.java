@@ -1,12 +1,18 @@
 import java.util.*;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 //String 쪼개서 char배열에 담아 -> 총~ 2,3,4,5 개 중 가장 많이 나온거 chk?
-//거의다 풀었다 여기서 이제 course[] 종류별로 max값뽑아서 저장하면 될듯..? 11/9
+// 와..... 3시간만에 풀었네여.. 11/11
 
 class Solution {
     public String[] solution(String[] orders, int[] course) {
-        String[] answer = {};
-        
+     
         for(int i=0; i < orders.length; i++){  // 손님들의 단품메뉴들
             for(int j=0; j < course.length; j++){  // orders[i] 개중 course[j]개뽑기
                 if(orders[i].length() < course[j]) continue; //조합의 수가 더 크면 안댐
@@ -21,20 +27,29 @@ class Solution {
             }
         }
         
-        ArrayList<String> list = new ArrayList<>();
-        Iterator<String> iter = map.keySet().iterator();
+        List<String> keySetList = new ArrayList<>(map.keySet());
+        Collections.sort(keySetList, (o1, o2) -> (map.get(o2).compareTo(map.get(o1))));
+
+        List<String> strList = new ArrayList<>();
         
-        while(iter.hasNext()){
-            String str = iter.next();
-            System.out.print("Key : " + str);
-            System.out.println(" Values : " + map.get(str) + " ");
-            
-            for(int tmp : course){
-                if(tmp == str.length){
-                    
+        for (int i = 0; i < course.length; i++) {
+            int max_value = 0;
+
+            for (String key : keySetList) {
+                if (map.get(key) >= 2 && key.length() == course[i]) {
+                    if (map.get(key) >= max_value) {
+                        strList.add(key);
+                        max_value = map.get(key);
+                    }
                 }
             }
-            
+        }
+        
+        Collections.sort(strList);
+        String[] answer = new String[strList.size()];
+        
+        for(int i=0; i < strList.size(); i++){
+            answer[i] = strList.get(i);
         }
         
         return answer;
@@ -47,15 +62,12 @@ class Solution {
             return;
         }
         else{
-        for(int i=idx; i < n; i++){
-            //if(visited[i] != true){
+            for(int i=idx; i < n; i++){
                 visited[i] = true;
-                //arr[idx] = ch[i];
                 dfs(ch, visited, n, r-1, i+1);
-                visited[i] = false;
-            //}
+                visited[i] = false; 
+            }
         }
-    }
     }
     
     Map<String, Integer> map = new HashMap<>();
@@ -66,11 +78,11 @@ class Solution {
             if(visited[i] == true)
                 str += arr[i]+"";
         }
-        //System.out.println(str);
         if(!map.containsKey(str)){
             map.put(str,1);
         }
         else map.put(str, map.get(str)+1);
+        
     }
     
 }
@@ -154,3 +166,15 @@ class Solution {
 //         return ans;
 //     }  
 // }
+
+// List<Entry<String, Integer>> list_entries = new ArrayList<Entry<String, Integer>>(map.entrySet());
+
+// // 비교함수 Comparator를 사용하여 내림 차순으로 정렬
+// Collections.sort(list_entries, new Comparator<Entry<String, Integer>>(){
+//     // compare로 값을 비교
+//     public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2)
+//     {
+//         // 내림 차순으로 정렬
+//         return obj2.getValue().compareTo(obj1.getValue());
+//     }
+// });
