@@ -1,6 +1,6 @@
 public class README {
     
 
-    //조금씩... 계속 하다보면 풀 수 있을꺼야 현석
-    //8/13
+     List<String> keySetList = new ArrayList<>(map.keySet());
+        Collections.sort(keySetList, (o1, o2) -> (map.get(o2).compareTo(map.get(o1))));
 }
