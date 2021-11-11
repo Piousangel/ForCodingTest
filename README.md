@@ -9,6 +9,5 @@ commit할때 날짜 기록하기 :point_right: 시간이 오래지난 문제 체
 
 JAVA, ~~C++~~ 를 보통 사용해서 공부하고 있습니다. SW역량테스트푸는중입니다...
 
-<mark>순열</mark> <mark>조합</mark>  <mark>정규식 표현</mark>, <mark>팬 잡고 점화식 세우는 연습</mark> <mark>SQL</mark> 주기적으로 chk하기
-<span style="color:yellow">순열</span>
-<span style="color:yellow">조합</span>
+__순열__, __조합__, __정규식 표현__, __팬 잡고 점화식 세우는 연습__, __SQL__ 주기적으로 chk하기
+
