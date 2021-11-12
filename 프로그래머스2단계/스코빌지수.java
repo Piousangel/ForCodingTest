@@ -1,8 +1,8 @@
 import java.util.*;
 
 //10/03 PriorityQueue 
-// 10 26;
-class 스코빌지수 {
+//10 26;  11/12
+class  {
     
     Queue<Integer> q;
     
@@ -15,17 +15,14 @@ class 스코빌지수 {
         for(int i=0; i < scoville.length; i++){
             q.offer(scoville[i]);
         }
-        
-        int cnt = 0;
-        
         while(q.peek() < K){
             if(q.size() == 1) return -1;
             
             q.offer(q.poll() + (q.poll()*2));
-            cnt++;
+            answer++;
         }
         
-        return cnt;
+        return answer;
     }
 }
 
