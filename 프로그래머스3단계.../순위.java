@@ -3,6 +3,7 @@ import java.util.*;
 // n명의 선수가 있는데
 // 큐에 자식 노드를 너을께 아니라 1~n을 한번씩 넣어봐야하나... 가 아니라 완전 다른문제였구나;;;
 // 11/11 내일 다시
+// 1~n을 첫번째로 노드들을 이어서 그래프가 n이 나오면 되는건가..
 class 순위 {
     public int solution(int n, int[][] results) {
         int answer = 0;

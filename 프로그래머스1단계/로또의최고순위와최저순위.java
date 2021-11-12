@@ -39,3 +39,42 @@ class Solution {
         return answer;
     }
 }
+
+// 11/12
+// class Solution {
+//     public int[] solution(int[] lottos, int[] win_nums) {
+//         int[] answer = new int[2];
+        
+//         int hit = 0;
+//         int zeroCnt = 0;
+//         for(int i=0; i < lottos.length; i++){
+//             int tmp = lottos[i];
+//             if(tmp == 0){
+//                 zeroCnt++;
+//                 continue;
+//             }
+//             for(int k : win_nums){
+//                 if(tmp == k){
+//                     hit++;
+//                 }
+//             }      
+//         }
+        
+//         if(zeroCnt == 6){
+//             return new int[] {1,6};
+//         }
+//         if(hit == 6){
+//             return new int[] {1,1};
+//         }
+        
+//         if(hit < 2) answer[1] = 6;
+//         else{
+//             answer[1] = 7 - hit;
+//         }
+//         if(zeroCnt == 0 && hit == 0) answer[0] = 6;
+//         else
+//             answer[0] = 7 - hit - zeroCnt;
+           
+//         return answer;
+//     }
+// }

@@ -2,7 +2,9 @@ import java.util.*;
 
 public class 신규아이디추천 {
 
-	
+	// id = id.replaceAll("[^-_.a-z0-9]","");
+	// id = id.replaceAll("[.]{2,}", ".");
+	// id = id.replaceAll("^[.]|[.]$","");
 
     public String solution(String new_id) {
         String id = new_id.toLowerCase(); 
