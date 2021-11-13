@@ -28,12 +28,12 @@ class Solution {
             HashSet<Integer> set = new HashSet<>(map.values());
            
             System.out.print(set);
-            // Iterator iter = set.iterator();	// Iterator 사용
-            // while(iter.hasNext()){
-            //     System.out.println(iter.next());
-            // }
+            Iterator iter = set.iterator();	
+            while(iter.hasNext()){
+                System.out.println(iter.next());
+            }
 
-            // if(set.size() == map.size()) continue;
+            
 
             maxLen = Math.max(maxLen, s.length());
         }
