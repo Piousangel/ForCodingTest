@@ -3,29 +3,22 @@ import java.util.*;
 // 1,1,1,1,1   1,1,1,2   1,2,2   5
 // 11/8 11/11
 // 이게 경우의 수가 늘어나면 dfs로 풀면 안대...
-// dfs로 풀면 안된다고 ㅡㅡ 내일다시 ....
+// dp 복습 11/14
 
 class Solution {
-    int answer = 0;
     public int solution(int n, int[] money) {
+        int answer = 0;
         
-        dfs(money, n, 0, 0);
+        int[] arr = new int[1000001];
+        arr[0] = 1;
         
-        return answer;
-    }
-    
-    public void dfs(int[] money, int target, int idx, int sum){
-        
-        if(sum == target){
-            answer++;
-            return;
+        for(int i : money){
+            // 1,2,5  n=5;   1,2,3,4,5.  2,3,4,5  5
+            for(int j = i ; j <= n; j++){
+                arr[j] += arr[j-i];
+            }
         }
-        else if(sum > target) return;
-        
-        for(int i=idx; i < money.length; i++){
-            sum += money[i];
-            dfs(money, target, i, sum);
-        }
-        
+        answer = arr[n];
+        return answer%1000000007;
     }
 }
