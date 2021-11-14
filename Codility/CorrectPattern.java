@@ -5,10 +5,9 @@ import java.util.HashSet;
 
 class Solution {
     public int solution(String S) {
-        int answer = 0;
-
+    
         String[] str = S.split(" ");
-        //"^[a-zA-Z0-9]*$"
+        
         int maxLen = 0;
         for(String s : str){
             boolean chk = Pattern.matches("^[a-zA-Z0-9]*$", s);
@@ -17,7 +16,6 @@ class Solution {
             char[] ch = s.toCharArray();
             Map<Character, Integer> map = new HashMap<>();
             
-
             for(int i=0; i < ch.length; i++){
                 if(!map.containsKey(ch[i])){
                     map.put(ch[i],1);
@@ -27,14 +25,8 @@ class Solution {
 
             HashSet<Integer> set = new HashSet<>(map.values());
            
-            System.out.print(set);
-            Iterator iter = set.iterator();	
-            while(iter.hasNext()){
-                System.out.println(iter.next());
-            }
-
-            
-
+            if(set.size() == map.size()) continue;
+        
             maxLen = Math.max(maxLen, s.length());
         }
 
