@@ -1,19 +1,15 @@
 import java.util.*;
 
-//11/7
+//11/7 11/14
 
 class Solution {
     
     int maxValue;
     
     public int solution(int k, int[][] dungeons) {
-        int answer = 0;
-        //int maxValue = 0;
-        
         int cnt = 0;
         boolean[] visited = new boolean[dungeons.length];
         dfs(dungeons, visited, cnt, k);
-
         return maxValue;
     }
     
