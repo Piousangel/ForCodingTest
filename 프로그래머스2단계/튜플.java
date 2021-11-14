@@ -5,7 +5,7 @@ import java.util.*;
 // s가 표현하는 집합을 출력
 // a1 a1a2 a1a2a3  a1a2a3a4
 // 근데 집합기호 있으면 순서 섞힐 수 있음..?
-// 11/11  저 머시기냐 저거 정규식표현? 저거만 하면 됨
+// 11/11  저 머시기냐 저거 정규식표현? 저거만 하면 됨 11/14
 
 // s = s.replaceAll("[\\{,\\}]", " ");       \\ 이거랑  [ ]+ 기억 숫자1개이상 알파벳 1개 이상일때 [ ] 플러스 붙여줌
 // String[] sa = s.split("[ ]+");
@@ -17,6 +17,9 @@ class Solution {
         
         s = s.replaceAll("[\\{,\\}]", " ");
         String[] sa = s.split("[ ]+");
+
+        // s = s.replaceAll("[\\{,\\}]", " ");
+        // String[] sa = s.split("[ ]+");
             
         for(int j=1; j < sa.length; j++){
             if(!map.containsKey(sa[j]) && sa[j] != ""){

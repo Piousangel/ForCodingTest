@@ -1,6 +1,6 @@
 import java.util.*;
 
-//9/29 다시
+//9/29 다시 11/14
 
 class Solution {
     int solution(int[][] land) {
