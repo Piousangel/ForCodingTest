@@ -1,36 +1,37 @@
 import java.util.*;
- // 9/30 다시
+
+// 11/14
+
 class Solution {
     public int solution(String skill, String[] skill_trees) {
         int answer = 0;
         
-        char[] ch = skill.toCharArray();
-        
         
         for(int i=0; i < skill_trees.length; i++){
-            for(int j=0; j < skill_trees[i].length(); j++){
-                int cnt = 0;
+            Stack<Character> st = new Stack<>();
+            int cnt = 0;
+            String str = skill_trees[i];
+            
+            for(int j=0; j < str.length(); j++){
                 boolean chk = false;
                 
-                for(int k=0; k < ch.length; k++){
-                    if(skill_trees[i].charAt(j) == ch[k]){
-                        if(k == cnt){
-                            cnt++;
-                            chk = true;
-                            break;
-                        }
-                        else{
-                            chk = false;
-                            break;
-                        }
-                    }     
+                for(char ch : skill.toCharArray()){
+                    if(str.charAt(j) == ch) chk = true;
                 }
-                cnt = 0;
                 
+                if(!chk){
+                    st.push(str.charAt(j));
+                    continue;
+                }
+                else{
+                    if(str.charAt(j) == skill.charAt(cnt)){
+                        st.push(str.charAt(j));
+                        if(cnt < skill.length()-1) cnt++;
+                    }  
+                }
             }
-            if(chk){
-                    answer++;
-            }
+            
+            if(st.size() == str.length()) answer++;
         }
         
         return answer;
