@@ -6,16 +6,25 @@ import java.util.*;
 // 재생 시간도 같으면 먼저 입력된 제목 반환
 // 없으면 " (None) " 반환 1031
 // 열심히햇들,,.에러가나오네요... 11/15
+// 뒤짝에 else부분을 강화시켜줘야해
 
 class Solution {
+    
+    public String changeStr(String s){
+        
+        s = s.replaceAll("C#", "L");
+        s = s.replaceAll("D#", "H");
+        s = s.replaceAll("F#", "I");
+        s = s.replaceAll("G#", "J");
+        s = s.replaceAll("A#", "K");
+        
+        return s;
+    }
+    
     public String solution(String m, String[] musicinfos) {
         ArrayList<String> answer = new ArrayList<>();
         
-        m = m.replaceAll("C#", "L");
-        m = m.replaceAll("D#", "H");
-        m = m.replaceAll("F#", "I");
-        m = m.replaceAll("G#", "J");
-        m = m.replaceAll("A#", "K");
+        m = changeStr(m);
         
         //System.out.print("m :" + m);
         
@@ -27,31 +36,33 @@ class Solution {
             
             String sk = str1[3];
             
-            sk = sk.replaceAll("C#", "L");
-            sk = sk.replaceAll("D#", "H");
-            sk = sk.replaceAll("F#", "I");
-            sk = sk.replaceAll("G#", "J");
-            sk = sk.replaceAll("A#", "K");
+            sk = changeStr(sk);
             
             int min = Integer.parseInt(s2[1]) - Integer.parseInt(s1[1]);
             int hour = Integer.parseInt(s2[0]) - Integer.parseInt(s1[0]);
             int time = hour*60 + min;
-            //System.out.print(min + " ");
+            
             String song = "";
             char[] ch = sk.toCharArray();
             int idx = 0;
-            System.out.print("time : " + time + " ");
+            // System.out.print("time : " + time + " ");
             for(int j = 0; j < time; j++){
                 idx = idx % ch.length;
                 song += String.valueOf(ch[idx]);
                 idx++;
             }
             
-            System.out.println("song : " + song);
-            
-            if(song.contains(m)){
-                answer.add(str1[2]);
+            if(song.length() >= m.length()){
+                if(song.contains(m)){
+                    answer.add(str1[2]);
+                }
             }
+            // else{
+            //     if(m.contains(song)){
+            //         answer.add(str1[2]);
+            //     }
+            // }
+            
         }
         int len = 0;
         String real = "";
@@ -66,7 +77,6 @@ class Solution {
                 }
             }  
         }
-     
         return real;
     }
 }
