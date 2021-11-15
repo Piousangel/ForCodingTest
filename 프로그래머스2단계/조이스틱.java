@@ -4,27 +4,77 @@ import java.util.*;
 // String은 글자수에 맞게 몇개의 A로 주어짐
 // 알파벳이 총 26개인데 왼쪽으로 가는게 좋을지 오른쪽으로 가는게 좋을지랑
 // 커서를 오른쪽으로 가는게 좋을지 왼쪽이 좋은지 정해야하네
-// 분할 정복같은걸로 풀어야될듯...
-// 반으로 쪼개서 계속 가야할듯?
-// 11월 11일 일어나서 풀어봅시다..
+// 탐욕법은 현재에 최선을 다하는 것
+// 결론적으로 최적의 결과는 낼 수 없지만 욕심이 그득하여 현재만 최선을 다하면댐
 
-class 조이스틱 {
+
+import java.util.*;
+
+class Solution {
     public int solution(String name) {
         int answer = 0;
         
-        String str = "";
-           
-        char[] ch = name.toCharArray();
+        int len = name.length();
+        int minValue = len-1;
         
-        for(int i=0; i < ch.length; i++){
-            if(ch[i] == 'A') continue;
-            
-            else{
-                
-            }
+        for(int i=0; i<len; i++) {
+        	answer += Math.min(name.charAt(i)-'A', 'Z'-name.charAt(i)+1);
+        	int n = i+1;
+        
+        	while(next<len && name.charAt(next) == 'A')
+        		n++;
+        	
+                minValue = Math.min(minValue, i+len-n + i);
         }
         
+        answer += minValue;
         
         return answer;
     }
 }
+
+// import java.util.*;
+
+// class Solution {
+//     public int solution(String name) {
+//         int answer = 0;
+        
+//         String str = "";
+        
+//         for(int i=0 ; i < name.length(); i++){
+//             str += "A";
+//         }
+        
+//         char[] ch = name.toCharArray();
+//         ArrayList<Character> list = new ArrayList<>();
+        
+//         for(int i=0; i < ch.length; i++){
+//             list.add(ch[i]);
+//         }
+        
+//         for(int i=0; i < name.length(); i++){
+            
+//             char f = list.get(0);
+//             int fMove = Math.min(f-'A', 'Z' - f);
+//             char l = list.get(list.size()-1);
+//             int lMove = Math.min(l-'A', 'Z' - l);
+            
+//             if(fMove > lMove){
+//                 answer += lMove;
+//                 list.remove(list.size()-1);
+//             }
+//             else{
+//                 answer += fMove;
+//                 list.remove(0);
+//             }
+//             answer++;
+            
+//             for(int j=0; j < list.size(); j++){
+//                 System.out.print(list.get(j) + " ");
+//             }
+//             System.out.println();
+//         }
+        
+//         return answer;
+//     }
+// }
