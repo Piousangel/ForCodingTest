@@ -1,11 +1,10 @@
 import java.util.*;
 
-// 10/03 풀읏다..
+// 10/03 풀읏다.. 11/15
 import java.util.*;
 
 class Solution {
     public int solution(int cacheSize, String[] cities) {
-        int answer = 0;
         
         LinkedList<String> list = new LinkedList<>();
         int cnt = 0;
