@@ -1,34 +1,36 @@
 import java.util.*;
 
-// 10/26  11/7 11/10
+// 10/26  11/7 11/10 11/15
+
+import java.util.*;
 
 class Solution {
-    
-    int leftLen;
-    int rightLen;
     public int solution(int n, int[][] wires) {
-        int answer = 10001;
+        int answer = 100001;
+        int leftLen = 0;
+        int rightLen = 0;
         
         for(int i=0; i < wires.length; i++){
-            leftLen = chkWires(i, wires);
-            rightLen = n - leftLen;
-            int tmp = Math.abs(leftLen - rightLen);
-            answer = Math.min(answer, tmp);
+            for(int j=0; j < wires[i].length; j++){
+                leftLen = chkWires(wires, i);
+                rightLen = n - leftLen;
+                int tmp = Math.abs(leftLen - rightLen);
+                answer = Math.min(answer, tmp);
+            }
         }
-        
         return answer;
     }
     
-    public int chkWires(int idx, int[][] wires){   //boolean 대신 list에서 삭제시키는 전략으로가
+    public int chkWires(int[][] wires, int idx){
         Queue<Integer> q = new LinkedList<>();
         ArrayList<int[]> list = new ArrayList<>();
         int cnt = 0;
-
-        for(int[] data : wires){
-            list.add(data);
+        
+        for(int[] arr : wires){
+            list.add(arr);
         }
         
-        q.offer(list.get(idx)[0]);
+        q.offer(list.get(idx)[1]);
         list.remove(idx);
         
         while(!q.isEmpty()){
@@ -48,12 +50,13 @@ class Solution {
                     list.remove(arr);
                     flag = true;
                 }
-                if(flag) i--;
+                if(flag) i--;  //리스트 사이즈가 감소하므로;
             }
             cnt++;
         }
         return cnt;
     }
+    
 }
 
 
