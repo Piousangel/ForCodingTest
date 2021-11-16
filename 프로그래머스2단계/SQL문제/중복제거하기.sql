@@ -1,3 +1,4 @@
-select count (distinct name)
+-- 9/25 11/16
+select count(distinct name) as count
 from animal_ins
-order by name
+where name is not null

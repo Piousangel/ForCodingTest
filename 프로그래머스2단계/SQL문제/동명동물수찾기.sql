@@ -1,5 +1,10 @@
 select name, count(name) as COUNT
 from animal_ins
-group by name
-having count(name) > 1
+group by name having COUNT > 1
 order by name
+
+--  9/25 11/16
+-- select name, count(name) as Count
+-- from animal_ins
+-- group by name having Count > 1
+-- order by name asc
