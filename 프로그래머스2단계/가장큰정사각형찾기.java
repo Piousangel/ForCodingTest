@@ -3,27 +3,27 @@
 import java.util.*;
 
 //  8/23 다시보기 효율성 떨어지므로 계선방안 찾기
-// 9/15 11/5  11/6  가로,세로배열이 1인경우 예외가 발생하기 때문에 각각 +1을해준다
+// 9/15 11/5  11/6  11/15 가로,세로배열이 1인경우 예외가 발생하기 때문에 각각 +1을해준다
 
-class Solution
+class 가장큰정사각형찾기
 {
-    public int solution(int [][]board)
+    public int solution(int[][] board)
     {
         int answer = 0;
-        int[][] DP = new int[board.length+1][board[0].length+1];
+        int[][] arr = new int[board.length+1][board[0].length+1];
         
         for(int i=0; i < board.length; i++){
             for(int j=0; j < board[0].length; j++){
-                DP[i+1][j+1] = board[i][j];
+                arr[i+1][j+1] = board[i][j];
             }
         }
         
-        for(int i=1; i < DP.length; i++){
-            for(int j=1; j < DP[0].length; j++){
-                if(DP[i][j] != 0){
-                    DP[i][j] = Math.min(Math.min(DP[i-1][j],DP[i][j-1]), DP[i-1][j-1])+1;
-                    answer = Math.max(answer, DP[i][j]);
-                }
+        for(int i=1; i < arr.length; i++){
+            for(int j=1; j < arr[0].length; j++){
+                if(arr[i][j] != 0){
+                    arr[i][j] = Math.min(Math.min(arr[i][j-1], arr[i-1][j]), arr[i-1][j-1])+1;
+                    answer = Math.max(answer, arr[i][j]);
+                }  
             }
         }
         return answer*answer;

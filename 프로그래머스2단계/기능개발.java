@@ -3,46 +3,43 @@ import java.util.Queue;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-//8월1일 이후 Queue 복습후 8월2일  8월19일 8/23일 9/16 11/12
+//8월1일 이후 Queue 복습후 8월2일  8월19일 8/23일 9/16 11/12 11/15
 
-class Solution {
+class 기능개발 {
+
     Queue<Integer> q;
-    
     public int[] solution(int[] progresses, int[] speeds) {
         q = new LinkedList<>();
         ArrayList<Integer> list = new ArrayList<>();
-        
-        for(int i=0; i < progresses.length; i++){
-            q.offer(i);
+        for(int i= 0; i < speeds.length; i++){
+            q.offer(i);    
         }
         
         while(!q.isEmpty()){
             
-            for(int i= q.peek(); i < speeds.length; i++){
+            for(int i=0; i < progresses.length; i++){
                 progresses[i] += speeds[i];
             }
             
-            int tmp = proceDure(progresses);
+            int tmp = qPoll(progresses);
             if(tmp > 0){
                 list.add(tmp);
             }
         }
-        
+    
         int[] answer = new int[list.size()];
-            
         for(int i=0; i < list.size(); i++){
             answer[i] = list.get(i);
         }
-        
         return answer;
     }
     
-    public int proceDure(int[] progresses){
+    public int qPoll(int[] progress){
         int cnt = 0;
         
-        while(!q.isEmpty() && progresses[q.peek()] >= 100){
-            q.poll();
+        while(!q.isEmpty() && progress[q.peek()] >= 100){
             cnt++;
+            q.poll();
         }
         return cnt;
     }
