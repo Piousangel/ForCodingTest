@@ -1,4 +1,5 @@
+-- 9/18 11/16
 select animal_id, name
 from animal_ins
-where intake_condition = 'sick'
-order by animal_id
+where intake_condition = "Sick"
+order by animal_id asc

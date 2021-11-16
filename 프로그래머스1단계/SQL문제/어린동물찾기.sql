@@ -1,4 +1,5 @@
+-- 9/18 11/16
 select animal_id, name
 from animal_ins
-where INTAKE_CONDITION != 'aged'
-order by animal_id asc
+where intake_condition != "Aged"
+order by animal_id
