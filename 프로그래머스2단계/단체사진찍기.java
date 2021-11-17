@@ -4,7 +4,7 @@ import java.util.*;
 //첫글자, 두 번째 글자 ~, 세번째글자, 네번째글자 =,<,> 3개중하나, 다섯번째글자 0~6
 // 순열 공부 해야하나요... R위치 정해지면 T위치는 몇개 후보중 하나이다.
 
-// 10 / 23 문제만 봄 내일 와서 하기~  11/17
+// 10 / 23 문제만 봄 내일 와서 하기~  11/17 2번 풀음
 
 class Solution {
     
@@ -28,10 +28,9 @@ class Solution {
     }
     
     public void dfs(int[] arr, boolean[] visited, int idx){
-        if(idx == 8){
-            if(chkLine(arr)){
-                answer++;
-            }
+        if(idx == arr.length){
+            boolean chk = chkLine(arr);
+            if(chk) answer++;
             return;
         }
         
@@ -55,20 +54,20 @@ class Solution {
             //int tmp = s.charAt(4)-'0' + 1; //떨어진범위
             int tmp = Character.getNumericValue(s.charAt(4)) + 1;  // 1,2,3,4,5,6,7
             
-            if(ch == '='){
+            if(ch == '='){     //0이면 절댓값이 1이 아니면 false
                 if(Math.abs(a-b) != tmp){
                     flag = false;
                     break;
                 }
             }
-            else if(ch == '>'){
+            else if(ch == '>'){  // 절댓값보다 작을 경우 tmp가 절댓값보다 크거나 같으면 false
                 if(Math.abs(a-b) <= tmp){
                     flag = false;
                     break;
                 }
             }
             else{
-                if(Math.abs(a-b) >= tmp){
+                if(Math.abs(a-b) >= tmp){  //절댓값보다 클 경우 tmp가 절댓값도바 작거나 같으면 false
                     flag = false;
                     break;
                 }
