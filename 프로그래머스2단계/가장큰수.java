@@ -38,3 +38,13 @@ class Solution {
         return str.toString();
     }
 }
+
+
+// Comparator com = new Comparator<String>(){
+//     @Override
+//     public int compare(String a, String b){
+//         return (b+a).compareTo(a+b);
+//     }
+// };
+
+// Collections.sort(arr, com);
