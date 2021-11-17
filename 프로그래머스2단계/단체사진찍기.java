@@ -48,12 +48,12 @@ class Solution {
     public boolean chkLine(int[] arr){
         boolean flag = true;
         
-        for(String s : str){
+        for(String s : str){       //n가지가 들어있음
             int a = arr[map.get(s.charAt(0))]; //첫 숫자
             int b = arr[map.get(s.charAt(2))]; //두 번째
             char ch = s.charAt(3); //연산자
             //int tmp = s.charAt(4)-'0' + 1; //떨어진범위
-            int tmp = Character.getNumericValue(s.charAt(4)) + 1;
+            int tmp = Character.getNumericValue(s.charAt(4)) + 1;  // 1,2,3,4,5,6,7
             
             if(ch == '='){
                 if(Math.abs(a-b) != tmp){
