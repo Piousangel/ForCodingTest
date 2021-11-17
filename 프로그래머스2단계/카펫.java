@@ -1,7 +1,7 @@
 //노란색 갈색 격자수는 기억함
 // 9/10  11/16 11/17
 
-class Solution {
+class 카펫 {
     public int[] solution(int brown, int yellow) {
         int[] answer = new int[2];
         int total = brown + yellow;

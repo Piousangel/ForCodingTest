@@ -142,3 +142,21 @@ public class Map정렬법 {
     }
 
 }
+
+    // 여기 정렬안했을때랑 먼가 다르게 찍힐 때도 있느데...
+// List<Character> keySetList = new ArrayList<>(map.keySet());
+//             Collections.sort(keySetList, (o1,o2) -> (map.get(o1).compareTo(map.get(o2))));
+        
+//         for(char c : keySetList){
+            
+//             System.out.print("key:" + c + " ");
+//             System.out.println("values : " + map.get(c));
+//         }
+        
+//         Iterator<Character> iter = map.keySet().iterator();
+        
+//         while(iter.hasNext()){
+//             char c = iter.next();
+//             System.out.print("keys :" + c + " ");
+//             System.out.println("values : " + map.get(c));
+//         }
