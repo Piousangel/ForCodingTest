@@ -4,31 +4,59 @@ import java.util.*;
 // 큐에 자식 노드를 너을께 아니라 1~n을 한번씩 넣어봐야하나... 가 아니라 완전 다른문제였구나;;;
 // 11/11 내일 다시
 // 1~n을 첫번째로 노드들을 이어서 그래프가 n이 나오면 되는건가..
-class 순위 {
+// 11/18 다시 아예 잘못함
+
+class Solution {
     public int solution(int n, int[][] results) {
         int answer = 0;
         
-        for(int i=0; i < results.length; i++){
-            for(int j=0; j < results[i].length; j++){
-                boolean flag = chkResult(results, i, j);
-                if(flag) answer++;
-            }
+        
+        
+        boolean[] visited = new boolean[n];
+        chkGraph(results);
+        
+        for(int i=0; i < ansList.size(); i++){
+            System.out.print(ansList.get(i) + " ");
         }
         
         return answer;
     }
+    ArrayList<Integer> ansList = new ArrayList<>();
     
-    public boolean chkResult(int[][] results, int m, int n){
-        boolean f = false;
+    public void chkGraph(int[][] results){
         Queue<Integer> q = new LinkedList<>();
         ArrayList<int[]> list = new ArrayList<>();
         
-        for(int[] arr : results){
-            list.add(arr);
+        for(int[] tmp : results){
+            list.add(tmp);
         }
         
-        return f;
-
+        ansList.add(list.get(0)[0]);
+        q.offer(list.get(0)[0]);  // 3
+        list.remove(list.get(0));
+        
+        while(!q.isEmpty()){
+            int node = q.poll();
+            
+            for(int i=0; i < list.size(); i++){
+                boolean flag = false;
+                int[] arr = list.get(i);
+                
+                if(node == arr[0]){
+                    q.offer(arr[1]);
+                    ansList.add(arr[1]);
+                    list.remove(arr);
+                    flag = true;
+                }
+                if(node == arr[1]){
+                    q.offer(arr[0]);
+                    ansList.add(arr[0]);
+                    list.remove(arr);
+                    flag = true;
+                }
+                if(flag) i--;
+            }
+            
+        }
     }
-    
 }
