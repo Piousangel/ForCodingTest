@@ -1,36 +1,93 @@
 import java.util.*;
 
+//한 기준점을 잡고 그것을 기준으로 왼쪽, 오른쪽 최솟값을 구해
+// 그리고 그 값이 기준값 보다 모두 작지 않으면 남을 수 있는 풍선임
+// 보니까 맨왼쪽 맨 오른쪽은 무조건 가능
+// 11/17 11/18 시간초과,..
+
 class 풍선터트리기 {
-    
-    //이게 최대 한번이라 타겟을 잡아도 번호가 작은것을 고를 수도 있고 안고를수도 있음..
-    //내일 다시..
-    int answer;
-    Arraylist<Integer> ansList = new ArrayList<>();
     public int solution(int[] a) {
-        answer = 0;
+        int answer = 0;
+        int minValue;
+        int minValue2;
+        int idx = 0;
         
-        ArrayList<Integer> list = new ArrayList<>();
+        if(a.length == 1) return 1;
         
-        for(int k : a){
-            list.add(k);
-        }
         for(int i=0; i < a.length; i++){
-             dfs(list, 1, 0, i)
+            idx = a[i];
+            
+            if(i == 0){
+                answer++;
+                continue;
+            }
+            else if(i == a.length-1){
+                answer++;
+                continue;
+            }
+            else{
+                minValue = a[0];
+                minValue2 = a[i+1];
+                for(int j=0; j < i; j++){
+                    minValue = Math.min(minValue, a[j]);
+                }
+                
+                for(int j=i+1; j < a.length; j++){
+                    minValue2 = Math.min(minValue2, a[j]);
+                }
+                
+                if(idx > minValue && idx > minValue2) continue;
+                else answer++;         
+            }       
         }
-       
         
         return answer;
     }
-    
-    public void dfs(ArrayList<Integer> list, int lessCnt, int cnt, int target){
-        if(list.size() == 1){
-            ansList.add(list.get(0));
-            return;
-        }
-        
-        // for(int i=0; i < list.size(); i++){
-            
-        // }
-        
-    }
 }
+
+// class 풍선터트리기 {
+//     public int solution(int[] a) {
+//         int answer = 0;
+//         int minValue;
+//         int minValue2;
+//         int idx = 0;
+        
+//         for(int i=0; i < a.length; i++){
+//             idx = a[i];
+            
+//             if(i == 0){
+//                 // minValue = a[1];
+//                 // for(int j=1; j < a.length; j++){
+//                 //     minValue = Math.min(minValue, a[j]);
+//                 // }
+//                 // if(idx < )
+//                 answer++;
+//                 continue;
+//             }
+//             else if(i == a.length-1){
+//                 // minValue = a[0];
+//                 // for(int j=0; j < a.length-1; j++){
+//                 //     minValue = Math.min(minValue, a[j]);
+//                 // }
+//                 answer++;
+//                 continue;
+//             }
+//             else{
+//                 minValue = a[0];
+//                 minValue2 = a[i+1];
+//                 for(int j=0; j < i; j++){
+//                     minValue = Math.min(minValue, a[j]);
+//                 }
+                
+//                 for(int j=i+1; j < a.length; j++){
+//                     minValue2 = Math.min(minValue2, a[j]);
+//                 }
+                
+//                 if(idx < minValue && idx < minValue2) continue;
+//                 else answer++;         
+//             }       
+//         }
+        
+//         return answer;
+//     }
+// }
