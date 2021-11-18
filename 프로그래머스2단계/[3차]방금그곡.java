@@ -6,133 +6,163 @@ import java.util.*;
 // 재생 시간도 같으면 먼저 입력된 제목 반환
 // 없으면 " (None) " 반환 1031
 // 열심히햇들,,.에러가나오네요... 11/15
-// 뒤짝에 else부분을 강화시켜줘야해
+// 뒤짝에 else부분을 강화시켜줘야해  11/19
 
 class Solution {
-    
-    public String changeStr(String s){
-        
-        s = s.replaceAll("C#", "L");
-        s = s.replaceAll("D#", "H");
-        s = s.replaceAll("F#", "I");
-        s = s.replaceAll("G#", "J");
-        s = s.replaceAll("A#", "K");
-        
-        return s;
-    }
-    
     public String solution(String m, String[] musicinfos) {
-        ArrayList<String> answer = new ArrayList<>();
-        
-        m = changeStr(m);
-        
-        //System.out.print("m :" + m);
+        String answer = "";
+        ArrayList<String> list = new ArrayList<>();
         
         for(int i=0; i < musicinfos.length; i++){
-            String[] str1 = musicinfos[i].split(",");
             
-            String[] s1 = str1[0].split(":");
-            String[] s2 = str1[1].split(":");
+            String[] str = musicinfos[i].split(",");
             
-            String sk = str1[3];
+            // for(String s : str){
+            //     System.out.println(s);
+            // }
             
-            sk = changeStr(sk);
-            
-            int min = Integer.parseInt(s2[1]) - Integer.parseInt(s1[1]);
-            int hour = Integer.parseInt(s2[0]) - Integer.parseInt(s1[0]);
+            int hour = Integer.parseInt(str[1].split(":")[0]) - Integer.parseInt(str[0].split(":")[0]);
+            int min = Integer.parseInt(str[1].split(":")[1]) - Integer.parseInt(str[0].split(":")[1]);
             int time = hour*60 + min;
+            // System.out.print("hour : " + hour+" ");
+            // System.out.println("min : " + min);
             
-            String song = "";
-            char[] ch = sk.toCharArray();
+            String musicStr = str[3];
+            musicStr = changeStr(musicStr);
+            //System.out.println(musicStr);
+            String melody = "";
             int idx = 0;
-            // System.out.print("time : " + time + " ");
-            for(int j = 0; j < time; j++){
-                idx = idx % ch.length;
-                song += String.valueOf(ch[idx]);
+            
+            for(int j=0; j < time; j++){         //멜로디 변환까지 완료
+                if(idx > musicStr.length()-1){
+                    idx = idx%musicStr.length();
+                }
+                melody += musicStr.charAt(idx);
                 idx++;
             }
             
-            if(song.length() >= m.length()){
-                if(song.contains(m)){
-                    answer.add(str1[2]);
-                }
-            }
+            m = changeStr(m);   //m 변환
+            // System.out.print("m : " + m + " ");  
+            //System.out.println(melody);
+            
+            // if(m.length() < melody.length()){    //만약 모두 포함되면 재생시간이 긴 음악 반환
+            //     if(melody.contains(m)){
+            //         //list.add(melody);
+            //         answer = str[2];
+            //     }
+            // }
+            
+            
+            
             // else{
-            //     if(m.contains(song)){
-            //         answer.add(str1[2]);
+            //     if(m.contains(melody)){
+            //         //list.add(melody);
+            //         answer = str[2];
             //     }
             // }
             
         }
         int len = 0;
-        String real = "";
-        if(answer.size() == 0){
-            real = "(None)";
+        
+        for(String s : list){
+            System.out.println(s);
         }
-        else{
-            for(int i=0; i < answer.size(); i++){
-                if(answer.get(i).length() > len){
-                    len = answer.get(i).length();
-                    real = answer.get(i);
-                }
-            }  
-        }
-        return real;
+        
+        // if(list.size() == 2){
+        //     for(int i=0; i < list.size(); i++){
+        //         if(list.get(i).length() > len){
+        //             len = list.get(i).length();
+        //             answer = list.get(i);
+        //         }
+        //     }
+        // }
+        
+        return answer;
+    }
+    
+    public String changeStr(String str){
+        
+        str = str.replaceAll("C#","H");
+        str = str.replaceAll("D#","I");
+        str = str.replaceAll("F#","J");
+        str = str.replaceAll("G#","K");
+        str = str.replaceAll("A#","L");
+        
+        return str;
     }
 }
 
-
 // class Solution {
     
-//     //String[] str = {"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"}; //12
+//     public String changeStr(String s){
+        
+//         s = s.replaceAll("C#", "L");
+//         s = s.replaceAll("D#", "H");
+//         s = s.replaceAll("F#", "I");
+//         s = s.replaceAll("G#", "J");
+//         s = s.replaceAll("A#", "K");
+        
+//         return s;
+//     }
     
 //     public String solution(String m, String[] musicinfos) {
-//         String answer = "";
-//         String[] strBox = new String[2];
-//         String[] title = new String[2];
+//         ArrayList<String> answer = new ArrayList<>();
+        
+//         m = changeStr(m);
+        
+//         //System.out.print("m :" + m);
+        
 //         for(int i=0; i < musicinfos.length; i++){
-//             String[] str = musicinfos[i].split(",");
+//             String[] str1 = musicinfos[i].split(",");
             
-//             int t1 = Integer.parseInt(str[0].split(":")[1]);
-//             int t2 = Integer.parseInt(str[1].split(":")[1]);
-//             title[i] = str[2];
-//             StringBuilder sb = new StringBuilder();
-//             for(int j=0; j < str[3].length(); j++){
-//                 sb.append(str[3].charAt(j));
+//             String[] s1 = str1[0].split(":");
+//             String[] s2 = str1[1].split(":");
+            
+//             String sk = str1[3];
+            
+//             sk = changeStr(sk);
+            
+//             int min = Integer.parseInt(s2[1]) - Integer.parseInt(s1[1]);
+//             int hour = Integer.parseInt(s2[0]) - Integer.parseInt(s1[0]);
+//             int time = hour*60 + min;
+            
+//             String song = "";
+//             char[] ch = sk.toCharArray();
+//             int idx = 0;
+//             // System.out.print("time : " + time + " ");
+//             for(int j = 0; j < time; j++){
+//                 idx = idx % ch.length;
+//                 song += String.valueOf(ch[idx]);
+//                 idx++;
 //             }
-//             int time = t2 - t1;
-//             if(sb.length() > time){
-//                 sb.substring(time ,sb.length());
-//             }
-//             else{
-//                 int k = time / sb.length();
-//                 int n = time % sb.length();
-//                 for(int j=1; j < k; j++){
-//                     sb.append(sb);
+            
+//             if(song.length() >= m.length()){
+//                 if(song.contains(m)){
+//                     answer.add(str1[2]);
 //                 }
-//                 sb.append(sb.substring(0,n));
 //             }
-//             //System.out.println(sb);
-//             strBox[i] = sb.toString();
+//             // else{
+//             //     if(m.contains(song)){
+//             //         answer.add(str1[2]);
+//             //     }
+//             // }
+            
 //         }
-        
-//         if(strBox[0].contains(m) && !strBox[1].contains(m)){
-//             answer = title[0];
+//         int len = 0;
+//         String real = "";
+//         if(answer.size() == 0){
+//             real = "(None)";
 //         }
-//         else if(!strBox[0].contains(m) && strBox[1].contains(m)){
-//             answer = title[1];
+//         else{
+//             for(int i=0; i < answer.size(); i++){
+//                 if(answer.get(i).length() > len){
+//                     len = answer.get(i).length();
+//                     real = answer.get(i);
+//                 }
+//             }  
 //         }
-//         else if(strBox[0].contains(m) && strBox[1].contains(m)){
-//             if(strBox[0].length() > strBox[1].length()){
-//                 answer = title[0];
-//             }
-//             else if(strBox[0].length() < strBox[1].length()){
-//                 answer = title[1];
-//             }
-//             else answer = title[0];
-//         }
-//         else answer = "(None)";
-        
-//         return answer;
+//         return real;
 //     }
 // }
+
+
