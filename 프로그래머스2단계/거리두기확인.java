@@ -4,9 +4,9 @@ import java.util.*;
 // p와 p 사이에 파티션X가 있고 O가 있으면 안댐
 // 5X5로 이루어져있음
 // 제대로 앉아있으면 1 아니면 0
-// 11/11 다시.. 11/18 흠.. 거의..
+// 11/11 다시.. 11/18 흠.. 거의.. 11/19
 
-class 거리두기확인 {
+class Solution {
     
     int[] dx = {1,0,-1,0};
     int[] dy = {0,1,0,-1};
@@ -27,11 +27,10 @@ class 거리두기확인 {
     public int[] solution(String[][] places) {
         int[] answer = new int[places.length];
         char[][] ch = new char[5][5];
-        int answerIdx = 0;
-        for(int i=0; i < places.length; i++){  // 0 1 2 3 4 5
-            
-            boolean flag = false;
-            
+        int idx = 0;
+        
+        loop : for(int i=0; i < places.length; i++){  // 0 1 2 3 4 5
+                 
             for(int j=0; j < places[i].length; j++){
                 char c[] = places[i][j].toCharArray();
                 
@@ -39,6 +38,7 @@ class 거리두기확인 {
                     ch[j][k] = c[k];
                 }
             }
+            
             boolean[][] visited;
             for(int j=0; j < ch.length; j++){
                 for(int k=0; k < ch[j].length; k++){
@@ -46,13 +46,13 @@ class 거리두기확인 {
                     if(ch[j][k] == 'P'){
                         visited[j][k] = true;
                         if(!bfs(ch, visited, j, k)){
-                            answer[answerIdx++] = 0;
-                            continue;
+                            answer[idx++] = 0;
+                            continue loop;
                         }
                     }
-                }
+                }    
             }
-            answer[answerIdx++] = 1;
+            answer[idx++] = 1;
         }
         return answer;
     }
@@ -84,7 +84,7 @@ class 거리두기확인 {
                 }
             }
         }
-        return false;      
+        return true;      
     }
 }
 
