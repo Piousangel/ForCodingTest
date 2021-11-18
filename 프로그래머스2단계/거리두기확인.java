@@ -6,7 +6,7 @@ import java.util.*;
 // 제대로 앉아있으면 1 아니면 0
 // 11/11 다시.. 11/18 흠.. 거의.. 11/19
 
-class Solution {
+class 거리두기확인 {
     
     int[] dx = {1,0,-1,0};
     int[] dy = {0,1,0,-1};
@@ -48,7 +48,7 @@ class Solution {
                         if(!bfs(ch, visited, j, k)){
                             answer[idx] = 0;
                             idx++;
-                            continue loop;
+                            continue loop; //저짝루프 돌려야하므러
                         }
                     }
                 }    
@@ -69,9 +69,9 @@ class Solution {
             Node node = q.poll();
             
             if(node.cnt != 0 && ch[node.x][node.y] == 'P'){
-                if(node.cnt <= 2) return false;
+                if(node.cnt <= 2) return false;  //실패
             }
-            if(node.cnt > 2) return true;
+            if(node.cnt > 2) return true;  //실패
             
             for(int i=0; i < 4; i++){
                 

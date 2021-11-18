@@ -1,8 +1,8 @@
-SELECT animal_ins.name as NAME, animal_ins.datetime
-from animal_ins
-left join animal_outs on animal_ins.animal_id = animal_outs.animal_id
-where animal_outs.animal_id is null
-order by animal_ins.datetime
+SELECT A.name as NAME, A.datetime
+from animal_ins as A
+left join animal_outs as B on A.animal_id = B.animal_id
+where B.animal_id is null
+order by A.datetime
 limit 3
 
---left join = 교집합
+--left join = 교집합 11/19

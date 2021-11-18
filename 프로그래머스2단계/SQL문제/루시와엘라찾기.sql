@@ -1,7 +1,8 @@
 select animal_id, name, sex_upon_intake
 from animal_ins
 where NAME in ('Lucy', 'Ella', 'Pickle', 'Rogan', 'Sabrina', 'Mitty')
--- 9/25 11/16
+-- 9/25 11/16 11/19
+--where name in 
 -- 밑에 코드는 안대요 where like 쓰면 String 포함하고 있는 모든 이름을 뽑아내서 안되는건가요?
 
 -- select animal_id, name, sex_upon_intake
