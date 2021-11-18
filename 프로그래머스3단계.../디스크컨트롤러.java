@@ -5,8 +5,9 @@ import java.util.*;
 // 대기할때 0 1 2초 이런식으로 감
 // 평균시간을 줄이는 최소시간 리턴
 // 디스크길이? 가 짧은 순서대로 나열
+// 내일 다시보기
 
-class Solution {
+class 디스크컨트롤러 {
     public int solution(int[][] jobs) {
         int[] answer = new int[jobs.length];
         
