@@ -46,13 +46,15 @@ class Solution {
                     if(ch[j][k] == 'P'){
                         visited[j][k] = true;
                         if(!bfs(ch, visited, j, k)){
-                            answer[idx++] = 0;
+                            answer[idx] = 0;
+                            idx++;
                             continue loop;
                         }
                     }
                 }    
             }
-            answer[idx++] = 1;
+            answer[idx] = 1;
+            idx++;
         }
         return answer;
     }
@@ -87,6 +89,8 @@ class Solution {
         return true;      
     }
 }
+
+
 
 // class Solution {
     
