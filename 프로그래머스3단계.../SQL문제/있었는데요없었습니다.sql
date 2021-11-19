@@ -4,3 +4,10 @@ where animal_ins.animal_id = animal_outs.animal_id
         and animal_ins.datetime >= animal_outs.datetime
 
 order by animal_ins.datetime
+
+-- 11/19
+-- select A.animal_id, A.name
+-- from animal_ins as A
+-- left join animal_outs as B on A.animal_id = B.animal_id
+-- where A.datetime > B.datetime
+-- order by A.datetime
