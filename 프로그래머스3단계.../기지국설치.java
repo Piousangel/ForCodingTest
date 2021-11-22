@@ -3,7 +3,7 @@ import java.util.*;
 // 문제 보면 w만큼 boolean 이나 1로 바꿔서 chk해주고
 // w만큼 영향력 행사해야하는데... 세트로 묶어야하나..
 // 다 방문하면 그 횟수가 가장 작은 값 리턴하면 댐
-// 다...시... 11/15
+// 다...시... 11/15 1120
 
 class Solution {
     public int solution(int n, int[] stations, int w) {
