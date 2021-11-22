@@ -7,10 +7,17 @@
 -- order by HOUR asc
 
 
--- 이건 처음 보는 거라... 변수 선언하는 것은 반복적으로 봐야할듯... 11/19
+-- 이건 처음 보는 거라... 변수 선언하는 것은 반복적으로 봐야할듯... 11/19 X3 11/22
 SET @hour := -1; -- 변수 선언
 
 SELECT (@hour := @hour + 1) as HOUR,
 (SELECT COUNT(*) FROM ANIMAL_OUTS WHERE HOUR(DATETIME) = @hour) as COUNT
 FROM ANIMAL_OUTS
 WHERE @hour < 23
+
+-- set @hour := -1;
+
+-- select (@hour := @hour+1) as HOUR,
+-- (select count(*) from animal_outs where hour(datetime) = @hour) as COUNT
+-- from animal_outs
+-- where @hour < 23

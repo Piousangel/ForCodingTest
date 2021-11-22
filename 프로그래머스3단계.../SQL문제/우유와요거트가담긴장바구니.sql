@@ -1,4 +1,4 @@
--- inner join 11/16 11/19
+-- inner join 11/16 11/19 11/22
 select distinct A.cart_id
 from cart_products as A, cart_products as B
 where A.cart_id = B.cart_id
