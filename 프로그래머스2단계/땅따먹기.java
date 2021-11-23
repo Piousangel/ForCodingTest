@@ -1,6 +1,6 @@
 import java.util.*;
 
-//9/29 다시 11/14
+//9/29 다시 11/14 11/23
 
 class Solution {
     int solution(int[][] land) {
@@ -9,9 +9,9 @@ class Solution {
         int[] sum = new int[4];
         int mid = 0;
         int location = 0;
-        for(int n=0; n < sum.length; n++){
+        
+        for(int n=0; n < sum.length; n++){  //0,1,2,3
             int index = n;
-            
             for(int i=0; i < land.length; i++){
                 sum[n] = land[0][n];
                 for(int j=0; j < land[0].length; j++){
@@ -30,7 +30,6 @@ class Solution {
       
         Arrays.sort(sum);
         answer = sum[sum.length-1];
-
         return answer;
     }
 }

@@ -1,8 +1,6 @@
 import java.util.*;
 
-// 10/26  11/7 11/10 11/15
-
-import java.util.*;
+// 10/26  11/7 11/10 11/15 11/23
 
 class Solution {
     public int solution(int n, int[][] wires) {
@@ -56,8 +54,9 @@ class Solution {
         }
         return cnt;
     }
-    
 }
+
+
 
 
 
