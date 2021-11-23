@@ -1,9 +1,11 @@
 import java.util.*;
 
+//11/23 저녁먹고다시
+
 class Solution {
     
-    char[] alpha = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O'
-                    ,'P','Q','R','S','T','U','V','W','X','Y','Z'};
+    String[] alpha = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
+    ,"P","Q","R","S","T","U","V","W","X","Y","Z"};
     
     ArrayList<Integer> list;
     Map <String, Integer> map;
@@ -14,7 +16,7 @@ class Solution {
         index = 1;
         
         for(int i=0; i < alpha.length; i++){
-            map.put(Character.toString(alpha[i]),index++);
+            map.put((alpha[i]),index++);
         }
             
         for(int i=0; i < msg.length()-2; i++){        

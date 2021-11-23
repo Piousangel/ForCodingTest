@@ -1,50 +1,77 @@
 import java.util.*;
 
-// 11/5 다른풀이로도 풀음
+// 10/11 11/5 다른풀이로도 풀음 11/23 무려 3가지 풀이가 여기!
 
-class Solution {
+class 스킬트리 {
     public int solution(String skill, String[] skill_trees) {
         int answer = 0;
         
-        
-        for(int i=0; i < skill_trees.length; i++){
-            Stack<Character> st = new Stack<>();
-            int cnt = 0;
-            String str = skill_trees[i];
-            
-            for(int j=0; j < str.length(); j++){
-                boolean chk = false;
-                
-                for(char ch : skill.toCharArray()){
-                    if(str.charAt(j) == ch) chk = true;
+        for(String str : skill_trees){
+            int idx = 0;
+            ArrayList<Character> list = new ArrayList<>();
+            for(int i=0; i < str.length(); i++){
+                boolean flag = false;
+                for(char a : skill.toCharArray()){
+                    if(str.charAt(i) == a) flag = true;
                 }
-                
-                if(!chk){
-                    st.push(str.charAt(j));
+                if(!flag){
+                    list.add(str.charAt(i));
                     continue;
                 }
                 else{
-                    if(str.charAt(j) == skill.charAt(cnt)){
-                        st.push(str.charAt(j));
-                        if(cnt < skill.length()-1) cnt++;
-                    }  
-                }
+                    if(str.charAt(i) == skill.charAt(idx)){
+                        list.add(str.charAt(i));
+                        idx++;
+                    }              
+                } 
             }
-            
-            // while(!st.isEmpty()){
-            //     System.out.print(st.pop()+" ");
-            // }
-            // System.out.println();
-            
-            if(st.size() == str.length()) answer++;
+            if(list.size() == str.length()) answer++;
         }
         
         return answer;
     }
 }
 
-
-
+// class Solution {
+//     public int solution(String skill, String[] skill_trees) {
+//         int answer = 0;
+        
+        
+//         for(int i=0; i < skill_trees.length; i++){
+//             Stack<Character> st = new Stack<>();
+//             int cnt = 0;
+//             String str = skill_trees[i];
+            
+//             for(int j=0; j < str.length(); j++){
+//                 boolean chk = false;
+                
+//                 for(char ch : skill.toCharArray()){
+//                     if(str.charAt(j) == ch) chk = true;
+//                 }
+                
+//                 if(!chk){
+//                     st.push(str.charAt(j));
+//                     continue;
+//                 }
+//                 else{
+//                     if(str.charAt(j) == skill.charAt(cnt)){
+//                         st.push(str.charAt(j));
+//                         if(cnt < skill.length()-1) cnt++;
+//                     }  
+//                 }
+//             }
+            
+//             // while(!st.isEmpty()){
+//             //     System.out.print(st.pop()+" ");
+//             // }
+//             // System.out.println();
+            
+//             if(st.size() == str.length()) answer++;
+//         }
+        
+//         return answer;
+//     }
+// }
 
 
 //10/11      와... 풀었따!
