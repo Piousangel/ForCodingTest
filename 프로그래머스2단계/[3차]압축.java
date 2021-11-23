@@ -1,6 +1,6 @@
 import java.util.*;
 
-//11/23 저녁먹고다시 11/23
+//11/23 저녁먹고다시 11/23 X3번
 
 class Solution {
     
@@ -37,7 +37,7 @@ class Solution {
 				if(map.containsKey(nextKey)) { 
 					index++;
 				} else { 
-					key = msg.substring(i, index);
+					key = msg.substring(i, index);  
 					list.add(map.get(key)); 
 					map.put(nextKey, map.size()+1); 
 					i = index-1;
@@ -106,4 +106,51 @@ class Solution {
 //     }
     
 
+// }
+
+// class Solution {
+    
+//       String[] alpha = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"
+//                         ,"P","Q","R","S","T","U","V","W","X","Y","Z"};
+    
+//     public int[] solution(String msg) {
+        
+//         ArrayList<Integer> list = new ArrayList<>();
+//         Map<String,Integer> map = new HashMap<>();
+        
+//         for(int i=0; i < alpha.length; i++){
+//             map.put(alpha[i], i+1);
+//         }
+        
+//         for(int i=0; i < msg.length(); i++){
+//             String key = Character.toString(msg.charAt(i));
+//             int idx = i+1;
+            
+//             while(idx <= msg.length()){
+//                 if(idx == msg.length()){
+//                     list.add(map.get(msg.substring(i, msg.length())));
+//                     i = idx;
+//                     break;
+//                 }
+                
+//                 String s = msg.substring(i, idx+1);
+//                 if(map.containsKey(s)){
+//                     idx++;
+//                 }
+//                 else{
+//                     key = msg.substring(i, idx);
+//                     map.put(s, map.size()+1);
+//                     list.add(map.get(key));
+//                     i = idx-1;
+//                     break;
+//                 }
+//             }
+//         }
+        
+//         int[] answer = new int[list.size()];
+//         for(int i=0; i < list.size(); i++){
+//             answer[i] = list.get(i);
+//         }   
+//         return answer;
+//     }
 // }

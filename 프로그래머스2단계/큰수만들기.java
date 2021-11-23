@@ -51,17 +51,45 @@ class 큰수만들기 {
 // import java.util.*;
 
 // class Solution {
-//     public String solution(int[] numbers) {
+//     int tmp = 0;
+//     public String solution(String number, int k) {
 //         String answer = "";
-//         char[] ch = new char[numbers.length];
-//         for(int i=0; i < numbers.length; i++){
-//             ch[i] = Integer.toString(numbers[i]).charAt(0);
+        
+//         char[] ch = number.toCharArray();
+//         boolean[] visited = new boolean[ch.length];
+//         char[] arr = new char[ch.length-k];
+        
+//         //ArrayList<Character> list = new ArrayList<>();
+        
+//         dfs(ch, arr, visited, ch.length, ch.length-k, 0);
+        
+//         answer = Integer.toString(tmp);
+        
+//         return answer;
+//     }
+    
+//     public void dfs(char[] ch, char[] arr, boolean[] visited, int n, int r, int idx){
+        
+//         if(r == 0){
+//             print(arr);
+//             return;
 //         }
         
 //         for(int i=0; i < ch.length; i++){
-//             System.out.println(ch[i]);
+//             if(visited[i] != true){
+//                 visited[i] = true;
+//                 arr[idx] = ch[i];
+//                 dfs(ch, arr, visited, n, r-1, idx+1);
+//                 visited[i] = false;
+//             }
 //         }
-        
-//         return answer;
+//     }
+    
+//     public void print(char[] arr){
+//         String num = "";
+//         for(int i=0; i < arr.length; i++){
+//             num += Character.toString(arr[i]);
+//         }
+//         tmp = Math.max(tmp, Integer.parseInt(num));
 //     }
 // }

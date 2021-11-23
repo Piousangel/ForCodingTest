@@ -2,7 +2,7 @@ import java.util.*;
 
 // 10/04 11/23
 
-class Solution {
+class 카카오프렌즈컬러링북 {
     
     int[] dx = {0,0,1,-1};
     int[] dy = {1,-1,0,0};

@@ -1,8 +1,8 @@
 import java.util.*;
 
-//11/4
+//11/4 11/24
 
-class Solution
+class 최솟값만들기
 {
     public int solution(int []A, int []B)
     {
