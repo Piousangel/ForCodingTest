@@ -1,10 +1,9 @@
 import java.util.*;
 
-// 10/26
+// 10/26 11/24
 
 class Solution {
     public int solution(String str1, String str2) {
-        int answer = 0;
         
         str1 = str1.toLowerCase();
         str2 = str2.toLowerCase();

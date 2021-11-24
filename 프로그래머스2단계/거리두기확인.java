@@ -4,7 +4,7 @@ import java.util.*;
 // p와 p 사이에 파티션X가 있고 O가 있으면 안댐
 // 5X5로 이루어져있음
 // 제대로 앉아있으면 1 아니면 0
-// 11/11 다시.. 11/18 흠.. 거의.. 11/19
+// 11/11 다시.. 11/18 흠.. 거의.. 11/19 11/24
 
 class 거리두기확인 {
     
@@ -44,7 +44,7 @@ class 거리두기확인 {
                 for(int k=0; k < ch[j].length; k++){
                     visited = new boolean[5][5];
                     if(ch[j][k] == 'P'){
-                        visited[j][k] = true;
+                        
                         if(!bfs(ch, visited, j, k)){
                             answer[idx] = 0;
                             idx++;
@@ -61,9 +61,9 @@ class 거리두기확인 {
     
     public boolean bfs(char[][] ch, boolean[][] visited, int m, int n){
         q = new LinkedList<>();
-        
         q.offer(new Node(m,n,0));
-        
+        visited[m][n] = true;
+
         while(!q.isEmpty()){
             
             Node node = q.poll();
@@ -71,7 +71,7 @@ class 거리두기확인 {
             if(node.cnt != 0 && ch[node.x][node.y] == 'P'){
                 if(node.cnt <= 2) return false;  //실패
             }
-            if(node.cnt > 2) return true;  //실패
+            if(node.cnt > 2) return true; 
             
             for(int i=0; i < 4; i++){
                 
