@@ -3,7 +3,7 @@ import java.util.*;
 //BFS를 이용한 풀이 
 //DFS로도 풀어바... 재귀사용 9/30
 
-class Solution {
+class 타겟넘버BFS {
     
     public class Pair{
         int cur;

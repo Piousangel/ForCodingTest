@@ -1,6 +1,6 @@
 import java.util.*;
 
-//9/28
+//9/28 12/2
 
 class 행렬의곱셈 {
     public int[][] solution(int[][] arr1, int[][] arr2) {

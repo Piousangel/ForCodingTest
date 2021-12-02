@@ -1,10 +1,10 @@
 import java.util.*;
 
-//오랜만에 하니까 밑에 코드처럼 짜네요 -> 시간초과떠서 다시 해결 11/4
+//오랜만에 하니까 밑에 코드처럼 짜네요 -> 시간초과떠서 다시 해결 11/4 12/2
 
-class Solution {
+class JadenCase문자열 {
     public StringBuilder solution(String s) {
-        String answer = "";
+  
         StringBuilder sb = new StringBuilder();
         int cnt = 0;
         for(int i=0; i < s.length(); i++){
