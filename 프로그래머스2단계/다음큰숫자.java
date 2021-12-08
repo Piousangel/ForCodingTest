@@ -1,8 +1,8 @@
 import java.util.*;
 
-//11/4
+//11/4 12/8
 
-class Solution {
+class 다음큰숫자 {
     public int solution(int n) {
         int answer = 0;
         int cnt = 0;

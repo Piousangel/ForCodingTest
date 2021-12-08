@@ -1,8 +1,8 @@
 import java.util.*;
 
-//9/28
+//9/28 12/8
 
-class Solution {
+class 다리를지나는트럭 {
     Queue<Integer> q;
     public int solution(int bridge_length, int weight, int[] truck_weights) {
         q = new LinkedList<>();

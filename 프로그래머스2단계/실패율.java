@@ -8,6 +8,7 @@ class Solution {
      public class Rank{
             int prior;
             double name;
+            
             public Rank(int prior, double name){
                 this.prior = prior;
                 this.name = name;
