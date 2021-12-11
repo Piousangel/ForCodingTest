@@ -1,5 +1,5 @@
 -- 11/16 7~19까지밖에 안찍힘 -> 0~23으로 늘리는 작업해야함 다시..
--- 11/19
+-- 11/19 12/10
 -- 쿼리문에서 로컬 변수를 활용하는 문제
 -- select date_format(datetime, '%H') as HOUR, count(animal_type) as COUNT
 -- from animal_outs
