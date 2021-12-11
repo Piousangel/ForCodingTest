@@ -1,8 +1,8 @@
 import java.util.*;
 
-//11/4
+//11/4 12/11
 
-class Solution {
+class 방문길이 {
     
     int[] dx = {0,0,1,-1};
     int[] dy = {1,-1,0,0};
