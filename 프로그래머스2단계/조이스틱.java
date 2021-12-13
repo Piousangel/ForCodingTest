@@ -6,11 +6,11 @@ import java.util.*;
 // 커서를 오른쪽으로 가는게 좋을지 왼쪽이 좋은지 정해야하네
 // 탐욕법은 현재에 최선을 다하는 것
 // 결론적으로 최적의 결과는 낼 수 없지만 욕심이 그득하여 현재만 최선을 다하면댐
-//다시........ㅈㅅ봄;; 11/17
+//다시........ㅈㅅ봄;; 11/17 12/13   그리디도 반복적으로하면...
 
 import java.util.*;
 
-class Solution {
+class 조이스틱 {
     public int solution(String name) {
         int answer = 0;
         

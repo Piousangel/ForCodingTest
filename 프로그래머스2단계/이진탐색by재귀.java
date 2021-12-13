@@ -1,7 +1,7 @@
 import java.util.*;
 
-//재귀돌릴꺼임 이진탐!
-class Solution {
+//재귀돌릴꺼임 이진탐! 12/13
+class 이진탐색by재귀 {
     public int solution(int[] sortedArray, int findValue) {
         
         int answer = binarySearch(sortedArray, findValue, 0, sortedArray.length-1); //찾는수 index 0, 끝

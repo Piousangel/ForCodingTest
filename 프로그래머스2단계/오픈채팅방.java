@@ -6,9 +6,9 @@ import java.util.*;
 // 나갓다 변경후 다시들어오면 최종 바뀐 것으로 다 교체
 // enter leave change
 
-//당연히 메모리 초과할 줄 알았는데 안하네요;; 진짜 개 막장코드 ㅎ;
+//당연히 메모리 초과할 줄 알았는데 안하네요;; 진짜 개 막장코드 ㅎ; 12/13
 
-class Solution {
+class 오픈채팅방 {
     public String[] solution(String[] record) {
         Map<String, String> map = new HashMap<>();
         int cnt = 0;
