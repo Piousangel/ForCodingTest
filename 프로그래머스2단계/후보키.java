@@ -1,8 +1,8 @@
 import java.util.*;
 
-//10/03
+//10/03 12/13
 
-class Solution {
+class 후보키 {
 
     public static ArrayList<String> list = new ArrayList<>();
     public static ArrayList<List<String>> candidateKeys = new ArrayList<>();

@@ -1,6 +1,6 @@
 import java.util.*;
 
-// 10/04  10/05 수정 후 성공 17
+// 10/04  10/05 수정 후 성공 17 12/13
 
 class Solution {
     public int solution(int[] citations) {
@@ -10,7 +10,7 @@ class Solution {
         int cnt = 0;
         int lessCnt = 0;
         int len = citations[citations.length-1];
-        System.out.println("len :" + len);
+        //System.out.println("len :" + len);
         for(int i=0; i <= len; i++){
             
             for(int j=0; j < citations.length; j++){

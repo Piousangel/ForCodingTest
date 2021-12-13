@@ -5,8 +5,8 @@ import java.util.*;
 //(x1,y1,x2,y2)
 //직사각형 크기 = x2-x1+1 * y2-y1+1
 //도는 숫자 -> x1-1~ x2-1 
-// 계쏙 틀려요  10/24
-class Solution {
+// 계쏙 틀려요  10/24  다시 12/13
+class 행렬테두리회전 {
     public int[] solution(int rows, int columns, int[][] queries) {
         int[] answer = new int[queries.length];
         
