@@ -1,8 +1,8 @@
 import java.util.*;
 
-//11/4
+//11/4 12/14
 
-class Solution {
+class 숫자의표현 {
     public int solution(int n) {
         int answer = 0;
         

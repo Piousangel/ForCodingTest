@@ -1,8 +1,8 @@
 import java.util.*;
 
-//9/29 다시 11/14 11/23
+//9/29 다시 11/14 11/23 12/14
 
-class Solution {
+class 땅따먹기 {
     int solution(int[][] land) {
         int answer = 0;
         int max = 0;

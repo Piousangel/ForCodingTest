@@ -2,8 +2,8 @@ import java.util.*;
 
 //늘려나갈 글자수 -> 다음 글자수가 같은지 비교
 //결과값       10/10  10/22 q;lwhflqwel ㅡ.ㅡ 안풀러ㅕㅓㅕㅕㅕ
-// 11/15 다시..
-class Solution {
+// 11/15 다시..   12/14
+class 문자열압축 {
     public int solution(String s) {
         int answer = 100001;
         
