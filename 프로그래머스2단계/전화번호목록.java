@@ -1,7 +1,7 @@
 import java.util.*;
 
 //import java.util.*; 11/9
-//startsWith , endsWith 까먹지말기
+//startsWith , endsWith 까먹지말기 12/15
 
 class 전화번호목록 {
     public boolean solution(String[] phone_book) {
@@ -9,7 +9,7 @@ class 전화번호목록 {
         Arrays.sort(phone_book);
         
         for(int i=0; i < phone_book.length-1; i++){
-            if(phone_book[i+1].startsWith(phone_book[i])){
+            if(phone_book[i+1].startsWith(phone_book[i])){   //startsWith
                 answer = false;
             }
         }
