@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 //String 쪼개서 char배열에 담아 -> 총~ 2,3,4,5 개 중 가장 많이 나온거 chk?
-// 와..... 3시간만에 풀었네여.. 11/11 12/8
+// 와..... 3시간만에 풀었네여.. 11/11 12/8 12/16
 
 class Solution {
     public String[] solution(String[] orders, int[] course) {

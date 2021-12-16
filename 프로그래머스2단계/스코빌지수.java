@@ -1,7 +1,7 @@
 import java.util.*;
 
 //10/03 PriorityQueue 
-//10 26;  11/12 11/14 Heap
+//10 26;  11/12 11/14 Heap 12.16
 class 스코빌지수 {
     
     Queue<Integer> q;

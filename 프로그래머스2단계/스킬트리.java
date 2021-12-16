@@ -1,6 +1,6 @@
 import java.util.*;
 
-// 10/11 11/5 다른풀이로도 풀음 11/23 무려 3가지 풀이가 여기!
+// 10/11 11/5 다른풀이로도 풀음 11/23 무려 3가지 풀이가 여기! 12/16
 
 class 스킬트리 {
     public int solution(String skill, String[] skill_trees) {

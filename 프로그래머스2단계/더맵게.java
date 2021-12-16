@@ -8,7 +8,7 @@ class 더맵게 {
     
     //8/22 4:35 이러면 81점 나옴 -> 실패라는뜻..
     //마지막 제한사항을 고려안해서 그랬군요
-    //11/15
+    //11/15 12/16
     public int solution(int[] scoville, int K) {
         PriorityQueue<Integer> q = new PriorityQueue<>();
         int answer = 0;
