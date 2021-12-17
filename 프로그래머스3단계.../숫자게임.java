@@ -1,7 +1,7 @@
 import java.util.*;
 
 //10/28 효용성에서 실패했다.. 이유가 멀까
-// 11/5
+// 11/5 12/17
 
 class Solution {
     public int solution(int[] A, int[] B) {
