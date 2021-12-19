@@ -8,7 +8,7 @@ import java.util.*;
 // 11/11  저 머시기냐 저거 정규식표현? 저거만 하면 됨 11/14
 
 // s = s.replaceAll("[\\{,\\}]", " ");       \\ 이거랑  [ ]+ 기억 숫자1개이상 알파벳 1개 이상일때 [ ] 플러스 붙여줌
-// String[] sa = s.split("[ ]+");
+// String[] sa = s.split("[ ]+"); 12/19
 
 class Solution {
     public ArrayList<Integer> solution(String s) {
