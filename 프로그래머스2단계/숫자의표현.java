@@ -1,6 +1,6 @@
 import java.util.*;
 
-//11/4 12/14
+//11/4 12/14 12/31
 
 class 숫자의표현 {
     public int solution(int n) {
