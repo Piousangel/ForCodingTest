@@ -9,7 +9,7 @@ from animal_ins
 group by animal_type
 order by animal_type asc
 
---9/26 11/16 11/19
+--9/26 11/16 11/19 1/10
 
 -- select animal_type, count(animal_type) as count
 -- from animal_ins
