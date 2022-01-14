@@ -1,6 +1,6 @@
 import java.util.*;
 
-// 10/04 10/10 11/15
+// 10/04 10/10 11/15 1/14
 
 class 게임맵최단거리BFS {
     
@@ -58,3 +58,67 @@ class 게임맵최단거리BFS {
         return -1;
     }
 }
+
+//1/14
+// class Solution {
+    
+//     int[] dx = {0,0,-1,1};
+//     int[] dy = {1,-1,0,0};
+    
+//     public class Info{
+//         int x;
+//         int y;
+//         int cost;
+        
+//         public Info(int x, int y, int cost){
+//             this.x = x;
+//             this.y = y;
+//             this.cost = cost;
+//         }
+//     }
+    
+//     //Queue<Info> q;
+//     boolean[][] visited;
+//     public int solution(int[][] maps) {
+//         int answer = 0;
+//         int row = maps.length;
+//         int col = maps[0].length;
+        
+//         visited = new boolean[row][col];
+        
+//         return bfs(maps, visited, row, col, 0, 0);
+        
+//         //return answer;
+//     }
+    
+//     public int bfs(int[][] maps, boolean[][] visited, int row, int col, int x, int y){
+        
+//         Queue<Info> q = new LinkedList<>();
+//         visited[x][y] = true;
+//         q.offer(new Info(x,y,1));
+        
+//         while(!q.isEmpty()){
+            
+//             Info info = q.poll();
+            
+//             if(info.x == row-1 && info.y == col-1){
+//                 return info.cost;
+//             }
+            
+//             for(int i=0; i < 4; i++){
+//                 int nx = info.x + dx[i];
+//                 int ny = info.y + dy[i];
+                
+//                 if(0 <= nx && nx < row && 0 <= ny && ny < col){
+//                     if(visited[nx][ny] != true && maps[nx][ny] == 1){
+//                         visited[nx][ny] = true;
+//                         q.offer(new Info(nx, ny, info.cost+1));
+//                     }
+//                 }
+//             }
+            
+//         }
+//         return -1;
+        
+//     }
+// }
