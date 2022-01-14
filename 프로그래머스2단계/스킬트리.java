@@ -1,6 +1,6 @@
 import java.util.*;
 
-// 10/11 11/5 다른풀이로도 풀음 11/23 무려 3가지 풀이가 여기! 12/16
+// 10/11 11/5 다른풀이로도 풀음 11/23 무려 4가지 풀이가 여기! 12/16 1/14
 
 class 스킬트리 {
     public int solution(String skill, String[] skill_trees) {
@@ -31,6 +31,39 @@ class 스킬트리 {
         return answer;
     }
 }
+
+// class Solution {
+//     public int solution(String skill, String[] skill_trees) {
+//         int answer = 0;
+//         char[] skill_box = skill.toCharArray();
+        
+        
+//         for(int i=0; i < skill_trees.length; i++){
+//             int idx = 0;
+//             boolean flag = true;
+//             char[] ch = skill_trees[i].toCharArray();
+            
+//             for(int j=0; j < ch.length; j++){
+//                 if(idx < skill.length()){
+//                     if(ch[j] == skill_box[idx]) idx++;
+//                     else{
+//                         for(char c : skill_box){
+//                             if(ch[j] != c) continue;
+//                             else flag = false;
+//                         }
+//                     }
+//                 }
+               
+//                 if(!flag) break;
+//             }
+//             if(flag) answer++;
+            
+//         }
+        
+//         return answer;
+//     }
+// }
+
 
 // class Solution {
 //     public int solution(String skill, String[] skill_trees) {
