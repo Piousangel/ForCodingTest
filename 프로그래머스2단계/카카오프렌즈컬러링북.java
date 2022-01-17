@@ -1,6 +1,6 @@
 import java.util.*;
 
-// 10/04 11/23 11/24
+// 10/04 11/23 11/24 1/17
 
 class 카카오프렌즈컬러링북 {
     
@@ -29,7 +29,7 @@ class 카카오프렌즈컬러링북 {
             for(int j=0; j < n; j++){
                 if(picture[i][j] != 0 && visited[i][j] != true){
                     size = 1;
-                    bfs(picture, visited, i, j);
+                    bfs(picture, visited, i, j);  //void로 받아오는데 size증가순서 정확히 이해
                     numberOfArea++;
                     maxSizeOfOneArea = Math.max(maxSizeOfOneArea, size);
                 }   
