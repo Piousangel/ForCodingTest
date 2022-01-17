@@ -38,7 +38,7 @@ class Main {
 				}
 			}
 		//}
-		//else{  //홀
+		//else{  //짝홀필요업네요
 			
 		//}
 		return flag;
