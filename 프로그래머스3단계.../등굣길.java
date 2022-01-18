@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.*;
 
 //  mxn , 물에 잠긴 지역은 0~10개
-// 11/11 풀었ㄸ..
+// 11/11 풀었ㄸ.. 1/18
 class Solution {
     public int solution(int m, int n, int[][] puddles) {
         int answer = 0;
