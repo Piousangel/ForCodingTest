@@ -57,7 +57,6 @@ public class Map정렬법 {
         return result;
     }
 
-
     //TreeMap을 이용하여 정렬
     Comparator<String> comparator = (s1, s2)->s2.compareTo(s1);
     Map<String, String> map = new TreeMap<>(comparator);
