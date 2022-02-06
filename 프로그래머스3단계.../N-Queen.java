@@ -2,46 +2,41 @@ import java.util.*;
 
 class Solution {
     
-    int[] col_len;
-    int answer;
-    
+    int answer = 0;
+
     public int solution(int n) {
-        answer = 0;
-        
-        for(int i = 0 ; i < n ; ++i) {
-            col_len = new int[n];
-            col_len[0] = i;  //0~n;
-            backtracking(n, 1);
+     
+        for(int i=0; i < n; i++){
+            int[] col = new int[n];
+            col[0] = i;    //1행에 모든열에 퀸 넣고 dfs돌림
+            dfs(col, 0);
         }
         
         return answer;
     }
     
-    public void backtracking(int max, int row_len){
-        if(row_len == max){
+    public void dfs(int[] col, int row){
+        
+        if(row == col.length-1){
             answer++;
-            col_len[row_len - 1] = 0;  //0으로 초기화
-            return;
         }
         
-        for(int i = 0 ; i < max ; ++i){
-            col_len[row_len] = i;
-            if(isPossible(row_len)){
-                backtracking(max, row_len + 1);   //n, ++
-            } else {
-                col_len[row_len] = 0;      
+        else{
+            for(int i=0; i < col.length; i++){
+                col[row+1] = i;
+                if(isPossible(col, row+1)){
+                    dfs(col, row+1);
+                }
             }
-        }
-        col_len[row_len] = 0;
+        }       
     }
     
-    public boolean isPossible(int row_len){
-        for(int i = 0 ; i < row_len ; ++i){
-            if(col_len[i] == col_len[row_len]) return false;
-            if(Math.abs(row_len - i) == Math.abs(col_len[row_len] - col_len[i])) return false;  //조건
-        }
+    public boolean isPossible(int[] col, int row){
         
+        for(int i=0; i < row; i++){
+            if(col[i] == col[row]) return false; //같은 열
+            if(Math.abs(i - row) == Math.abs(col[i] - col[row])) return false;  //대각
+        }
         return true;
     }
-   
 }

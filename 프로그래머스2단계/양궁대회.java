@@ -1,59 +1,43 @@
 import java.util.*;
 
-//중복순열로 구해준 것과 info값 계산한것 더해서 가장 큰 값 출력하면 될 것 같은데요
-// 다시.. 1/18
+//2.6
 
 class Solution {
+    int[] answer = {-1};
+    int maxPoint = -10001;
     public int[] solution(int n, int[] info) {
-        int[] answer = new int[info.length];
         
-        for(int i=0; i < info.length; i++){
-            answer[i] = i;
-        }
-        //boolean[] visited = new boolean[]
-        int[] box = new int[n];
-        dfs(answer, box, info.length, n, 0, info);
-        System.out.print("score : " + score);
+        int[] lion_box = new int[info.length];
+        dfs(info, lion_box, 1, n);
         return answer;
     }
     
-    public void dfs(int[] answer, int[] box, int n, int r, int idx, int[] info){
+    public void dfs(int[] info, int[] lion_box, int idx, int cnt){
         
-        if(idx == r){
-            printBox(box, info);
+        if(idx == cnt+1){
+            int lion_point = 0;
+            int apeach_point = 0;
+            
+            for(int i=0; i < info.length; i++){
+                if(info[i] != 0 || lion_box[i] != 0){
+                    if(info[i] >= lion_box[i]) apeach_point += 10 -i;
+                    else lion_point += 10-i;
+                }
+            }
+            
+            if(lion_point > apeach_point){
+                if(lion_point - apeach_point >= maxPoint){        //이부분이 낮은 점수를 많이 맞힌 경우를 충족시켜줌
+                    maxPoint = lion_point - apeach_point;
+                    answer = lion_box.clone();
+                }
+            }
             return;
         }
         
-        for(int i=0; i < n; i++){
-            box[idx] = answer[i];
-            dfs(answer, box, n, r, idx+1, info);
+        for(int i=0; i < info.length && lion_box[i] <= info[i]; i++){
+            lion_box[i]++;
+            dfs(info, lion_box, idx+1, cnt);
+            lion_box[i]--;
         }
-    }
-    Map<Integer, Integer> map = new HashMap<>();
-    int score = 0;
-    public void printBox(int[] box, int[] info){
-        int tmp = 0;
-        for(int i=0; i < box.length; i++){
-            if(!map.containsKey(box[i])){
-                map.put(box[i], 1);
-            }
-            else map.put(box[i], map.get(box[i])+1);
-        }
-        
-        for(int i=0; i < info.length; i++){
-            if(!map.containsKey(i) && info[i] > 0){
-                tmp -= i;
-            }
-            else if(!map.containsKey(i) && info[i] == 0){
-                continue;
-            }
-            else{
-                if(map.get(i) > info[i]){
-                    tmp += i;
-                }
-                else tmp -= i;
-            }
-        }
-        score = Math.max(score, tmp);
     }
 }
