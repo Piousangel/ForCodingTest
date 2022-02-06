@@ -1,54 +1,57 @@
 import java.util.*;
 
-// 10/26  11/7 11/10 11/15 11/23 12/14
+// 10/26  11/7 11/10 11/15 11/23 12/14 2/6
 
 class Solution {
     public int solution(int n, int[][] wires) {
-        int answer = 100001;
-        int leftLen = 0;
-        int rightLen = 0;
+        int answer = 10001;
         
         for(int i=0; i < wires.length; i++){
-            for(int j=0; j < wires[i].length; j++){
-                leftLen = chkWires(wires, i);
-                rightLen = n - leftLen;
-                int tmp = Math.abs(leftLen - rightLen);
-                answer = Math.min(answer, tmp);
-            }
+            int leftLen = chkWire(wires, i);
+            int rightLen = n - leftLen;
+            int tmp = Math.abs(leftLen - rightLen);
+            
+            answer = Math.min(answer, tmp);
         }
+        
         return answer;
     }
     
-    public int chkWires(int[][] wires, int idx){
+    public int chkWire(int[][] wires, int idx){
         Queue<Integer> q = new LinkedList<>();
         ArrayList<int[]> list = new ArrayList<>();
         int cnt = 0;
         
-        for(int[] arr : wires){
-            list.add(arr);
+        for(int[] tmp : wires){
+            list.add(tmp);
         }
         
         q.offer(list.get(idx)[1]);
         list.remove(idx);
         
         while(!q.isEmpty()){
-            int tmp = q.poll();
+        
+            int k = q.poll();
             
             for(int i=0; i < list.size(); i++){
-                int[] arr = list.get(i);
                 boolean flag = false;
+                int[] tmp = list.get(i);
                 
-                if(tmp == arr[0]){
-                    q.offer(arr[1]);
-                    list.remove(arr);
+                if(tmp[0] == k){
+                    q.offer(tmp[1]);
+                    list.remove(tmp);
                     flag = true;
+                    
                 }
-                else if(tmp == arr[1]){
-                    q.offer(arr[0]);
-                    list.remove(arr);
+                else if(tmp[1] == k){
+                    q.offer(tmp[0]);
+                    list.remove(tmp);
                     flag = true;
+                    
                 }
-                if(flag) i--;  //리스트 사이즈가 감소하므로;
+                if(flag){
+                    i--;
+                }
             }
             cnt++;
         }

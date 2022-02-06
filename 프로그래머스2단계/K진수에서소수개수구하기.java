@@ -26,7 +26,8 @@ class K진수에서소수개수구하기 {
         for(String s : sBox){
             //System.out.println("s:" + s);
             if(!s.equals("")){
-                int tmp = Integer.parseInt(s);
+                //int tmp = Integer.parseInt(s);
+                long tmp = Long.parseLong(s);
                 int cnt = 0;
                 for(int i=1; i <= tmp; i++){
                     if(tmp%i == 0){
