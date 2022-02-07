@@ -1,4 +1,4 @@
--- 11/19 11/24 12/5 12/11 1/12
+-- 11/19 11/24 12/5 12/11 1/12 2/7
 select A.animal_id, A.name
 from animal_ins as A
 left join animal_outs as B on A.animal_id = B.animal_id
@@ -12,5 +12,8 @@ order by A.datetime
 
 -- order by animal_ins.datetime  -- 시작일이 빠른순으로 조회
 
-
-
+-- select B.animal_id, B.name
+-- from animal_outs as B
+-- left join animal_ins as A on A.animal_id = B.animal_id
+-- where A.datetime > B.datetime
+-- order by A.datetime

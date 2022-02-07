@@ -1,4 +1,4 @@
--- 11/19 11/24 12/5 12/11 1/12
+-- 11/19 11/24 12/5 12/11 1/12 2/7
 select id, name, host_id
 from places
 where host_id in(
