@@ -33,7 +33,7 @@ class Solution {
     
     public boolean isPossible(int[] col, int row){
         
-        for(int i=0; i < row; i++){
+        for(int i=0; i < row; i++){        //for문 범위
             if(col[i] == col[row]) return false; //같은 열
             if(Math.abs(i - row) == Math.abs(col[i] - col[row])) return false;  //대각
         }
