@@ -3,9 +3,7 @@ import java.util.*;
 // 앞뒤를 뒤집어도 똑같은 문자열 이 팰린드롬임
 // 문자열 s 가 주어질 때 가장 긴 팰린드롬의 길이를 구해보자
 // 11/11 이렇게 짜면 정확성은 맞지만 효용성은 통과 못함...
-// 이렇게 짜도 효율성 통과못함
-import java.util.*;
-
+// 이렇게 짜도 효율성 통과못함 2/8 바꿔볼게영....
 
 class Solution
 {
@@ -16,8 +14,9 @@ class Solution
         for(int i=0; i < s.length(); i++){
             for(int j= i+1; j <= s.length(); j++){
                 String str = s.substring(i,j);
-                boolean chk = chkPalindrome(str);
-                if(chk){
+                //boolean chk = chkPalindrome(str);
+                if(!chkPalindrome(str)) continue;
+                else{
                     answer = Math.max(answer, str.length());
                 }
             }

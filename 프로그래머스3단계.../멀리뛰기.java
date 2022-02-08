@@ -1,48 +1,51 @@
 import java.util.*;
 
 // 1칸 or 2칸
-// 배열의 개수가 몇개냐
-// 머리가 안돌아갑니다 다시... 10/28
+// 아니 DP야?
+// 머리가 안돌아갑니다 다시... 10/28 2/8 반은 통과 반은 시초
 
 class Solution {
-    public long answer;
+    long answer = 0;
     public long solution(int n) {
-        answer = 0;
-        int cnt = 0;
         
-        for(int i=0; i < n; i++){
-            // i는 2의 개수 
-            int[] arr = new int[n-i];  //방 개수
-            boolean[] visited = new boolean[n-i];
-            dfs(arr, visited, 0, n-i, i);
+        int[] arr = new int[2];
+        arr[0] = 1;
+        arr[1] = 2;
+        
+        for(int i=1; i <= n; i++){
+            int[] box = new int[i];
+            dfs(box, arr, n , 0);
         }
         
-        return answer;
+        return answer%1234567;
     }
     
-    public void dfs(int[] arr, boolean[] visited, int start, int n, int r){
+    public void dfs(int[] box, int[] arr, int n, int idx){
         
-        if(r == 0){
-            //print(arr, visited, n);
-            answer++;
+        if(idx == box.length){
+            if(chkBox(box, n)){
+                answer++;
+            }
+            return;
         }
         
         for(int i=0; i < arr.length; i++){
-            if(visited[i] != true){
-                visited[i] = true;
-                dfs(arr, visited, i+1, n, r-1);
-                visited[i] = false;
-                
-            }
+            box[idx] = arr[i];
+            dfs(box, arr, n, idx+1);
         }
     }
     
-    // public void print(int[] arr, boolean[] visited, int n){
-    //     for(int i=0; i < n; i++){
-    //         if(visited[i] != true){
-    //             System.out.print(arr[i]+" ");
-    //         }         
-    //     }
-    //     System.out.println();  
-    // }  
+    public boolean chkBox(int[] box, int n){
+        boolean flag = true;
+        
+        int sum = 0;
+        for(int i=0; i < box.length; i++){
+            if(sum > n) return false;
+            sum += box[i];
+        }
+        if(sum != n) return false;
+        else flag = true;
+        
+        return flag;
+    }
 }
