@@ -4,59 +4,42 @@ import java.util.*;
 // 큐에 자식 노드를 너을께 아니라 1~n을 한번씩 넣어봐야하나... 가 아니라 완전 다른문제였구나;;;
 // 11/11 내일 다시
 // 1~n을 첫번째로 노드들을 이어서 그래프가 n이 나오면 되는건가..
-// 11/18 다시 아예 잘못함
+// 11/18 다시 아예 잘못함 다시 2/8
+
+import java.util.*;
 
 class Solution {
     public int solution(int n, int[][] results) {
         int answer = 0;
         
-        
-        
-        boolean[] visited = new boolean[n];
-        chkGraph(results);
-        
-        for(int i=0; i < ansList.size(); i++){
-            System.out.print(ansList.get(i) + " ");
-        }
-        
-        return answer;
-    }
-    ArrayList<Integer> ansList = new ArrayList<>();
-    
-    public void chkGraph(int[][] results){
         Queue<Integer> q = new LinkedList<>();
-        ArrayList<int[]> list = new ArrayList<>();
+        boolean[] visited = new boolean[n];
+        boolean[][] map = new boolean[n][n];
         
-        for(int[] tmp : results){
-            list.add(tmp);
+        for(int i=0; i < results.length; i++){
+            map[results[i][0]-1][results[i][1]-1] = true;
+            map[results[i][1]-1][results[i][0]-1] = true;
         }
         
-        ansList.add(list.get(0)[0]);
-        q.offer(list.get(0)[0]);  // 3
-        list.remove(list.get(0));
+        visited[0] = true;
+        q.offer(0);
         
         while(!q.isEmpty()){
-            int node = q.poll();
             
-            for(int i=0; i < list.size(); i++){
-                boolean flag = false;
-                int[] arr = list.get(i);
+            int qSize = q.size();
+            for(int i=0; i < qSize; i++){
                 
-                if(node == arr[0]){
-                    q.offer(arr[1]);
-                    ansList.add(arr[1]);
-                    list.remove(arr);
-                    flag = true;
+                int tmp = q.poll();
+                for(int j=0; j < n; j++){
+                    if(map[j][tmp] == true && visited[j] != true){
+                        visited[j] = true;
+                        q.offer(j);
+                    }
                 }
-                if(node == arr[1]){
-                    q.offer(arr[0]);
-                    ansList.add(arr[0]);
-                    list.remove(arr);
-                    flag = true;
-                }
-                if(flag) i--;
             }
-            
+            answer = qSize;
         }
+        
+        return n - answer;
     }
 }
