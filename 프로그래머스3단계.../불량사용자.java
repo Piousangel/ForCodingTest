@@ -55,7 +55,6 @@ class 불량사용자 {
         
         for (int i = 0; i < a.length(); i++) {
             if (b.charAt(i) == '*') continue;
-            
             if (a.charAt(i) != b.charAt(i)) {
                 return false;
             }
