@@ -4,7 +4,7 @@ import java.util.*;
 // 야근 피로도 최소화 1시간에 1만큼 처리할 수 있음
 // 퇴근까지 남은 N시간과 각 일에 대한 작업량 works에 대해 야근 피로도를 최소화한 값 리턴
 // 다시 ㄷ사ㅣ...
-// 10/28 우선순위 큐 리버스.. 12/17
+// 10/28 우선순위 큐 리버스.. 12/17 3/6
 
 class Solution {
     public long solution(int n, int[] works) {

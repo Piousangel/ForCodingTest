@@ -2,7 +2,7 @@ import java.util.*;
 
 class 하노이의탑 {
     
-    // 9/30 재귀함수  2/8
+    // 9/30 재귀함수  2/8 3/6
     
     class Solution {
         public int[][] solution(int n) {
