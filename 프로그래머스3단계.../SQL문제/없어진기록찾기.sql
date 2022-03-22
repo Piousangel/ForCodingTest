@@ -1,5 +1,5 @@
 --left joinm = 교집합
---  9/26 11/16 11/19 11/24 12/5 1/10 2/7
+--  9/26 11/16 11/19 11/24 12/5 1/10 2/7 3/22
 SELECT B.ANIMAL_ID, B.NAME
 from animal_outs as B
 left join animal_ins as A on A.animal_id = B.animal_id
