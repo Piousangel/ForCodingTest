@@ -19,12 +19,14 @@ class 기능개발 {
             
             for(int i=0; i < progresses.length; i++){
                 progresses[i] += speeds[i];
+
+                int tmp = qPoll(progresses);
+                if(tmp > 0){
+                    list.add(tmp);
+                }
             }
             
-            int tmp = qPoll(progresses);
-            if(tmp > 0){
-                list.add(tmp);
-            }
+            
         }
     
         int[] answer = new int[list.size()];
